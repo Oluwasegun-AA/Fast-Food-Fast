@@ -1,0 +1,409 @@
+section#slider > div> figure > img {
+    display: none;
+    margin: 0px auto;
+    }
+
+section#slider > div> figure.visible > img {
+    display: block;    
+    overflow: hidden; 
+    border-radius: 20px;
+    width: 700px;
+    height: 350px;
+    }
+
+section#slider > div> figure.visible > img:hover{
+    width: 720px;
+    height: 360px;
+}
+#slider{
+    display: flex;
+    width: auto;
+}
+#slide_text {
+    text-align: center;
+    width: 500px;
+    height: 360px;
+    padding-top: 20px;
+}
+#left_text{
+    font-family: "Sofia"; 
+    font-size: 30px; 
+    color: #ffffff;
+}
+p{
+    font-family: "Sofia"; 
+    font-size: 30px; 
+    color: #ffffff;
+    font-weight: bold;
+    padding-top: 40px;
+    -webkit-animation-name: blinker;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-name: blinker;
+	-moz-animation-duration: 2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	animation-name: blinker;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+  }
+@-moz-keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+  }
+@-webkit-keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+  }
+@keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+}
+#text_wrapper{
+    background-color: rgba(24, 3, 3, 0.466);
+    width: max-content;
+    height:  300px;
+}
+
+
+
+.nav_bar {
+	height: 70px;
+   align-content: center;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+#blink_caption {
+    color: #ffffff;
+    font-size: 24px;
+     padding: 10px;
+     float: left;
+}
+#text {
+    opacity: 0.6;
+    font-family: "Sofia"; 
+    font-size: 26px; 
+}
+
+#blink{
+    font-size: 30px;
+    padding-left: 10px;
+    opacity: 0;
+    -webkit-animation-name: blinker;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-name: blinker;
+	-moz-animation-duration: 2s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	animation-name: blinker;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+  }
+@-moz-keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+  }
+@-webkit-keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+  }
+@keyframes blinker {
+	  0% { opacity: 1.0; }
+	  50% { opacity: 0.3; }
+	  100% { opacity: 1.0; }
+  }
+
+
+#header_content{
+    padding-left: 300px;
+    padding-right:300px;
+}
+
+#header_logo{
+    height: 40px;
+    padding: 15px;
+    background:white;
+    border-radius: 45%;
+    float: left;
+}
+
+.navigation a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 37px;
+    border-left-style: solid;
+    border-left-color: bisque;
+    border-right-style: solid;
+    border-right-color: bisque;
+  }
+   
+.navigation a:hover {
+        background: #ddd;
+        color: black;
+      }
+#section1{
+    height: 350px;
+    background-image: url("img/pizza1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#section3{
+    height: 350px;
+    background-image: url("img/pizza.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sections{
+    padding-left: 300px;
+    padding-right:300px;
+}
+
+footer{
+	background-color: bisque;
+	height: 50px;
+    text-align: center;	
+}
+#footer_content{
+    padding-left: 300px;
+    padding-right:300px;
+}
+#terms{
+    float: left;
+    color: black;
+}
+
+#social_icons{
+    float: right;
+}
+
+#social_icons a img{
+    padding: 15px;
+}
+#bottom{
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+#license{
+    bottom: 0;
+    background-color: burlywood;
+    width: 100%;
+    font-family: "Sofia";
+    font-size: 18px;
+    padding: 3px;
+}
+
+body{
+    background-color : blueviolet;
+    margin: 0px;
+    padding: 0px;
+    background-image: url("img/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+button{
+	border-radius: 6px;
+    background-color: #222930;
+    color:white;
+    cursor: pointer;
+    font-size: 20px;
+    width: auto;
+	margin: 5px;
+	margin-top: 20px;
+}
+
+.signup-btn{
+	flex: unset;
+	margin-bottom: 300px;
+}
+label{
+	align-self: auto;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+fieldset{
+	height: 220px;
+	border-radius: 10px;
+}
+
+#message {
+	display:none;
+	float:right;
+	margin-top: -350px;
+	margin-right: 305px;
+    background: #f1f1f1;
+    color: #000;
+	padding: 25px;
+	height: 280px;
+opacity: 0.7;
+	border-radius: 20px; 
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -15px;
+    content: "✔";
+}
+
+.password{
+	content: "✔";
+	color: green;
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -15px;
+    content: "✖";
+}
+/*..................................................................*/
+
+
+/* Full-width input fields */
+#text_input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancle_btn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.img_login {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.logo {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.login_particulars {
+    padding: 16px;
+}
+
+span.password{
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.main_container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.login {
+    background-color: #fefefe;
+    margin: auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+.container{
+    padding:10px;
+    background-color: #f1f1f1;
+}
