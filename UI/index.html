@@ -27,7 +27,7 @@
             </aside>
 
             <div class="navigation">
-                <a href="#login">Login</a>
+                <a id="login">Login</a>
                 <a href="contact.html">Contact Us</a>
                 <a href="menu.html">Our Menu</a>
             </div>
@@ -127,6 +127,48 @@
         </footer>
         <article id="license">© 2018 Fast Food Fast. All Rights Reserved</article>
         </div>
+        <div id="user_validation">
+            <div id="message">
+                <h4>Password must contain :</h4>
+                <p id="letter" class="invalid">A <b>Lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>Number</b></p>
+                <p id="length" class="invalid">At least
+                    <b>8 characters</b>
+                </p>
+            </div>
+
+            <div id="loginSection" class="main_container">
+                <form class="login animate" id="user_validation">
+                    <div class="img_login">
+                        <span id="close">&times;</span>
+                        <img src="img/logo.jpg" alt="logo" class="logo">
+                    </div>
+
+                    <div class="login_particulars">
+                        <label class="username"><b>Username</b></label>
+                        <input type="text" id="text_input" placeholder="Enter Username" name="username" required>
+
+                        <label class="password"><b>Password</b></label>
+                        <input type="password" id="text_input" placeholder="Enter Password" name="password" required>
+
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Show Password
+                        </label>
+
+                        <button type="submit">Login</button>
+                        <div class="container">
+                            <span class="notMember">Not a member?</span>
+                            <button type="button" id="cancleButton" class="cancle_btn">Sign up</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
         <script type="text/JavaScript" src="app.js"></script>
 
 </body>

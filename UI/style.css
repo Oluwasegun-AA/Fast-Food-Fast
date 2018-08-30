@@ -160,6 +160,7 @@ p{
 .navigation a:hover {
         background: #ddd;
         color: black;
+        cursor: pointer;
       }
 #section1{
     height: 350px;
@@ -260,7 +261,7 @@ fieldset{
     color: #000;
 	padding: 25px;
 	height: 280px;
-opacity: 0.7;
+    opacity: 0.7;
 	border-radius: 20px; 
 }
 
@@ -328,7 +329,7 @@ button:hover {
 .cancle_btn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: rgba(49, 15, 15, 0.466)
 }
 
 /* Center the image and position the close button */
@@ -347,34 +348,35 @@ img.logo {
     padding: 16px;
 }
 
-span.password{
-    float: right;
-    padding-top: 16px;
+span.notMember{
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 20px; 
 }
 
-/* The Modal (background) */
+/* login container backgroundn styling */
 .main_container {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    left: 0;
+    display: none;
+    position: fixed;
+    right: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.801);
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* login container styling */
 .login {
     background-color: #fefefe;
-    margin: auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: auto;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 25%; 
+    border-radius: 25px;
 }
 
 /* The Close Button (x) */
-.close {
+#close {
     position: absolute;
     right: 25px;
     color: #000;
@@ -382,8 +384,9 @@ span.password{
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+
+#close:hover,
+#close:focus {
     color: red;
     cursor: pointer;
 }
@@ -404,6 +407,7 @@ span.password{
     to {transform: scale(1)}
 }
 .container{
+    text-align: center;
     padding:10px;
     background-color: #f1f1f1;
 }

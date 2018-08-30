@@ -35,25 +35,30 @@ function moveForward() {
 function startPlayback() {    
     setTimeout(moveForward, slideInterval);
 }
-/**
-var user_validation = document.getElementById('user_validation');
-var Cancle = document.getElementById("cancle");
-button1 = document.getElementById('button1');
-cancle_button = document.getElementById('cancle_button');
 
-button1.addEventListener("click", function(){
-    document.getElementById('main_container').style.display='block';
+
+var close = document.getElementById("close");
+var login = document.getElementById('login');
+var cancleButton = document.getElementById('cancleButton');
+var loginSection = document.getElementById('loginSection');
+var userValidation = document.getElementById('user_validation')
+
+login.addEventListener("click", function(){
+    loginSection.style.display='block';
 })
-cancle_button.addEventListener("click", function(){
-    document.getElementById('main_container').style.display='none';
+cancleButton.addEventListener("click", function(){
+    loginSection.style.display='none';
+})
+close.addEventListener("click", function(){
+    loginSection.style.display='none';
 })
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = hide_element(user_validation);
+window.onclick = hide_view(user_validation);
 
-function hide_element(element) {
+function hide_view(element) {
     if (event.target == element) {
         element.style.display = "none";
     }
 }
-*/
+
