@@ -28,8 +28,8 @@
 
             <div class="navigation">
                 <a id="login">Login</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="menu.html">Our Menu</a>
+                <a id="contact" href="contact.html">Contact Us</a>
+                <a id="menu" href="menu.html">Our Menu</a>
             </div>
 
         </div>
@@ -38,17 +38,14 @@
             <label id="blink">Always!!</label>
         </div>
     </header>
-
-
     <section id="section1">
-
     </section>
     <hr/>
 
     <section id="slider">
 
-        <div id="slide_with_text1">
-            <figure class="visible">
+        <div id="slide1">
+            <figure class="show">
                 <img src="img/burger.jpg" alt="burger" id="img" />
             </figure>
             <figure>
@@ -67,14 +64,14 @@
                 <img src="img/chinese_rice.jpg" alt="chinese_rice" id="img" />
             </figure>
         </div>
-        <div id="slide_text">
+        <div id="slide">
             <fieldset id="text_wrapper">
                 <label id="left_text">Incredible Taste You can Trust</label>
                 <p>ORDER NOW!!!</p>
             </fieldset>
         </div>
-        <div id="slide_with_text2">
-            <figure class="visible">
+        <div id="slide2">
+            <figure class="show">
                 <img src="img/chinese_rice.jpg" alt="burger" id="img" />
             </figure>
             <figure>
@@ -125,52 +122,57 @@
                         </a>
                     </div>
         </footer>
-        <article id="license">© 2018 Fast Food Fast. All Rights Reserved</article>
+        <div>
+            <article id="license">© 2018 Fast Food Fast. All Rights Reserved</article>
         </div>
-        <div id="user_validation">
-            <div id="message">
-                <h4>Password must contain :</h4>
-                <p id="letter" class="invalid">A <b>Lowercase</b> letter</p>
-                <p id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</p>
-                <p id="number" class="invalid">A <b>Number</b></p>
-                <p id="length" class="invalid">At least
-                    <b>8 characters</b>
-                </p>
-            </div>
+        <div id="userValidation">
 
             <div id="loginSection" class="main_container">
-                <form class="login animate" id="user_validation">
+
+                <form class="login zoom" id="LoginForm">
                     <div class="img_login">
                         <span id="close">&times;</span>
                         <img src="img/logo.jpg" alt="logo" class="logo">
                     </div>
 
-                    <div class="login_particulars">
-                        <label class="username"><b>Username</b></label>
-                        <input type="text" id="text_input" placeholder="Enter Username" name="username" required>
-
-                        <label class="password"><b>Password</b></label>
-                        <input type="password" id="text_input" placeholder="Enter Password" name="password" required>
+                    <div class="loginParticulars">
+                        <label><b>Username</b></label>
+                        <input type="text" id="username" placeholder="Enter Username" name="username" required>
+                        <label id="emailLabel"><b>Email Address</b></label>
+                        <input type="text" id="email" placeholder="Enter Email Address" name="Email" required>
+                        <label><b>Password</b></label>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" required>
+                        <label id="confirmPasswordLabel" ><b>Confirm Password</b></label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
 
                         <label>
-                            <input type="checkbox" checked="checked" name="remember"> Show Password
+                            <input type="checkbox" id="showPassword" name="remember"> Show Password
                         </label>
+                        <article id="comparePassword"></article>
 
-                        <button type="submit">Login</button>
+                        <button id="loginBtn" type="submit">Login</button>
+                        <button id="submitBtn" type="submit">Submit</button>
                         <div class="container">
-                            <span class="notMember">Not a member?</span>
-                            <button type="button" id="cancleButton" class="cancle_btn">Sign up</button>
+                            <div id="message" class="container">
+                                <span class="notMember">Password must contain :</span>
+                                <h3 id="letter" class="invalid">A <b>Lowercase</b> letter</h3>
+                                <h3 id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</h3>
+                                <h3 id="number" class="invalid">A <b>Number</b></h3>
+                                <h3 id="length" class="invalid">At least
+                                    <b>8 characters</b>
+                                </h3>
+                            </div> 
+                            <label id="notMember">
+                            <span>Not a member?</span>
+                            <button type="button" id="signUpButton" class="cancle_btn">Sign up</button>
+                            </label>
                         </div>
                     </div>
-
-
                 </form>
             </div>
+            
         </div>
-
-
         <script type="text/JavaScript" src="app.js"></script>
-
 </body>
 
 </html>

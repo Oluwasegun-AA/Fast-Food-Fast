@@ -22,7 +22,7 @@ Visit [Fast Food Fast](https://shegsteham.github.io/fast-food-fast/)
 
 ## Demo
 
-Visit [Fast Food Fast](https://omoleoo.github.io/fast-food-fast/)
+Visit [Fast Food Fast](https://shegsteham.github.io/fast-food-fast/)
 
 ## Built with
 - HTML 5
