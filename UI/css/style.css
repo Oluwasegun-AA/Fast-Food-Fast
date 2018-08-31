@@ -195,7 +195,7 @@ section#slider > div > figure > img {
     font-size: 18px;
   }
 
-  #contact, #login, #menu, #signOut{
+  #contact, #login, #menu, #signOut, #home{
     border-left-style: solid;
     border-left-color: bisque;
   }
@@ -551,8 +551,6 @@ section#slider > div > figure > img {
   border-radius: 10px;
   padding: 0px;
 }
-
-/*--------------------------------------------*/
 
 div.content {
   margin-left: 200px;
