@@ -50,6 +50,20 @@ click.forEach(btn => btn.addEventListener('click', function(){
     }
 }));
 
+//eventListener Opens the Login View when the login button is clicked
+login.addEventListener("click", function(){
+
+  confirmPassword.style.display = 'none';
+  comparePassword.style.display = 'none';
+  email.style.display = 'none';
+  notMember.style.display = 'block';
+  submitBtn.style.display = 'none';
+  loginBtn.style.display = 'block';
+  confirmPasswordLabel.style.display = 'none';
+  emailLabel.style.display = 'none';
+  loginSection.style.display='block';
+});
+
 //eventListener closes the login/register view when the close " X " icon is clicked
 close.addEventListener("click", function(){
     loginSection.style.display='none';
@@ -157,4 +171,3 @@ signUp.onclick = function(){
     confirmPasswordLabel.style.display = 'block';
     emailLabel.style.display = 'block';
 }
-

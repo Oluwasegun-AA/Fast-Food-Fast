@@ -9,7 +9,7 @@
     <meta name="author" content="Adepoju Oluwasegun">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
-    <title>Fast-Food-Fast</title>
+    <title>Fast-Food-Fast | Support</title>
     <!-- Favicon -->
     <link rel="icon" href="img/logo.jpg" sizes="16x16" />
     <!-- css -->
@@ -19,22 +19,38 @@
 </head>
 
 <!-- Body Section -->
+
 <body>
 
     <!-- header with Navigation bar -->
     <header id="navBar">
         <div id="headerContent">
+
             <aside>
                 <img src="img/logo.jpg" id="headerLogo" />
+                <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
             <div class="navigation">
-                    <a id="login">Login</a>
-                    <a id="home" class="active">Home</a>
-                <a id="contact" href="contact.html">Contact Us</a>
-                <a id="menu" href="menu.html">Our Menu</a>
+                <a id="home">Home</a>
+                <a id="cart" class="active" href="cart.html">
+                    <label>Cart</label>
+                    <img src="img/cart.png" />
+                    <label id="cartWeight"></label>
+                </a>
+                <a id="signOut" class="" href="index.html">Sign Out</a>
+                <a id="contact" class="" href="contact.html">Contact Us</a>
+                <a id="menu" class="" href="menu.html">Our Menu</a>
             </div>
+        </div>
 
+        <div class="dropdown">
+            <a class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+                <a href="orders.html">Active Orders</a>
+                <a href="history.html">Order History</a>
+                <a href="support.html">Support</a>
+            </div>
         </div>
 
         <!-- Blinking text on Navigation bar -->
@@ -44,66 +60,12 @@
         </div>
     </header>
 
-    <!-- First layer banner  -->
-    <section id="section1">
+    <section id="sectionMenu">
     </section>
-    <hr/>
-
-    <!-- Slider Section -->
-    <section id="slider">
-
-        <div id="slide1">
-            <figure class="show">
-                <img src="img/burger.jpg" alt="burger" id="img" />
-            </figure>
-            <figure>
-                <img src="img/burger1.jpg" alt="burger" id="img" />
-            </figure>
-            <figure>
-                <img src="img/chicken.jpg" alt="chicken" id="img" />
-            </figure>
-            <figure>
-                <img src="img/fried_rice.jpg" alt="fried Rice" id="img" />
-            </figure>
-            <figure>
-                <img src="img/Shawarmar.jpg" alt="shawarmar" id="img" />
-            </figure>
-            <figure>
-                <img src="img/chinese_rice.jpg" alt="chinese_rice" id="img" />
-            </figure>
-        </div>
-        <div id="slide">
-            <fieldset id="text_wrapper">
-                <label id="left_text">Incredible Taste You can Trust</label>
-                <p>ORDER NOW!!!</p>
-            </fieldset>
-        </div>
-        <div id="slide2">
-            <figure class="show">
-                <img src="img/chinese_rice.jpg" alt="burger" id="img" />
-            </figure>
-            <figure>
-                <img src="img/Shawarmar.jpg" alt="burger" id="img" />
-            </figure>
-            <figure>
-                <img src="img/burger1.jpg" alt="chicken" id="img" />
-            </figure>
-            <figure>
-                <img src="img/chicken.jpg" alt="fried Rice" id="img" />
-            </figure>
-            <figure>
-                <img src="img/Shawarmar.jpg" alt="shawarmar" id="img" />
-            </figure>
-            <figure>
-                <img src="img/burger.jpg" alt="chinese_rice" id="img" />
-            </figure>
-        </div>
-    </section>
-    <hr/>
-
-    <!-- Third layer banner -->
-    <section id="section3">
-    </section>
+    <div class="content">
+        <p>fjhgdfhkgvhvkdbfbf</p>
+        
+    </div>
 
     <!-- Footer Section -->
     <div id="bottom">
@@ -137,6 +99,7 @@
                             <img id="instagram-img" src="img/instagram.ico" title="" alt="instagram">
                         </a>
                     </div>
+
         </footer>
 
         <!-- Licencse -->
@@ -162,7 +125,7 @@
                         <input type="text" id="email" placeholder="Enter Email Address" name="Email" required>
                         <label><b>Password</b></label>
                         <input type="password" id="password" placeholder="Enter Password" name="password" required>
-                        <label id="confirmPasswordLabel" ><b>Confirm Password</b></label>
+                        <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
                         <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
 
                         <label>
@@ -181,20 +144,19 @@
                                 <h3 id="length" class="invalid">At least
                                     <b>8 characters</b>
                                 </h3>
-                            </div> 
+                            </div>
                             <label id="notMember">
-                            <span>Not a member?</span>
-                            <button type="button" id="signUpButton" class="cancle_btn">Sign up</button>
+                                <span>Not a member?</span>
+                                <button type="button" id="signUpButton" class="cancle_btn">Sign up</button>
                             </label>
                         </div>
                     </div>
                 </form>
             </div>
-            
         </div>
 
         <!-- JavaScript -->
-        <script type="text/JavaScript" src="js/app.js"></script>
+        <script type="text/JavaScript" src="js/menu.js"></script>
 </body>
 
 </html>
