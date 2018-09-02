@@ -633,6 +633,7 @@ p.blink {
 
 /*Styling for Screen Size Responsiveness*/
 @media (min-width: 400px) and (max-width: 530px) {
+  
   .navigation > a {
     float: right;
     display: block;
@@ -683,6 +684,16 @@ p.blink {
     display: block;
     font-size: 6px;
     border-radius: 10px;
+  }
+  .dropbtn {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px;
+    background-color: #333;
+    font-size: 6px;
+    border-radius: 10px;
+    height: 18px;
   }
 
   #headerLogo {
@@ -762,6 +773,7 @@ p.blink {
     margin-left: 67px;
     border-radius: 10px;
   }
+
 
   #socialIcons {
     text-align: center;
