@@ -1,3 +1,4 @@
+
 var loggedIn = 0;
 var slideInterval = 3000;
 var  close = document.getElementById("close");
