@@ -75,9 +75,9 @@
   background-size: cover;
 }
 #sectionMenu {
-  height: auto;
+  height: 170px;
   width: 100%;
-  background-image: url("../img/pizza.jpg");
+  background-image: url("../img/u.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -502,7 +502,7 @@ span.notMember {
   border-radius: 10px;
 }
 
-.orderBtn {
+#addToCartBtn{
   width: auto;
   padding: 6px;
   background-color: rgb(13, 148, 141);
@@ -969,6 +969,7 @@ p.blink {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   #section3 {
     height: 170px;
     width: 100%;
@@ -978,9 +979,9 @@ p.blink {
     background-size: cover;
   }
   #sectionMenu {
-    height: auto;
+    height: 170px;
     width: 100%;
-    background-image: url("../img/pizza.jpg");
+    background-image: url("../img/u.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1405,7 +1406,7 @@ p.blink {
     border-radius: 10px;
   }
 
-  .orderBtn {
+  #addToCartBtn {
     width: auto;
     padding: 6px;
     background-color: rgb(13, 148, 141);
@@ -1529,4 +1530,119 @@ p.blink {
     text-shadow: #000;
     margin-left: 10px;
   }
+}
+
+
+
+#fieldsetA{
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  background-color: rgba(51, 51, 51, 0.945);
+}
+
+#fieldsetB{
+  text-align: center;
+  orientation: center;
+  margin: auto;
+  width: 95%;
+  height: max-content;
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+#informationFields{
+  margin-top: 20px;
+  height: max-content;
+}
+
+#information{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  height: max-content;
+}
+
+#showImage{
+  max-width:100%;
+  padding: 10px;
+  text-align: center;
+}
+
+#uploadImage{
+padding:10px;
+background:#111111;
+border-radius: 10px;
+}
+
+#preview{
+  visibility: hidden;
+  height: 90%;
+  text-align: center;
+  height: max-content;
+  margin-bottom: 40px;
+}
+
+#upload{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 10px;
+}
+
+#addItemFields{
+  display: flex;
+  text-align: center;
+}
+
+#uploadDescription{
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 10px;
+}
+
+#itemTag, #itemName, #itemPrice {
+  width: 50%;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#submitItem {
+  background-color: #806464;
+  color: antiquewhite;
+  font-size: 18px;
+}
+
+#submitItem:hover {
+  background-color: #888;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#previewContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+#editDelete{
+  display: flex;
+}
+#deleteBtn, #editBtn{
+  width: 50%;
+  text-align: center;
+  border: 2px wheat;
+  margin: 2px;
 }
