@@ -1707,4 +1707,27 @@ border-radius: 10px;
 }
 #markCompleted{
   margin-top: -30px;
+  text-align: center;
+}
+#completedText{
+  display: block;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  padding: 3px;
+  width: 90%;
+  text-align: center;
+  background-color: #806464;
+}
+.button{
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  width: 100px;
+  border-radius: 10%;
+}
+.botton:hover{
+  background-color: rgb(34, 33, 31);
+  color: wheat; 
 }
