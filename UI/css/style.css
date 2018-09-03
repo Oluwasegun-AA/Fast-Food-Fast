@@ -1564,6 +1564,9 @@ p.blink {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   height: max-content;
+  text-align: center;
+  height: 100%;
+  width: 98%;
 }
 
 #showImage{
@@ -1645,4 +1648,63 @@ border-radius: 10px;
   text-align: center;
   border: 2px wheat;
   margin: 2px;
+}
+#itemQuantity{
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+#cost{
+  width: 100%;
+  height: 25%;
+  background-color: #888;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+#cartElement{
+  display: flex;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#cartAttributes{
+  margin: 4px;
+  text-align: center;
+  margin-top: 100px;
+}
+#cartInformation{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+}
+#totalPrice{
+  text-align: center;
+  font-size: 25px;
+}
+#placeorder{
+  width: auto;
+  padding: 12px;
+  background-color: rgb(13, 148, 141);
+  border-radius: 10px;
+  font-size: 20px;
+}
+#acceptBtn, #declineBtn{
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  width: 100px;
+  border-radius: 10%;
+}
+#acceptBtn:hover, #declineBtn:hover{
+  background-color: rgb(34, 33, 31);
+  color: wheat;
+}
+#markCompleted{
+  margin-top: -30px;
 }

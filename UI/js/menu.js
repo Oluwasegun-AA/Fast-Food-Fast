@@ -30,14 +30,15 @@ var cart = cartWeight.innerHTML;
 var click = document.querySelectorAll('#addToCartBtn');
 
 click.forEach(btn => btn.addEventListener('click', function(){
- 
-    if((username.innerHTML !== "") && (password.innerHTML !== "")){
-        loggedIn = 1;
-        cart = Number(cart);
+  cart = Number(cart);
         cart += 1;
         cartWeight.innerHTML = cart;
+ 
+ /*   if((username.innerHTML !== "") && (password.innerHTML !== "")){
+        loggedIn = 1;
+        
     }
-    if(loggedIn !== 1){
+   if(loggedIn !== 1){
         confirmPassword.style.display = 'none';
         comparePassword.style.display = 'none';
         email.style.display = 'none';
@@ -47,7 +48,8 @@ click.forEach(btn => btn.addEventListener('click', function(){
         confirmPasswordLabel.style.display = 'none';
         emailLabel.style.display = 'none';
         loginSection.style.display='block';
-    }
+        
+    }*/
 }));
 
 //eventListener Opens the Login View when the login button is clicked
