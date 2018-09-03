@@ -84,7 +84,7 @@
 }
 
 /*stying for the header*/
-p {
+p, #fieldsetB {
   font-size: 25px;
   color: #ffffff;
   font-weight: bold;
@@ -599,13 +599,13 @@ div.content {
   padding-bottom: 50px;
 }
 
-h3 {
+h3{
   font-family: sofia;
   font-size: 30px;
   text-shadow: #000;
 }
 
-#newsLetterEmail {
+#newsLetterEmail, #questionTag, #questionTitle {
   width: 300px;
   height: 30px;
   text-align: center;
@@ -988,13 +988,7 @@ p.blink {
   }
 
   /*stying for the header*/
-  p {
-    font-size: 25px;
-    color: #ffffff;
-    font-weight: bold;
-    padding-top: 20px;
-  }
-
+ 
   #fast,
   #blink,
   .blink {
@@ -1539,6 +1533,7 @@ p.blink {
   height: 90%;
   width: 90%;
   background-color: rgba(51, 51, 51, 0.945);
+  text-align: center;
 }
 
 #fieldsetB{
@@ -1730,4 +1725,11 @@ border-radius: 10px;
 .botton:hover{
   background-color: rgb(34, 33, 31);
   color: wheat; 
+}
+#supportFields{
+  text-align: center;
+}
+#questionBody{
+  border-radius: 10px;
+  text-align: center;
 }
