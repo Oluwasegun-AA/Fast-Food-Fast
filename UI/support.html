@@ -47,7 +47,7 @@
                     <div class="dropdown-content">
                         <a href="active-orders.html">Active Orders</a>
                         <a href="order-history.html">Order History</a>
-                        <a href="support.html">Support</a>
+                        <a class="active" href="support.html">Support</a>
                     </div>
                 </div>
             </div>
@@ -63,74 +63,29 @@
 
     <section id="sectionMenu">
     </section>
-
     <div id="informationFields">
         <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">CART</fieldset>
-            <fieldset id="information">
-                <div id="cartInformation">
-                    <div id="cartElement">
-                        <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
-                            <img src="img/f.jpg" id="itemLogo" />
-                        </div>
-                        <div id="cartAttributes">
-                            <div id="quantity">
-                                    <label>Quantity </label>
-                                    <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
-                            </div>
-                            <div id="cost">
+            <fieldset id="fieldsetB">Message Support</fieldset>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div id="cartElement">
-                        <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
-                            <img src="img/f.jpg" id="itemLogo" />
-                        </div>
-                        <div id="cartAttributes">
-                            <div id="quantity">
-                                    <label>Quantity </label>
-                                    <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
-                            </div>
-                            <div id="cost">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div id="cartElement">
-                        <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
-                            <img src="img/f.jpg" id="itemLogo" />
-                        </div>
-                        <div id="cartAttributes">
-                            <div id="quantity">
-                                <label>Quantity </label>
-                                <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
-                            </div>
-                            <div id="cost">
+            <div id="supportSection">
+                <p>Title</p>
+                <input type="text" id="questionTitle" name="titleInput" placeholder="Max 10 words summary" id="question_title" />
+            </div>
+            <div id="supportSection">
+                <p>Body</p>
+                <textarea id="questionBody" rows="6" cols="100" name="bodyInput" placeholder="Discuss The Query Here!"></textarea>
+            </div>
+            <div id="supportSection">
+                <p>Tag</p>
+                <input type="text" id="questionTag" name="tagInput" placeholder="Enter tags Separated by a Coma" />
+            </div>
+            <button id="submit" type="button">Save</button>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="totalPrice">
-                        <h4>Total Cost :</h4>
-                        <article id="totalCost">
 
-                        </article>
-                </div>
-                <button type="button" id="placeorder">Place Order</button>
-            </fieldset>
         </fieldset>
     </div>
+
 
     <!-- Footer Section -->
     <div id="bottom">
@@ -224,6 +179,7 @@
     </div>
 
     <!-- JavaScript -->
+    <script type="text/JavaScript" src="js/support.js"></script>
     <script type="text/JavaScript" src="js/menu.js"></script>
 </body>
 

@@ -75,16 +75,16 @@
   background-size: cover;
 }
 #sectionMenu {
-  height: auto;
+  height: 170px;
   width: 100%;
-  background-image: url("../img/pizza.jpg");
+  background-image: url("../img/u.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 /*stying for the header*/
-p {
+p, #fieldsetB {
   font-size: 25px;
   color: #ffffff;
   font-weight: bold;
@@ -502,7 +502,7 @@ span.notMember {
   border-radius: 10px;
 }
 
-.orderBtn {
+#addToCartBtn{
   width: auto;
   padding: 6px;
   background-color: rgb(13, 148, 141);
@@ -599,13 +599,13 @@ div.content {
   padding-bottom: 50px;
 }
 
-h3 {
+h3{
   font-family: sofia;
   font-size: 30px;
   text-shadow: #000;
 }
 
-#newsLetterEmail {
+#newsLetterEmail, #questionTag, #questionTitle {
   width: 300px;
   height: 30px;
   text-align: center;
@@ -633,6 +633,7 @@ p.blink {
 
 /*Styling for Screen Size Responsiveness*/
 @media (min-width: 400px) and (max-width: 530px) {
+  
   .navigation > a {
     float: right;
     display: block;
@@ -683,6 +684,16 @@ p.blink {
     display: block;
     font-size: 6px;
     border-radius: 10px;
+  }
+  .dropbtn {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px;
+    background-color: #333;
+    font-size: 6px;
+    border-radius: 10px;
+    height: 18px;
   }
 
   #headerLogo {
@@ -762,6 +773,7 @@ p.blink {
     margin-left: 67px;
     border-radius: 10px;
   }
+
 
   #socialIcons {
     text-align: center;
@@ -957,6 +969,7 @@ p.blink {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   #section3 {
     height: 170px;
     width: 100%;
@@ -966,22 +979,16 @@ p.blink {
     background-size: cover;
   }
   #sectionMenu {
-    height: auto;
+    height: 170px;
     width: 100%;
-    background-image: url("../img/pizza.jpg");
+    background-image: url("../img/u.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   /*stying for the header*/
-  p {
-    font-size: 25px;
-    color: #ffffff;
-    font-weight: bold;
-    padding-top: 20px;
-  }
-
+ 
   #fast,
   #blink,
   .blink {
@@ -1393,7 +1400,7 @@ p.blink {
     border-radius: 10px;
   }
 
-  .orderBtn {
+  #addToCartBtn {
     width: auto;
     padding: 6px;
     background-color: rgb(13, 148, 141);
@@ -1517,4 +1524,212 @@ p.blink {
     text-shadow: #000;
     margin-left: 10px;
   }
+}
+
+
+
+#fieldsetA{
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  background-color: rgba(51, 51, 51, 0.945);
+  text-align: center;
+}
+
+#fieldsetB{
+  text-align: center;
+  orientation: center;
+  margin: auto;
+  width: 95%;
+  height: max-content;
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+#informationFields{
+  margin-top: 20px;
+  height: max-content;
+}
+
+#information{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  height: max-content;
+  text-align: center;
+  height: 100%;
+  width: 98%;
+}
+
+#showImage{
+  max-width:100%;
+  padding: 10px;
+  text-align: center;
+}
+
+#uploadImage{
+padding:10px;
+background:#111111;
+border-radius: 10px;
+}
+
+#preview{
+  visibility: hidden;
+  height: 90%;
+  text-align: center;
+  height: max-content;
+  margin-bottom: 40px;
+}
+
+#upload{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 10px;
+}
+
+#addItemFields{
+  display: flex;
+  text-align: center;
+}
+
+#uploadDescription{
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 10px;
+}
+
+#itemTag, #itemName, #itemPrice {
+  width: 50%;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#submitItem {
+  background-color: #806464;
+  color: antiquewhite;
+  font-size: 18px;
+}
+
+#submitItem:hover {
+  background-color: #888;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#previewContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+#editDelete{
+  display: flex;
+}
+#deleteBtn, #editBtn{
+  width: 50%;
+  text-align: center;
+  border: 2px wheat;
+  margin: 2px;
+}
+#itemQuantity{
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+#cost{
+  width: 100%;
+  height: 25%;
+  background-color: #888;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+#cartElement{
+  display: flex;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#cartAttributes{
+  margin: 4px;
+  text-align: center;
+  margin-top: 100px;
+}
+#cartInformation{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+}
+#totalPrice{
+  text-align: center;
+  font-size: 25px;
+}
+#placeorder{
+  width: auto;
+  padding: 12px;
+  background-color: rgb(13, 148, 141);
+  border-radius: 10px;
+  font-size: 20px;
+}
+#acceptBtn, #declineBtn{
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  width: 100px;
+  border-radius: 10%;
+}
+#acceptBtn:hover, #declineBtn:hover{
+  background-color: rgb(34, 33, 31);
+  color: wheat;
+}
+#markCompleted{
+  margin-top: -30px;
+  text-align: center;
+}
+#completedText{
+  display: block;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  padding: 3px;
+  width: 90%;
+  text-align: center;
+  background-color: #806464;
+}
+.button{
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  width: 100px;
+  border-radius: 10%;
+}
+.botton:hover{
+  background-color: rgb(34, 33, 31);
+  color: wheat; 
+}
+#supportFields{
+  text-align: center;
+}
+#questionBody{
+  border-radius: 10px;
+  text-align: center;
 }
