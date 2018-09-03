@@ -12,6 +12,7 @@
 ** "Fast Food Fast" ** is a food delivery service app for restaurants. it was built from scratch using Html, Css and JavaScript
 
 Visit [Fast Food Fast](https://shegsteham.github.io/Fast-Food-Fast/UI/)
+Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.html)
 
 ## Features
 
