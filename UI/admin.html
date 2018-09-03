@@ -9,7 +9,7 @@
     <meta name="author" content="Adepoju Oluwasegun">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
-    <title>Fast-Food-Fast | Cart</title>
+    <title>Fast-Food-Fast | Review-Orders</title>
     <!-- Favicon -->
     <link rel="icon" href="img/logo.jpg" sizes="16x16" />
     <!-- css -->
@@ -34,15 +34,15 @@
             <div class="navigation">
                 <a id="signOut" class="" href="index.html">Sign Out</a>
                 <a id="home" class="" href="add-items.html">Add Items</a>
-                <a id="contact" class="active" href="review-orders.html">Review Orders</a>
+                <a id="contact" class="Active" href="admin.html">Review Orders</a>
 
                 <div class="dropdown">
                     <a class="dropbtn">Data Base</a>
                     <div class="dropdown-content">
-                            <a href="review-orders.html">Review Orders</a>
-                            <a href="accepted-orders.html">Accepted Orders</a>
-                            <a href="declined-orders.html">Declined Orders</a>
-                            <a href="user-review.html">User's Review</a>
+                        <a class="active" href="admin.html">Review Orders</a>
+                        <a href="accepted-orders.html">Accepted Orders</a>
+                        <a href="declined-orders.html">Declined Orders</a>
+                        <a href="user-review.html">User's Review</a>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,83 @@
 
     <div id="informationFields">
         <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">ORDER HISTORY</fieldset>
-            <fieldset id="information">shvhsvhvjshbshcv</fieldset>
+            <fieldset id="fieldsetB">RREVIEW ORDERS</fieldset>
+            <fieldset id="information">
+                <div id="cartInformation">
+                    <div>
+                        <div id="cartElement">
+                            <div id="item" class="f">
+                                <label id="description">description</label>
+                                <label id="description">Price </label>
+                                <img src="img/f.jpg" id="itemLogo" />
+                            </div>
+                            <div id="cartAttributes">
+                                <div id="quantity">
+                                    <label>Quantity </label>
+                                    <br/>
+                                    <article id="itemQuantity"></article>
+                                </div>
+                                <div id="cost">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="acceptDecline">
+                            <button type="button" id="acceptBtn">Accept</button>
+                            <button type="button" id="declineBtn">Decline</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div id="cartElement">
+                            <div id="item" class="f">
+                                <label id="description">description</label>
+                                <label id="description">Price </label>
+                                <img src="img/f.jpg" id="itemLogo" />
+                            </div>
+                            <div id="cartAttributes">
+                                <div id="quantity">
+                                    <label>Quantity </label>
+                                    <br/>
+                                    <article id="itemQuantity"></article>
+                                </div>
+                                <div id="cost">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="acceptDecline">
+                                <button type="button" id="acceptBtn">Accept</button>
+                                <button type="button" id="declineBtn">Decline</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div id="cartElement">
+                            <div id="item" class="f">
+                                <label id="description">description</label>
+                                <label id="description">Price </label>
+                                <img src="img/f.jpg" id="itemLogo" />
+                            </div>
+                            <div id="cartAttributes">
+                                <div id="quantity">
+                                    <label>Quantity </label>
+                                    <br/>
+                                    <article id="itemQuantity"></article>
+                                </div>
+                                <div id="cost">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="acceptDecline">
+                            <button type="button" id="acceptBtn">Accept</button>
+                            <button type="button" id="declineBtn">Decline</button>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
         </fieldset>
     </div>
 
