@@ -78,5 +78,5 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 ## License
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- **[MIT license](https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md)**
 - Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>.
