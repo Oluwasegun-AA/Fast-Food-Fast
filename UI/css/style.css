@@ -267,6 +267,8 @@ footer {
 /*Styling for the body background*/
 body {
   margin: 0px;
+  width: 90%;
+  border-color: red;
   padding: 0px;
   background-image: url("../img/background.jpg");
   background-attachment: fixed;
