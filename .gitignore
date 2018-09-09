@@ -1,0 +1,8 @@
+# Coverage directory used by  istanbul
+coverage/
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
