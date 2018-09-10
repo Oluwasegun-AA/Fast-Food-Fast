@@ -267,6 +267,9 @@ footer {
 /*Styling for the body background*/
 body {
   margin: 0px;
+  width: 98.5%;
+  height: 100%;
+  border-color: red;
   padding: 0px;
   background-image: url("../img/background.jpg");
   background-attachment: fixed;
@@ -1161,15 +1164,6 @@ p.blink {
     bottom: 0;
     position: fixed;
   }
-
-  /*Styling for the body background*/
-  body {
-    margin: 0px;
-    padding: 0px;
-    background-image: url("../img/background.jpg");
-    background-attachment: fixed;
-  }
-
   /*Styling for Buttons and fieldsets*/
 
   .signUp-btn {
