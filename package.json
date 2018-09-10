@@ -1,7 +1,10 @@
 {
   "name": "fast-food-fast",
   "version": "1.0.0",
-  "description": "Andela Developer Challenge",
+  "description": "Andela Developer Challenge fast-food-fast",
+  "engines": {
+    "node": "10.9.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,6 +12,10 @@
     "build": "babel ./resources/methods.js -d dist",
     "testit": "mocha ./tdd/test/test.js",
     "coverage": "istanbul cover mocha ./tdd/test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shegsteham/Fast-Food-Fast"
   },
   "keywords": [
     "node.js",
