@@ -10,7 +10,7 @@
 * [License](#License)
 
 ## Project Overview
-** "Fast Food Fast" ** is a food delivery service app for restaurants. it was built from scratch using `Html` , `Css` , `JavaScript` and `Node.js`
+** Fast Food Fast ** is a food delivery service app for restaurants. it was built from scratch using `Html` , `Css` , `JavaScript` and `Node.js`
 
 ## Features
 
