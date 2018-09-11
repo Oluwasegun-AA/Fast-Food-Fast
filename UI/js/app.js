@@ -1,4 +1,3 @@
-
 var loggedIn = 0;
 var slideInterval = 3000;
 var  close = document.getElementById("close");
@@ -23,9 +22,6 @@ var  capital = document.getElementById("capital");
 var  number = document.getElementById("number");
 var  length = document.getElementById("length");
 var  username = document.getElementById('username');
-
-
-
 
 function getFigures1() {
     return document.getElementById('slide1').getElementsByTagName('figure');
@@ -198,4 +194,3 @@ signUp.onclick = function(){
     confirmPasswordLabel.style.display = 'block';
     emailLabel.style.display = 'block';
 }
-

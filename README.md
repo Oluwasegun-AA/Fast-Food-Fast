@@ -15,6 +15,8 @@
 * [Features](#Features)
 * [Demo](#demo)
 * [Built with](#built-with)
+* [Known Issues](# Known issues)
+* [Installation](# Installation)
 * [Contributing](#contributing)
 * [License](#License)
 
@@ -35,28 +37,7 @@
 
 
 ## Demo
-
-### The Following Core Functionalities were implemented
-
-- user can place Order
-
-![user can place order](https://user-images.githubusercontent.com/25525765/44995913-21682600-af9d-11e8-9d6b-87d4fca9c61a.jpg)
-
-- Admin can review orders and accepted/declined orders
-
-![review orders](https://user-images.githubusercontent.com/25525765/44995720-4a3beb80-af9c-11e8-847f-54431a37adf2.jpg)
-
-- Admin can mark orders as Fulfilled after dispatch
-
-![accepted orders](https://user-images.githubusercontent.com/25525765/44995836-cafae780-af9c-11e8-9d72-cca497919ad0.jpg)
-
-- User can write to Support in case of a Challenge
-
-![message support](https://user-images.githubusercontent.com/25525765/44995955-54aab500-af9d-11e8-8acd-950ad8609312.jpg)
-
-- Admin can create an item to be added to the main items list
-
-![admin can add items](https://user-images.githubusercontent.com/25525765/44995661-0f39b800-af9c-11e8-9639-565656f4b1cd.jpg)
+![fast](https://user-images.githubusercontent.com/25525765/45334718-e903b180-b573-11e8-8ecf-746704c24585.gif)
 
 Visit [User Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/)
 
@@ -73,6 +54,21 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 - `body-parser`
 - `morgan`
 
+## Known issues
+Everything works as expected; However:
+- the front-end is not complete, i.e. no authentication, few client-side
+   validation and no link for API calls yet.
+- Data structures were used to save data instead of a database, hence data gets
+   erased once the server is restarted
+
+## Installation
+
+$ git clone `https://github.com/shegsteham/Fast-Food-Fast.git`
+$ cd Fast-Food-Fast
+$ npm i
+$ npm start
+Once the server starts-up, you can query the api endpoints at http://localhost:5000/api/v1
+
 ## Contributing
 >  Feel free to 🍴 fork this repository
 
@@ -88,4 +84,4 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
 
 - **[MIT license](https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md)**
-- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>.
+- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>

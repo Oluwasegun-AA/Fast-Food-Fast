@@ -1,6 +1,42 @@
-const database = require('../data/database')
+import database from '../data/database';
+let newOrder;
 
 module.exports = {
+    
+    validate: (req, res) => {
+        if (!req.body.food) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Food Name is Required'
+            });
+        } else if (!req.body.price) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Price is Required'
+            });
+        } else if (!req.body.quantity) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Quantity is required'
+            });
+        } else if (!req.body.orderStatus) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Order Status is Required'
+            });
+        }
+    },
+
+    populate: (req, id) => {
+      newOrder = {
+            orderId: id,
+            food: req.body.food,
+            price: req.body.price,
+            quantity: req.body.quantity,
+            orderStatus: req.body.orderStatus
+        };
+    },
+
     getOrders(req, res) {
         res.status(200).send({
             success: 'true',
@@ -29,82 +65,30 @@ module.exports = {
                 message: 'Order Not Found in the Database'
             })
         }
-
     },
 
     addOrder(req, res) {
-        if (!req.body.food) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Food Name is Required'
-            });
-        } else if (!req.body.price) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Price is Required'
-            });
-        } else if (!req.body.quantity) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Quantity is required'
-            });
-        } else if (!req.body.orderStatus) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        }
+        module.exports.validate(req, res);
         let id = database.orders.length;
-        const order = {
-            orderId: id,
-            food: req.body.food,
-            price: req.body.price,
-            quantity: req.body.quantity,
-            orderStatus: req.body.orderStatus
-        };
-        database.orders.push(order);
+        module.exports.populate(req, id);
+        database.orders.push(newOrder);
         res.status(201).send({
             orderId: id,
-            order_sent: order,
+            order_sent: newOrder,
             message: 'Order Sent Successfully'
         });
+        newOrder = {};
     },
 
     updateOrder(req, res) {
-        if (!req.body.food) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Food Name is Required'
-            });
-        } else if (!req.body.price) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Price is Required'
-            });
-        } else if (!req.body.quantity) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Quantity is required'
-            });
-        } else if (!req.body.orderStatus) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        }
+        module.exports.validate(req, res);
         const id = parseInt(req.params.orderId, 10);
         let oldOrder = database.orders[id];
         let orderIndex;
         database.orders.map((order, index) => {
             if (order.orderId == id) {
-                orderIndex = index
-                let newOrder = {
-                    orderId: id,
-                    food: req.body.food,
-                    price: req.body.price,
-                    quantity: req.body.quantity,
-                    orderStatus: req.body.orderStatus
-                };
+                orderIndex = index;
+                module.exports.populate(req, id);
                 database.orders[index] = newOrder
                 res.status(200).send({
                     orderId: id,
