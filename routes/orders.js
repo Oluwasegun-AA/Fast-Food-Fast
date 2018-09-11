@@ -1,4 +1,4 @@
-import database from '../data/database';
+const database = require('../data/database');
 let newOrder;
 
 module.exports = {
