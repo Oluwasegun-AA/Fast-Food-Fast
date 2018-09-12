@@ -7,15 +7,15 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "istanbul test server.js",
-    "start": "./node_modules/.bin/node-dev ./server.js",
-    "build": "babel ./resources/methods.js -d dist",
-    "testit": "mocha ./tdd/test/test.js",
-    "coverage": "istanbul cover mocha ./tdd/test/test.js"
+    "test": "mocha dist/test.js",
+    "start": "npm run build && node-dev ./dist/server.js",
+    "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
+    "clear": "rimraf dist",
+    "coverage": "istanbul cover _mocha -R spec dist/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shegsteham/Fast-Food-Fast"
+    "url": "git+https://github.com/shegsteham/Fast-Food-Fast.git"
   },
   "keywords": [
     "node.js",
@@ -36,11 +36,14 @@
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
     "chai": "4.1.2",
+    "coveralls": "3.0.2",
     "eslint": "5.5.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "istanbul": "0.4.5",
     "mocha": "5.2.0",
-    "node-dev": "3.1.3"
+    "mocha-lcov-reporter": "1.3.0",
+    "node-dev": "3.1.3",
+    "rimraf": "2.6.2"
   }
 }
