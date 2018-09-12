@@ -1,9 +1,15 @@
-const database = require('../data/database');
+import orders from '../data/database';
 let newOrder;
 
-module.exports = {
-    
-    validate: (req, res) => {
+export default module = {
+
+    /**
+     * Validate post and Put request contains all required parameters
+     * @param {*} req - incomming json data
+     * @param {*} res - response to the validity of the data
+     */
+
+    validate: (req, res)=> {
         if (!req.body.food) {
             return res.status(400).send({
                 success: 'false',
@@ -24,34 +30,55 @@ module.exports = {
                 success: 'false',
                 message: 'Bad Request! Order Status is Required'
             });
+        } else if (!req.body.userAddress) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Order Status is Required'
+            });
         }
     },
 
-    populate: (req, id) => {
-      newOrder = {
+    /**
+     * Stage an instance of required data to be pushed to database 
+     * @param {*} req - incomming json data
+     * @param {*} id  - orderId associated with the data
+     */
+    populate: (req, id)=> {
+        newOrder = {
             orderId: id,
             food: req.body.food,
             price: req.body.price,
             quantity: req.body.quantity,
-            orderStatus: req.body.orderStatus
+            orderStatus: req.body.orderStatus,
+            userAddress: req.body.userAddress
         };
     },
 
-    getOrders(req, res) {
+    /**
+     * Gets All orders in the database and sends as response
+     * @param {*} req - incomming request data
+     * @param {*} res - response to the validity of the data 
+     */
+    getOrders: (req, res)=> {
         res.status(200).send({
             success: 'true',
             message: 'Orders retrieved successfully',
-            orders: database.orders
+            orders: orders
         });
     },
 
-    getOrder(req, res) {
+    /**
+     * Gets a particular order in the database and send as response
+     * @param {*} req - incomming Request data
+     * @param {*} res - response to the validity of the data
+     */
+    getOrder: (req, res)=> {
         const id = parseInt(req.params.orderId, 10);
         let orderIndex;
-        database.orders.map((order, index) => {
+        orders.map((order, index) => {
             if (order.orderId == id) {
                 orderIndex = index;
-                let neededOrder = database.orders[index];
+                let neededOrder = orders[index];
                 res.status(200).send({
                     success: 'true',
                     message: 'Order retrieved successfully',
@@ -67,11 +94,16 @@ module.exports = {
         }
     },
 
-    addOrder(req, res) {
-        module.exports.validate(req, res);
-        let id = database.orders.length;
-        module.exports.populate(req, id);
-        database.orders.push(newOrder);
+    /**
+     * Add an Order to existing orders in the database
+     *  @param {*} req - incomming json data
+     *  @param {*} res - response to the sucess of the event
+     */
+    addOrder: (req, res)=> {
+        module.validate(req, res);
+        let id = orders.length;
+        module.populate(req, id);
+        orders.push(newOrder);
         res.status(201).send({
             orderId: id,
             order_sent: newOrder,
@@ -80,16 +112,21 @@ module.exports = {
         newOrder = {};
     },
 
-    updateOrder(req, res) {
-        module.exports.validate(req, res);
+    /**
+     * Update an order in the database
+     *  @param {*} req - incomming json data
+     * @param {*} res - response to the success of the event 
+     */
+    updateOrder: (req, res) =>{
+        module.validate(req, res);
         const id = parseInt(req.params.orderId, 10);
-        let oldOrder = database.orders[id];
+        let oldOrder = orders[id];
         let orderIndex;
-        database.orders.map((order, index) => {
+        orders.map((order, index) => {
             if (order.orderId == id) {
                 orderIndex = index;
-                module.exports.populate(req, id);
-                database.orders[index] = newOrder
+                module.populate(req, id);
+                orders[index] = newOrder
                 res.status(200).send({
                     orderId: id,
                     old_Order: oldOrder,
@@ -98,7 +135,6 @@ module.exports = {
                 })
             }
         });
-
         if (orderIndex == undefined) {
             return res.status(404).send({
                 success: 'false',
@@ -107,20 +143,24 @@ module.exports = {
         }
     },
 
-    deleteOrder(req, res) {
+    /**
+     * Delete an order in the database
+     *  @param {*} req - incomming request data
+     * @param {*} res - response to the validity of the data
+     */
+    deleteOrder: (req, res)=> {
         const id = parseInt(req.params.orderId, 10)
         let orderIndex;
-        database.orders.map((order, index) => {
+        orders.map((order, index) => {
             if (order.orderId == id) {
                 orderIndex = index
-                database.orders.splice(index, 1)
+                orders.splice(index, 1)
                 res.status(200).send({
                     success: 'true',
                     message: 'Order deleted successfuly'
                 });
             }
         });
-
         if (orderIndex == undefined) {
             return res.status(404).send({
                 success: 'false',
