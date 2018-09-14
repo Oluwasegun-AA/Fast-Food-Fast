@@ -84,7 +84,8 @@
 }
 
 /*stying for the header*/
-p, #fieldsetB {
+p,
+ #fieldsetB {
   font-size: 25px;
   color: #ffffff;
   font-weight: bold;
@@ -513,7 +514,7 @@ span.notMember {
 }
 
 #itemLogo {
-  height: 200px;
+  height: 150px;
   padding: 2px;
   background: white;
   border-radius: 10px;
@@ -608,7 +609,9 @@ h3{
   text-shadow: #000;
 }
 
-#newsLetterEmail, #questionTag, #questionTitle {
+#newsLetterEmail,
+#questionTag,
+#questionTitle {
   width: 300px;
   height: 30px;
   text-align: center;
@@ -1574,7 +1577,6 @@ border-radius: 10px;
   visibility: hidden;
   height: 90%;
   text-align: center;
-  height: max-content;
   margin-bottom: 40px;
 }
 
@@ -1632,11 +1634,20 @@ border-radius: 10px;
 #editDelete{
   display: flex;
 }
-#deleteBtn, #editBtn{
+#deleteBtn, 
+#editBtn{
   width: 50%;
   text-align: center;
-  border: 2px wheat;
+  background-color:#111111;
+  color:  wheat;
   margin: 2px;
+  border-radius: 10px;
+}
+
+#deleteBtn:hover, 
+#editBtn:hover{
+  background-color: wheat;
+  color: #111111;
 }
 #itemQuantity{
   height: 25px;
@@ -1650,6 +1661,7 @@ border-radius: 10px;
   margin-top: 10px;
   text-align: center;
   border-radius: 10px;
+  padding-top:10px;
 }
 #cartElement{
   display: flex;

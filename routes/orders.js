@@ -1,38 +1,16 @@
-const database = require('../data/database')
+import Orders from '../data/database';
+let newOrder;
 
-module.exports = {
-    getOrders(req, res) {
-        res.status(200).send({
-            success: 'true',
-            message: 'Orders retrieved successfully',
-            orders: database.orders
-        });
-    },
+//creates an instance of Orders
+const orders = new Orders
 
-    getOrder(req, res) {
-        const id = parseInt(req.params.orderId, 10);
-        let orderIndex;
-        database.orders.map((order, index) => {
-            if (order.orderId == id) {
-                orderIndex = index;
-                let neededOrder = database.orders[index];
-                res.status(200).send({
-                    success: 'true',
-                    message: 'Order retrieved successfully',
-                    order: neededOrder
-                });
-            }
-        });
-        if (orderIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                message: 'Order Not Found in the Database'
-            })
-        }
+/**
+     * Validate post and Put request contains all required parameters
+     * @param {*} req - incomming json data
+     * @param {*} res - response to the validity of the data
+     */
 
-    },
-
-    addOrder(req, res) {
+    function validate(req, res) {
         if (!req.body.food) {
             return res.status(400).send({
                 success: 'false',
@@ -53,95 +31,159 @@ module.exports = {
                 success: 'false',
                 message: 'Bad Request! Order Status is Required'
             });
+        } else if (!req.body.userAddress) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Order Status is Required'
+            });
+        } else if (!req.body) {
+            return res.status(400).send({
+                success: 'false',
+                message: 'Bad Request! Order Status is Required'
+            });
         }
-        let id = database.orders.length;
-        const order = {
+    }
+
+    /**
+     * Stage an instance of required data to be pushed to database 
+     * @param {*} req - incomming json data
+     * @param {*} id  - orderId associated with the data
+     */
+    function populate (req, id) {
+       let newOrder = {
             orderId: id,
             food: req.body.food,
             price: req.body.price,
             quantity: req.body.quantity,
-            orderStatus: req.body.orderStatus
+            orderStatus: req.body.orderStatus,
+            userAddress: req.body.userAddress
         };
-        database.orders.push(order);
-        res.status(201).send({
-            orderId: id,
-            order_sent: order,
-            message: 'Order Sent Successfully'
-        });
-    },
-
-    updateOrder(req, res) {
-        if (!req.body.food) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Food Name is Required'
-            });
-        } else if (!req.body.price) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Price is Required'
-            });
-        } else if (!req.body.quantity) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Quantity is required'
-            });
-        } else if (!req.body.orderStatus) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        }
-        const id = parseInt(req.params.orderId, 10);
-        let oldOrder = database.orders[id];
-        let orderIndex;
-        database.orders.map((order, index) => {
-            if (order.orderId == id) {
-                orderIndex = index
-                let newOrder = {
-                    orderId: id,
-                    food: req.body.food,
-                    price: req.body.price,
-                    quantity: req.body.quantity,
-                    orderStatus: req.body.orderStatus
-                };
-                database.orders[index] = newOrder
-                res.status(200).send({
-                    orderId: id,
-                    old_Order: oldOrder,
-                    update: newOrder,
-                    message: "Update successful"
-                })
-            }
-        });
-
-        if (orderIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                message: 'Previous Order Not Found in the Database'
-            })
-        }
-    },
-
-    deleteOrder(req, res) {
-        const id = parseInt(req.params.orderId, 10)
-        let orderIndex;
-        database.orders.map((order, index) => {
-            if (order.orderId == id) {
-                orderIndex = index
-                database.orders.splice(index, 1)
-                res.status(200).send({
-                    success: 'true',
-                    message: 'Order deleted successfuly'
-                });
-            }
-        });
-
-        if (orderIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                message: 'Order Not Found in the Database'
-            });
-        }
+        return newOrder;
     }
+
+/**
+    * Gets All orders in the database and sends as response
+    * @param {*} req - incomming request data
+    * @param {*} res - response to the validity of the data 
+    */
+let getOrders = (req, res) => {
+    let value = module.orders.getAllOrder();
+    res.status(200).send({
+        success: 'true',
+        message: 'Orders retrieved successfully',
+        orders: value
+    });
+};
+
+
+/**
+     * Gets a particular order in the database and send as response
+     * @param {*} req - incomming Request data
+     * @param {*} res - response to the validity of the data
+     */
+let getOrder = (req, res) => {
+    const id = parseInt(req.params.orderId, 10);
+    let orderIndex;
+    module.orders.database.map((order, index) => {
+        if (order.orderId == id) {
+            orderIndex = index;
+            let value = module.orders.returnOrder(index);
+            res.status(200).send({
+                success: 'true',
+                message: 'Order retrieved successfully',
+                order: value
+            });
+        }
+    });
+    if (orderIndex == undefined) {
+        return res.status(404).send({
+            success: 'false',
+            message: 'Order Not Found in the Database'
+        })
+    }
+};
+
+/**
+    * Add an Order to existing orders in the database
+    *  @param {*} req - incomming json data
+    *  @param {*} res - response to the sucess of the event
+    */
+let addOrder = (req, res) => {
+     validate(req, res);
+    let id = orders.length;
+    let newOrder =  populate(req, id);
+    module.orders.pushOrder(newOrder);
+    res.status(201).send({
+        orderId: id,
+        order_sent: newOrder,
+        message: 'Order Sent Successfully'
+    });
+    newOrder = {};
+};
+
+/**
+ * Update an order in the database
+ *  @param {*} req - incomming json data
+ * @param {*} res - response to the success of the event 
+ */
+let updateOrder = (req, res) => {
+     validate(req, res);
+    const id = parseInt(req.params.orderId, 10);
+    let oldOrder = module.orders.database[id];
+    module.orders.database.map((order, index) => {
+        if (order.orderId == id) {
+            let newOrder =  populate(req, id);
+            module.orders.putOrder(index, newOrder);
+            res.status(200).send({
+                orderId: id,
+                old_Order: oldOrder,
+                update: newOrder,
+                message: "Update successful"
+            });
+        } else {
+            return res.status(410).send({
+                success: 'false',
+                message: 'Requested resourse is no longer available'
+            });
+        }
+    });
+};
+
+/**
+* Delete an order in the database
+*  @param {*} req - incomming request data
+* @param {*} res - response to the validity of the data
+*/
+let deleteOrder = (req, res) => {
+    const id = parseInt(req.params.orderId, 10)
+    let orderIndex;
+    module.orders.database.map((order, index) => {
+        if (order.orderId == id) {
+            orderIndex = index
+            module.orders.spliceOrder(index, 1)
+            res.status(200).send({
+                success: 'true',
+                message: 'Order deleted successfuly'
+            });
+        }
+    });
+    if (orderIndex == undefined) {
+        return res.status(404).send({
+            success: 'false',
+            message: 'Order Not Found in the Database'
+        });
+    }
+};
+
+
+
+export default module = {
+    orders,
+    getOrders,
+    getOrder,
+    addOrder,
+    updateOrder,
+    deleteOrder
 }
+
+

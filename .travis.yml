@@ -3,7 +3,11 @@ node_js:
   - "10.9.0"
 
 script:
-  - npm test
+  - npm run test
+  - npm run coverage
 
 before_install:
   - npm i -g npm@6.2.0
+
+after_success:
+  - npm run coverage

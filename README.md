@@ -1,13 +1,5 @@
 # Fast Food Fast
-[![Build Status](https://travis-ci.org/shegsteham/Fast-Food-Fast.svg?branch=gh-pages)](https://travis-ci.org/shegsteham/Fast-Food-Fast)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/maintainability)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/test_coverage)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/test_coverage)
-
-[![Coverage Status](https://coveralls.io/repos/github/shegsteham/Fast-Food-Fast/badge.svg)](https://coveralls.io/github/shegsteham/Fast-Food-Fast)
-
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
+[![Build Status](https://travis-ci.org/shegsteham/Fast-Food-Fast.svg?branch=gh-pages)](https://travis-ci.org/shegsteham/Fast-Food-Fast)    [![Maintainability](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/maintainability)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/maintainability)    [![Test Coverage](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/test_coverage)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/test_coverage)    [![Coverage Status](https://coveralls.io/repos/github/shegsteham/Fast-Food-Fast/badge.svg)](https://coveralls.io/github/shegsteham/Fast-Food-Fast)    ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
 
 ## Table of Contents
 
@@ -15,6 +7,9 @@
 * [Features](#Features)
 * [Demo](#demo)
 * [Built with](#built-with)
+* [API End Points](#API-End-Points)
+* [Known Issues](#Known-issues)
+* [Installation](#Installation)
 * [Contributing](#contributing)
 * [License](#License)
 
@@ -23,40 +18,19 @@
 
 ## Features
 
-1. Users can create an account and log in
-2. A user should be able to order for food
-3. The admin should be able to add, edit or delete the fast-food items
-4. The admin should be able to see a list of fast-food items
-5. The admin user should be able to do the following:
-   - See a list of orders
-   - Accept and decline orders
-   - Mark orders as completed
-6. A user should be able to see a history of ordered food
-
+1. Users can create an account and log in,
+2. A user can add food to cart,
+3. A user can order for food,
+4. A user can see a history of ordered food,
+5. A user can write a review/ query
+6. The admin can add, edit or delete the fast-food items,
+7. The admin can see a list of fast-food items,
+8. The admin can See a list of orders,
+9. The admin can accept and decline orders
+10. The admin can mark orders as completed
 
 ## Demo
-
-### The Following Core Functionalities were implemented
-
-- user can place Order
-
-![user can place order](https://user-images.githubusercontent.com/25525765/44995913-21682600-af9d-11e8-9d6b-87d4fca9c61a.jpg)
-
-- Admin can review orders and accepted/declined orders
-
-![review orders](https://user-images.githubusercontent.com/25525765/44995720-4a3beb80-af9c-11e8-847f-54431a37adf2.jpg)
-
-- Admin can mark orders as Fulfilled after dispatch
-
-![accepted orders](https://user-images.githubusercontent.com/25525765/44995836-cafae780-af9c-11e8-9d72-cca497919ad0.jpg)
-
-- User can write to Support in case of a Challenge
-
-![message support](https://user-images.githubusercontent.com/25525765/44995955-54aab500-af9d-11e8-8acd-950ad8609312.jpg)
-
-- Admin can create an item to be added to the main items list
-
-![admin can add items](https://user-images.githubusercontent.com/25525765/44995661-0f39b800-af9c-11e8-9639-565656f4b1cd.jpg)
+![fast](https://user-images.githubusercontent.com/25525765/45334718-e903b180-b573-11e8-8ecf-746704c24585.gif)
 
 Visit [User Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/)
 
@@ -69,18 +43,38 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 - `Node.js`
 - `Express framework`
 
-### Middle Wares
+##### Middle Wares
 - `body-parser`
 - `morgan`
+
+## API End Points
+- `GET /api/v1/orders`                -   Fetches all Available Orders in the Database
+- `GET /api/v1/orders/< orderId >`    -   Fetches a particular order in the database
+- `POST /api/v1/orders/< orderId >`   -   Saves an Order in the database
+- `PUT /api/v1/orders/< orderId >`    -   Updates the status of an order in the database
+- `DELETE /api/v1/orders/< orderId >` -   Deletes an order in the database
+
+## Known issues
+Everything works as expected; However:
+- the front-end is not complete, i.e. no authentication, few client-side
+   validation and no link for API calls yet.
+- Data structures were used to save data instead of a database, hence data gets
+   erased once the server is restarted
+
+## Installation
+
+- $ git clone `https://github.com/shegsteham/Fast-Food-Fast.git`
+- $ cd Fast-Food-Fast
+- $ npm i , to install dependencies
+- $ npm start, to start the server
+Once the server starts-up, you can query the api at `http://localhost:5000/api/v1` using the end points stated above
 
 ## Contributing
 >  Feel free to 🍴 fork this repository
 
-
 >  👯 Clone this repository to your local machine using `https://github.com/shegsteham/Fast-Food-Fast.git`
 
 > Make Contributions
-
 
 > 🔃 Create a new pull request using `https://github.com/shegsteham/Fast-Food-Fast/compare`
 
@@ -88,4 +82,4 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
 
 - **[MIT license](https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md)**
-- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>.
+- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>

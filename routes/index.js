@@ -1,5 +1,5 @@
-const orders = require('./orders');
+import  orders from '../routes/orders';
 
-module.exports = {
+export default {
     orders: orders
 }

@@ -4,5 +4,9 @@ coverage/
 # Dependency directories
 node_modules/
 
-# dotenv environment variables file
-.env
+# transpiled ES5 code directory
+dist/
+
+# Coverage directory used by istanbul
+coverage/
+
