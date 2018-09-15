@@ -18,24 +18,30 @@ function moveForward() {
     let pointer;
     let figures1 = getFigures1();
     let figures2 = getFigures2();
-    for (let i = 0; i < figures1.length; i++) {
-        if (figures1[i].className == 'show') {
-            figures1[i].className = '';
-            pointer = i;
-        }
-    }
-    for (let i = 0; i < figures2.length; i++) {
-        if (figures2[i].className == 'show') {
-            figures2[i].className = '';
-            pointer = i;
-        }
-    }
+    switchImage(figures1, pointer);
+    pointer= switchImage(figures2, pointer);
     if (++pointer == figures1.length) {
         pointer = 0;
     }
     figures1[pointer].className = 'show';
     figures2[pointer].className = 'show';
     setTimeout(moveForward, slideInterval);
+}
+
+
+/**
+ *function makes the next image visible by seting the classname to 'show'
+ * @param {*} element - the array of images
+ * @param {*} pointer - position of active image
+ */
+function switchImage(element, pointer){
+for (let i = 0; i < element.length; i++) {
+    if (element[i].className == 'show') {
+        element[i].className = '';
+        pointer = i;
+        return pointer;
+    }
+}
 }
 
 /**

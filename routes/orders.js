@@ -4,44 +4,27 @@ let newOrder;
 //creates an instance of Orders
 const orders = new Orders
 
+
+function returnStatement(res){
+    return res.status(400).send({
+        success: 'false',
+        message: 'Bad Request! Food Name is Required'
+    });
+}
+
+
 /**
      * Validate post and Put request contains all required parameters
      * @param {*} req - incomming json data
      * @param {*} res - response to the validity of the data
      */
-
     function validate(req, res) {
-        if (!req.body.food) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Food Name is Required'
-            });
-        } else if (!req.body.price) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Price is Required'
-            });
-        } else if (!req.body.quantity) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Quantity is required'
-            });
-        } else if (!req.body.orderStatus) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        } else if (!req.body.userAddress) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        } else if (!req.body) {
-            return res.status(400).send({
-                success: 'false',
-                message: 'Bad Request! Order Status is Required'
-            });
-        }
+        if (!req.body.food) return returnStatement(res);
+        if (!req.body.price) return returnStatement(res);
+        if (!req.body.quantity) return returnStatement(res);
+        if (!req.body.orderStatus) return returnStatement(res);
+        if (!req.body.userAddress) return returnStatement(res);
+        if (!req.body) return returnStatement(res);
     }
 
     /**
