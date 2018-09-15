@@ -18,16 +18,16 @@
 
 ## Features
 
-1. Users can create an account and log in,
-2. A user can add food to cart,
-3. A user can order for food,
-4. A user can see a history of ordered food,
-5. A user can write a review/ query
-6. The admin can add, edit or delete the fast-food items,
-7. The admin can see a list of fast-food items,
-8. The admin can See a list of orders,
-9. The admin can accept and decline orders
-10. The admin can mark orders as completed
+- Users can create an account and log in,
+- A user can add food to cart,
+- A user can order for food,
+- A user can see a history of ordered food,
+- A user can write a review/ query
+- The admin can add, edit or delete the fast-food items,
+- The admin can see a list of fast-food items,
+- The admin can See a list of orders,
+- The admin can accept and decline orders
+- The admin can mark orders as completed
 
 ## Demo
 ![fast](https://user-images.githubusercontent.com/25525765/45334718-e903b180-b573-11e8-8ecf-746704c24585.gif)
