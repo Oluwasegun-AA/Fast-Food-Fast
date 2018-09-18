@@ -4,20 +4,6 @@ import _ from 'lodash';
 //creates an instance of Orders
 const orders = new Orders;
 
-
-/**
-* Validate post and Put request contains all required parameters
-* @param {*} req - incomming json data
-* @param {*} res - response to the validity of the data
-*/
-
-
-/**
- * Stage an instance of required data to be pushed to database 
- * @param {*} req - incomming json data
- * @param {*} id  - orderId associated with the data
- */
-
 /**
     * Gets All orders in the database and sends as response
     * @param {*} req - incomming request data
