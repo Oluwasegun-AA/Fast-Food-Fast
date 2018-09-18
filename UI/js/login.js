@@ -1,4 +1,3 @@
-let loggedIn = 0;
 let close = document.getElementById("close");
 let login = document.getElementById('login');
 let signUp = document.getElementById('signUpButton');
@@ -41,6 +40,8 @@ close.addEventListener("click", function () {
     loginSection.style.display = 'none';
 });
 
+//event listener to toggle password visibility
+showPassword.addEventListener('click', viewPassword);
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function () {
@@ -62,39 +63,17 @@ password.onblur = () => {
 // When the user starts to type text into the password field
 password.onkeyup = function () {
     let count = 0;
-
     // Validate lowercase letters
     let lowerCase = /[a-z]/g;
-    if (password.value.match(lowerCase)) {
-        letter.classList.remove("invalid");
-        letter.classList.add("valid");
-        count++;
-    } else {
-        letter.classList.remove("valid");
-        letter.classList.add("invalid");
-    }
+    validate(letter, lowerCase, count++);
 
     // Validate capital letters
     let upperCase = /[A-Z]/g;
-    if (password.value.match(upperCase)) {
-        capital.classList.remove("invalid");
-        capital.classList.add("valid");
-        count++;
-    } else {
-        capital.classList.remove("valid");
-        capital.classList.add("invalid");
-    }
+    validate(capital, upperCase, count++);
 
     // Validate numbers
     let numbers = /[0-9]/g;
-    if (password.value.match(numbers)) {
-        number.classList.remove("invalid");
-        number.classList.add("valid");
-        count++;
-    } else {
-        number.classList.remove("valid");
-        number.classList.add("invalid");
-    }
+    validate(number, numbers, count++);
 
     // Validate length
     if (password.value.length >= 8) {
@@ -121,8 +100,26 @@ function viewPassword() {
     }
 }
 
+/**
+ * function allows to Validate password with a green tick
+ * @param {*} attribute - the P element to be modified
+ * @param {*} check - the Regex pattern to be checked for
+ * @param {*} count - count stores the number of rules obeyed
+ */
+function validate(attribute, check, count){
+    if (password.value.match(check)) {
+        attribute.classList.remove("invalid");
+        attribute.classList.add("valid");
+    } else {
+        attribute.classList.remove("valid");
+        attribute.classList.add("invalid");
+    }
+}
 
 
+/* checks if the text entered in the "password section"
+and "confirm password" section are the same
+*/
 confirmPassword.onkeyup = function () {
     if (confirmPassword.value == password.value) {
         comparePassword.style.color = 'green';
