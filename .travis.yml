@@ -8,6 +8,6 @@ script:
 
 before_install:
   - npm i -g babel-preset-env mocha supertest node-dev babel-cli rimraf coveralls istanbul
-
+  
 after_script:
   - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info  && npm run clear
