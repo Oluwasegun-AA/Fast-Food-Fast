@@ -1,5 +1,5 @@
 # Fast Food Fast
-[![Build Status](https://travis-ci.org/shegsteham/Fast-Food-Fast.svg?branch=develop)](https://travis-ci.org/shegsteham/Fast-Food-Fast)    [![Coverage Status](https://coveralls.io/repos/github/shegsteham/Fast-Food-Fast/badge.svg?branch=develop)](https://coveralls.io/github/shegsteham/Fast-Food-Fast?branch=develop)    [![Maintainability](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/maintainability)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/maintainability)    ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
+[![Build Status](https://travis-ci.org/shegsteham/Fast-Food-Fast.svg?branch=develop)](https://travis-ci.org/shegsteham/Fast-Food-Fast)    [![Coverage Status](https://coveralls.io/repos/github/shegsteham/Fast-Food-Fast/badge.svg?branch=develop)](https://coveralls.io/github/shegsteham/Fast-Food-Fast?branch=develop)    [![Maintainability](https://api.codeclimate.com/v1/badges/c2dc0578de1fdecc0c8f/maintainability)](https://codeclimate.com/github/shegsteham/Fast-Food-Fast/maintainability)    ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 ## Table of Contents
 
@@ -79,7 +79,7 @@ Once the server starts-up, you can query the api at `http://localhost:5000/api/v
 > 🔃 Create a new pull request using `https://github.com/shegsteham/Fast-Food-Fast/compare`
 
 ## License
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 - **[MIT license](https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md)**
 - Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>
