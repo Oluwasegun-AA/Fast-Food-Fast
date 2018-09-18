@@ -11,7 +11,7 @@
     "start": "npm run build && node-dev ./dist/server.js",
     "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
     "clear": "rimraf dist coverage",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/test/*.js --exit"
+    "coverage": " ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/test/*.js --exit"
   },
   "repository": {
     "type": "git",
