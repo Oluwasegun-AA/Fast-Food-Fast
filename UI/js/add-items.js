@@ -17,8 +17,6 @@ let itemAdded = [];
 let length = 0;
 let lengthI =0;
 
-
-
 uploadImage.addEventListener('change', uploadPicture);
 function uploadPicture(input) {
     let file = input.target.files[0];
@@ -35,7 +33,7 @@ function uploadPicture(input) {
 }
 
 submitItem.addEventListener('click', function () {
-    preview.style.visibility = "visible";
+    preview.style.display = "block";
     tagArr[length] = itemTag.value;
     nameArr[length] = itemName.value;
     priceArr[length] = itemPrice.value;

@@ -27,7 +27,9 @@
         <div id="headerContent">
 
             <aside>
-                <img src="img/logo.jpg" id="headerLogo" />
+                <a href="index.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
                 <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
@@ -61,75 +63,78 @@
 
     </header>
 
-    <section id="sectionMenu">
+    <section id="section3">
     </section>
 
     <div id="informationFields">
-        <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">CART</fieldset>
-            <fieldset id="information">
+        <div id="fieldsetA">
+            <div id="fieldsetB">CART</div>
+            <div id="information">
                 <div id="cartInformation">
                     <div id="cartElement">
                         <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
-                            <img src="img/f.jpg" id="itemLogo" />
-                        </div>
-                        <div id="cartAttributes">
-                            <div id="quantity">
-                                    <label>Quantity </label>
-                                    <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
-                            </div>
-                            <div id="cost">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div id="cartElement">
-                        <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
-                            <img src="img/f.jpg" id="itemLogo" />
-                        </div>
-                        <div id="cartAttributes">
-                            <div id="quantity">
-                                    <label>Quantity </label>
-                                    <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
-                            </div>
-                            <div id="cost">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div id="cartElement">
-                        <div id="item" class="f">
-                            <label id="description">description</label>
-                            <label id="description">Price </label>
+                            <label id="description">Chicken</label>
+                            <label id="description">Price: #500 </label>
                             <img src="img/f.jpg" id="itemLogo" />
                         </div>
                         <div id="cartAttributes">
                             <div id="quantity">
                                 <label>Quantity </label>
-                                <br/>
-                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="Quantity" required>
+                                <br />
+                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="1" required>
                             </div>
                             <div id="cost">
+                                <label>Total:</label><br /> #500
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cartElement">
+                        <div id="item" class="f">
+                            <label id="description">Pizza</label>
+                            <label id="description">Price: 200 </label>
+                            <img src="img/pizza.jpg" id="itemLogo" />
+                        </div>
+                        <div id="cartAttributes">
+                            <div id="quantity">
+                                <label>Quantity </label>
+                                <br />
+                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="1" required>
+                            </div>
+                            <div id="cost">
+                                <label>Total:</label><br /> #200
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cartElement">
+                        <div id="item" class="f">
+                            <label id="description">Fried chips</label>
+                            <label id="description">Price: 300 </label>
+                            <img src="img/f.jpg" id="itemLogo" />
+                        </div>
+                        <div id="cartAttributes">
+                            <div id="quantity">
+                                <label>Quantity </label>
+                                <br />
+                                <input type="number" min="1" max="100" id="itemQuantity" placeholder="1" required>
+                            </div>
+                            <div id="cost">
+                                <label>Total:</label><br /> #300
 
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="totalPrice">
-                        <h4>Total Cost :</h4>
-                        <article id="totalCost">
+                    <label>Total Cost :</label>
+                    <label id="totalCost"> #1000
 
-                        </article>
+                    </Label>
                 </div>
                 <button type="button" id="placeorder">Place Order</button>
-            </fieldset>
-        </fieldset>
+            </div>
+        </div>
     </div>
 
     <!-- Footer Section -->
@@ -194,7 +199,8 @@
                     <label><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="password" required>
                     <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
 
                     <label>
                         <input type="checkbox" id="showPassword" name="remember"> Show Password
