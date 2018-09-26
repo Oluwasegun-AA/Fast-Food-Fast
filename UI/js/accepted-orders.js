@@ -1,6 +1,11 @@
 let message = 'Order Fulfulled';
 var completed = document.querySelectorAll('#completedText');
 completed.forEach(btn => btn.addEventListener('click', function(){
-    btn.innerHTML = message;
+    if (btn.innerHTML == message){
+        btn.innerHTML = "Not Delivered";
+    } else{
+        btn.innerHTML = message;
+    }
+    
 }));
 
