@@ -27,7 +27,9 @@
         <div id="headerContent">
 
             <aside>
-                <img src="img/logo.jpg" id="headerLogo" />
+                <a href="index.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
                 <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
@@ -37,7 +39,7 @@
                 <a id="contact" href="admin.html">Review Orders</a>
 
                 <div class="dropdown">
-                    <a class="dropbtn">Data Base</a>
+                    <a class="dropbtn">Orders</a>
                     <div class="dropdown-content">
                         <a href="admin.html">Review Orders</a>
                         <a href="accepted-orders.html">Accepted Orders</a>
@@ -56,45 +58,47 @@
 
     </header>
 
-    <section id="sectionMenu">
+    <section id="section3">
     </section>
 
     <div id="informationFields">
-        <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">
-                <h3>ADD ITEMS</h3>
-            </fieldset>
-            <fieldset id="information">
+        <div id="fieldsetA">
+            <div id="fieldsetB">ADD ITEMS
+            </div>
+            <div id="information">
                 <div id="addItemFields">
                     <div id="upload">
-                        <h4>Upload Item Image</h4>
+                        <label>Upload Item Image</label>
                         <input type='file' id="uploadImage" />
-                        <img id="showImage" src="" alt="item Image Preview" />
+                        <img id="showImage" src="" alt="Item Image Preview" />
                     </div>
                     <div id="uploadDescription">
-                        <div>
-                            <h4>Add a word tag</h4>
-                            <input type="text" id="itemTag" placeholder="Enter a One Word UNIQUE Tag" required>
+                        <div class="details">
+                            <label>Add a tag : &nbsp</label>
+                            <input type="text" id="itemTag" placeholder="" required>
                         </div>
-                        <div>
-                            <h4>Item Name</h4>
-                            <input type="text" id="itemName" placeholder=" Enter Item Name" required>
+                        <div class="details">
+                            <label>Item Name: </label>
+                            <input type="text" id="itemName" placeholder="" required>
                         </div>
-                        <div>
-                            <h4>Item Price</h4>
-                            <input type="number"  min="1" max="19999999"id="itemPrice" placeholder=" Enter Item Price" required>
+                        <div class="details">
+                            <label>Item Price : &nbsp</label>
+                            <input type="number" min="1" max="19999999" id="itemPrice" placeholder=""
+                                required>
                         </div>
                     </div>
                 </div>
                 <button id="submitItem" class="" type="submit">Submit</button>
-                <fieldset id="preview">
+                <div id="preview">
+                    <hr>
                     <legend>ITEMS PREVIEW</legend>
+                    <hr>
                     <div id="previewContent">
-                        
+
                     </div>
-                </fieldset>
-            </fieldset>
-        </fieldset>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -160,7 +164,8 @@
                     <label><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="password" required>
                     <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
 
                     <label>
                         <input type="checkbox" id="showPassword" name="remember"> Show Password
