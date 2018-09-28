@@ -17,6 +17,7 @@ let itemAdded = [];
 let length = 0;
 let lengthI =0;
 
+//Eventlistener to listen for when a new file is uploaded
 uploadImage.addEventListener('change', uploadPicture);
 function uploadPicture(input) {
     let file = input.target.files[0];
