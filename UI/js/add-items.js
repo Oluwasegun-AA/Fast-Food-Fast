@@ -23,7 +23,7 @@ function uploadPicture(input) {
     let file = input.target.files[0];
     var readFile = new FileReader();
 
-    readFile.onload = function (imageFile) {
+    readFile.onload = (imageFile) =>{
         let data = imageFile.target.result;
         showImage.src = data;
         imageArr[lengthI] = data;

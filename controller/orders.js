@@ -1,3 +1,4 @@
+//Import statments
 import storage from '../data/database';
 import model from '../model/order-model';
 
@@ -20,7 +21,7 @@ let pushOrder = (req, res, id) => {
  * @param {*} index - the index of the order being Updated
  * @param {*} id    - orderId associated with the data
  */
-let putOrder = (req, res, index, id) => {
+let putOrder = (req, index, id) => {
     let newOrder = model.populate(req, id);
     storage.database[index] = newOrder;
     return newOrder;
@@ -95,7 +96,7 @@ export default class controller {
             map++;
             if (order.orderId == id) {
                 map--;
-                let state = putOrder(req, res, index, id);
+                let state = putOrder(req, index, id);
                 res.status(200).send({
                     orderId: id,
                     old_Order: oldOrder,

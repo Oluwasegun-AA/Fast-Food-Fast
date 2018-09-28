@@ -92,7 +92,7 @@ describe('Validate GET Route', () => {
             .expect("Content-type", /json/)
             .expect(function (res) {
                 res.body.success = 'true';
-                res.body.Status  = "Orders retrieved successfully";
+                res.body.Status = "Orders retrieved successfully";
                 res.body.orders = test.databaseOrders;
             })
             .expect(200, end)
@@ -102,7 +102,7 @@ describe('Validate GET Route', () => {
             .expect("Content-type", /json/)
             .expect(function (res) {
                 res.body.success = 'true';
-                res.body.Status  = "Orders retrieved successfully";
+                res.body.Status = "Orders retrieved successfully";
                 res.body.orders = test.firstOrder;
             })
             .expect(200, end)
@@ -121,7 +121,7 @@ describe('Validate PUT Route', () => {
             request(app).put('/api/v1/orders/0')
                 .type('JSON').send(test.fullOrder)
                 .expect(function (res) {
-                    res.body.Status  = "Update successful";
+                    res.body.Status = "Update successful";
                 })
                 .expect(200, end)
         });
