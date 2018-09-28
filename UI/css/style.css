@@ -222,8 +222,8 @@ footer {
 #license {
   background-color: burlywood;
   width: 100%;
-  font-family: "Sofia";
-  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
   text-align: center;
   align-content: center;
   bottom: 0;
@@ -292,7 +292,7 @@ text-align: center;
 #newsLetterEmail{
   width: 200px;
   height: 20px;
-  text-align: center;
+  text-align: left;
   border-radius: 5px;
 }
 /*Styling for the Password Validation Message which pops out when writting password*/
