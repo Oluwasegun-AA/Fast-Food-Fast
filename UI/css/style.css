@@ -505,15 +505,6 @@ span.notMember {
   margin-Right: 0px;
 }
 
-#itemsList {
-  margin: auto;
-  width: 90%;
-  height: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
-}
-
 #description {
   background-color: rgb(226, 226, 206);
   flex: unset;
