@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../server';
+import app from '../../server';
 import * as test from '../model/order-model';
 
 // Tests for the POST Route
@@ -178,7 +178,7 @@ describe('Validate PUT Route', () => {
                 .expect('Content-Type', /json/)
                 .expect(400, end);
         });
-        it("should return 400(Previous order not defined, when orderId is undefined)", (end) => {
+        it("should return 404(Bad Request, when orderId is undefined)", (end) => {
             request(app).put('/api/v1/orders/')
                 .type('JSON')
                 .send(test.fullOrder)
@@ -186,7 +186,7 @@ describe('Validate PUT Route', () => {
                     res.body.Status = 'unsuccessful';
                     res.body.Status.toLowerCase();
                 })
-                .expect(404, end);
+                .expect(400, end);
         });
     });
     describe("Resolve Conflicts", () => {

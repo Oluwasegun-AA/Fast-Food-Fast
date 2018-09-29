@@ -18,7 +18,7 @@ router.get('/api/v1/orders/:orderId', validateOrderId, Controller.getOrder);
 router.post('/api/v1/orders',Validate, Controller.addOrder);
 router.post('/api/v1/orders/:orderId', postvalidation,Validate);
 router.put('/api/v1/orders', validateOrderId);
-router.put('/api/v1/orders/:orderId', validateOrderId, Controller.updateOrder);
+router.put('/api/v1/orders/:orderId', validateOrderId, Validate, Controller.updateOrder);
 router.delete('/api/v1/orders/:orderId', validateOrderId, Controller.deleteOrder);
 router.delete('/api/v1/orders',  validateOrderId);
 

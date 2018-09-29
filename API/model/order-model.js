@@ -19,65 +19,65 @@ export default {
 
 //Model data for a complete Order
 export const fullOrder = {
-    "orderId": 1,
+    "orderId": "1",
     "food": 'fufu',
-    "quantity": 10,
-    "price": 10,
+    "quantity": "10",
+    "price": "10",
     "orderStatus": "uncompleted",
     "userAddress": "address"
 }
 
 //Model data for an order void of req.body.food
 export const voidFood = {
-    "orderId": 1,
-    "quantity": 10,
-    "price": 10,
+    "orderId": "1",
+    "quantity": "10",
+    "price": "10",
     "orderStatus": "uncompleted",
     "userAddress": "address"
 }
 
 //Model data for an order void of req.body.price
 export const voidPrice = {
-    "orderId": 1,
+    "orderId": "1",
     "food": 'fufu',
-    "quantity": 10,
+    "quantity": "10",
     "orderStatus": "uncompleted",
     "userAddress": "address"
 }
 
 //Model data for an order void of req.body.quantity
 export const voidQuantity = {
-    "orderId": 1,
+    "orderId": "1",
     "food": 'fufu',
-    "price": 10,
+    "price": "10",
     "orderStatus": "uncompleted",
     "userAddress": "address"
 }
 
 //Model data for an order void of req.body.orderStatus
 export const voidOrderStatus = {
-    "orderId": 1,
+    "orderId": "1",
     "food": 'fufu',
-    "quantity": 10,
-    "price": 10,
+    "quantity": "10",
+    "price": "10",
     "userAddress": "address"
 }
 
 //Model data for an order void of req.body.userAddress
 export const voidUserAddress = {
-    "orderId": 1,
+    "orderId": "1",
     "food": 'fufu',
-    "quantity": 10,
-    "price": 10,
+    "quantity": "10",
+    "price": "10",
     "orderStatus": "uncompleted",
 }
 
 //Model data for an order void of req.body.orderId
 export const invalidOrderId = {
-    "orderId": 300,
+    "orderId": "300",
     "food": 'pizza',
-    "quantity": 10,
-    "price": 9500,
+    "quantity": "10",
+    "price": "9500",
     "orderStatus": "completed",
     "userAddress": "address"
 }
@@ -85,18 +85,18 @@ export const invalidOrderId = {
 //Instance of the database content
 export const databaseOrders = [
     {
-        "orderId": 0,
+        "orderId": "0",
         "food": "peperony pizza",
-        "price": 10,
-        "quantity": 10,
+        "price": "10",
+        "quantity": "10",
         "orderStatus": "uncompleted",
         "userAddress": "Address"
     },
     {
-        "orderId": 1,
+        "orderId": "1",
         "food": "grilled Chicken",
-        "price": 20,
-        "quantity": 20,
+        "price": "20",
+        "quantity": "20",
         "orderStatus": "uncompleted",
         "userAddress": "Address"
     }
@@ -104,10 +104,10 @@ export const databaseOrders = [
 
 //Instance of the database[1]
 export const firstOrder = {
-    "orderId": 0,
+    "orderId": "0",
     "food": "peperony pizza",
     "price": 10,
-    "quantity": 10,
+    "quantity": "10",
     "orderStatus": "uncompleted",
     "userAddress": "Address"
 }
@@ -115,26 +115,26 @@ export const firstOrder = {
 //Instance of the database for push test
 export const updatedOrder = [
     {
-        "orderId": 0,
+        "orderId": "0",
         "food": "peperony pizza",
-        "price": 10,
-        "quantity": 10,
+        "price": "10",
+        "quantity": "10",
         "orderStatus": "uncompleted",
         "userAddress": "Address"
     },
     {
-        "orderId": 1,
+        "orderId": "1",
         "food": "grilled Chicken",
-        "price": 20,
-        "quantity": 20,
+        "price": "20",
+        "quantity": "20",
         "orderStatus": "uncompleted",
         "userAddress": "Address"
     },
     {
-        "orderId": 2,
+        "orderId": "2",
         "food": 'fufu',
-        "quantity": 10,
-        "price": 10,
+        "quantity": "10",
+        "price": "10",
         "orderStatus": "uncompleted",
         "userAddress": "address"
     }
