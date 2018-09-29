@@ -2,7 +2,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import router from './routes/orders';
+import router from './API/routes/orders';
 
 //port declaration
 const port = process.env.PORT || 5000;
