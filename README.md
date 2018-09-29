@@ -30,7 +30,7 @@
 - The admin can mark orders as completed
 
 ## Demo
-![fast](https://user-images.githubusercontent.com/25525765/45334718-e903b180-b573-11e8-8ecf-746704c24585.gif)
+![demogif](https://user-images.githubusercontent.com/25525765/46247609-baa42400-c405-11e8-923f-3df54b87ca0e.gif)
 
 Visit [User Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/)
 
