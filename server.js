@@ -17,6 +17,7 @@ const message = ()=>{
 //instanciate imported middlewares
 app.use (logger('common'));
 app.use(bodyParser.json());
+
 app.use(router);
 
 // Set listener to port for API queries
