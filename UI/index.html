@@ -52,7 +52,7 @@
             <div class="wrapperContent">
                     <article id="wrapperText">An Incredible Taste You can Trust</article>
                     <a id="menu" href="menu.html">
-                    <button type="button" id="signUpButton" class="newsLetterBtn">Order Now</button>
+                    <button type="button" id="orderNow" class="newsLetterBtn">Order Now</button>
                     </a>
             </div>
         </div>
@@ -91,52 +91,51 @@
     <!-- User Login/SignUp Section -->
     <div id="userValidation">
 
-        <div id="loginSection" class="main_container">
-
-            <form class="login zoom" id="LoginForm">
-                <div class="img_login">
-                    <span id="close">&times;</span>
-                    <img src="img/logo.jpg" alt="logo" class="logo">
-                </div>
-
-                <div class="loginParticulars">
-                    <label><b>Username</b></label>
-                    <input type="text" id="username" placeholder="Enter Username" name="username" required>
-                    <label id="emailLabel"><b>Email Address</b></label>
-                    <input type="text" id="email" placeholder="Enter Email Address" name="Email" required>
-                    <label><b>Password</b></label>
-                    <input type="password" id="password" placeholder="Enter Password" name="password" required>
-                    <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
-                        required>
-
-                    <label>
-                        <input type="checkbox" id="showPassword" name=""> Show Password
-                    </label>
-                    <article id="comparePassword"></article>
-
-                    <button id="loginBtn" type="submit">Login</button>
-                    <button id="submitBtn" type="submit">Submit</button>
-                    <div class="container">
-                        <div id="message" class="container">
-                            <span class="notMember">Password must contain :</span>
-                            <h3 id="letter" class="invalid">A <b>Lowercase</b> letter</h3>
-                            <h3 id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</h3>
-                            <h3 id="number" class="invalid">A <b>Number</b></h3>
-                            <h3 id="length" class="invalid">At least
-                                <b>8 characters</b>
-                            </h3>
-                        </div>
-                        <label id="notMember">
-                            <span>Not a member?</span>
-                            <button type="button" id="signUpButton" class="signUpButton">Sign up</button>
-                        </label>
+            <div id="loginSection" class="main_container">
+    
+                <form class="login zoom" id="LoginForm">
+                    <div class="img_login">
+                        <span id="close">&times;</span>
+                        <img src="img/logo.jpg" alt="logo" class="logo">
                     </div>
-                </div>
-            </form>
+    
+                    <div class="loginParticulars">
+                        <label><b>Username</b></label>
+                        <input type="text" id="username" placeholder="Enter Username" name="username" required>
+                        <label id="emailLabel"><b>Email Address</b></label>
+                        <input type="text" id="email" placeholder="Enter Email Address" name="Email" required>
+                        <label><b>Password</b></label>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" required>
+                        <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                            required>
+    
+                        <label>
+                            <input type="checkbox" id="showPassword" name="remember"> Show Password
+                        </label>
+                        <article id="comparePassword"></article>
+    
+                        <button id="loginBtn" type="submit">Login</button>
+                        <button id="submitBtn" type="submit">Submit</button>
+                        <div class="container">
+                            <div id="message" class="container">
+                                <span class="notMember">Password must contain :</span>
+                                <h3 id="letter" class="invalid">A <b>Lowercase</b> letter</h3>
+                                <h3 id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</h3>
+                                <h3 id="number" class="invalid">A <b>Number</b></h3>
+                                <h3 id="length" class="invalid">At least
+                                    <b>8 characters</b>
+                                </h3>
+                            </div>
+                            <label id="notMember">
+                                <span>Not a member?</span>
+                                <button type="button" id="signUpButton" class="cancle_btn">Sign up</button>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-
-    </div>
 
     <!-- Footer Section -->
     <div id="bottom">
