@@ -89,6 +89,7 @@ export default class controller {
      * @param {*} res - response to the success of the event 
      */
     updateOrder(req, res) {
+        
         let map = 0;
         const id = parseInt(req.params.orderId, 10);
         let oldOrder = storage.database[id];
