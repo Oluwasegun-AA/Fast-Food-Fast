@@ -27,7 +27,7 @@ let putOrder = (req, index, id) => {
     return newOrder;
 }
 
-export default class controller {
+export default class Controller {
     /**
         * Gets All orders in the database and sends as response
         * @param {*} req - incomming request data
@@ -36,7 +36,7 @@ export default class controller {
     getOrders(req, res) {
         res.status(200).send({
             success: 'true',
-            Status: 'Orders retrieved successfully',
+            status: 'Orders retrieved successfully',
             orders: storage.database
         });
     }
@@ -55,7 +55,7 @@ export default class controller {
                 let value = storage.database[index];
                 res.status(200).send({
                     success: 'true',
-                    Status: 'Order retrieved successfully',
+                    status: 'Order retrieved successfully',
                     order: value
                 });
             };
@@ -63,7 +63,7 @@ export default class controller {
         if (orderIndex == undefined) {
             return res.status(404).send({
                 success: 'false',
-                Status: 'Order Not Found in the Database'
+                status: 'Order Not Found in the Database'
             })
         }
     }
@@ -79,7 +79,7 @@ export default class controller {
         res.status(201).send({
             orderId: id,
             order_sent: sentOrder,
-            Status: 'Order Sent Successfully'
+            status: 'Order Sent Successfully'
         });
     }
 
@@ -89,7 +89,7 @@ export default class controller {
      * @param {*} res - response to the success of the event 
      */
     updateOrder(req, res) {
-        
+
         let map = 0;
         const id = parseInt(req.params.orderId, 10);
         let oldOrder = storage.database[id];
@@ -102,13 +102,13 @@ export default class controller {
                     orderId: id,
                     old_Order: oldOrder,
                     update: state,
-                    Status: "Update successful"
+                    status: "Update successful"
                 });
             } else {
                 if (map == storage.database.length) {
                     return res.status(410).send({
                         success: 'false',
-                        Status: 'Requested resourse is no longer available'
+                        status: 'Requested resourse is no longer available'
                     });
                 } else return;
             }
@@ -130,16 +130,15 @@ export default class controller {
                 storage.database.splice(index, 1)
                 res.status(200).send({
                     success: 'true',
-                    Status: 'Order deleted successfuly'
+                    status: 'Order deleted successfuly'
                 });
             }
         });
         if (orderIndex == undefined) {
             return res.status(404).send({
                 success: 'false',
-                Status: 'Order Not Found in the Database'
+                status: 'Order Not Found in the Database'
             });
         }
     }
-
 }

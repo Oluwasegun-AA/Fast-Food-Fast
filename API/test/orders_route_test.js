@@ -16,10 +16,43 @@ describe('Validate POST Route', () => {
                 .expect(201, end)
         });
     });
+    describe("When an orderId sent to a post route", () => {
+        it('should return statusCode of 400(Bad Request)', (end) => {
+            request(app).post('/api/v1/orders/10')
+                .type('JSON').send(test.fullOrder)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.status = "unsuccessful";
+                })
+                .expect(400, end)
+        });
+    });
     describe('Check POST input for Error', () => {
         it('should return Error status code 400 if no data was passed', (end) => {
             request(app).post('/api/v1/orders')
                 .type('JSON')
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.Status = 'unsuccessful';
+                    res.body.Status.toLowerCase();
+                })
+                .expect(400, end);
+        });
+        it('should return Error status code 400 req.body.price has the wrong data type', (end) => {
+            request(app).post('/api/v1/orders')
+                .type('JSON')
+                .send(test.wrongDataType_price)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.Status = 'unsuccessful';
+                    res.body.Status.toLowerCase();
+                })
+                .expect(400, end);
+        });
+        it('should return Error status code 400 req.body.quantity has the wrong data type', (end) => {
+            request(app).post('/api/v1/orders')
+                .type('JSON')
+                .send(test.wrongDataType_quantity)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.Status = 'unsuccessful';
@@ -112,6 +145,16 @@ describe('Validate GET Route', () => {
             .expect('Content-Type', /json/)
             .expect(404, end)
     });
+    describe("When non interger orderId is sent", () => {
+        it('should return statusCode of 400(Bad Request)', (end) => {
+            request(app).get('/api/v1/orders/A')
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.status = "unsuccessful";
+                })
+                .expect(400, end)
+        });
+    });
 })
 
 // Tests for the PUT Route
@@ -126,11 +169,44 @@ describe('Validate PUT Route', () => {
                 .expect(200, end)
         });
     });
+    describe("When non interger orderId is sent", () => {
+        it('should return statusCode of 400(Bad Request)', (end) => {
+            request(app).put('/api/v1/orders/A')
+                .type('JSON').send(test.fullOrder)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.status = "unsuccessful";
+                })
+                .expect(400, end)
+        });
+    });
     describe("Check PUT input for Error", () => {
         it("should return 400(Bad request, when food is missing in the input data)", (end) => {
             request(app).put('/api/v1/orders/0')
                 .type('JSON')
                 .send(test.voidFood)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.Status = 'unsuccessful';
+                    res.body.Status.toLowerCase();
+                })
+                .expect(400, end);
+        });
+        it('should return Error status code 400 req.body.price has the wrong data type', (end) => {
+            request(app).put('/api/v1/orders/0')
+                .type('JSON')
+                .send(test.wrongDataType_price)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.Status = 'unsuccessful';
+                    res.body.Status.toLowerCase();
+                })
+                .expect(400, end);
+        });
+        it('should return Error status code 400 req.body.quantity has the wrong data type', (end) => {
+            request(app).put('/api/v1/orders/0')
+                .type('JSON')
+                .send(test.wrongDataType_quantity)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.Status = 'unsuccessful';
@@ -222,6 +298,26 @@ describe("Validate Delete Route", () => {
                     res.body.Status = "Order Not Found in the Database";
                 })
                 .expect(404, end)
+        });
+    });
+    describe("When non interger orderId is sent", () => {
+        it('should return statusCode of 400(Bad Request)', (end) => {
+            request(app).delete('/api/v1/orders/A')
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.status = "unsuccessful";
+                })
+                .expect(400, end)
+        });
+    });
+    describe("When Order Id is not sent", () => {
+        it('should return statusCode of 400(Bad Request)', (end) => {
+            request(app).delete('/api/v1/orders')
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    res.body.status = "unsuccessful";
+                })
+                .expect(400, end)
         });
     });
 });

@@ -24,7 +24,6 @@ function validation(req, res, next) {
 */
 function idValidation(req, res, next) {
     let error = {};
-    console.log('was here');
     let numbers = /[0-9]|[0-9][0-9]/g;
     const id = req.params.orderId;
     if (id === undefined || id === null || id === "") { error.orderId_Error = 'Bad Request, Order ID is Required'; }

@@ -2,7 +2,9 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import router from './API/routes/orders';
+import ordersRoute from './API/routes/orders';
+import itemsRoute from './API/routes/foodItems'
+import usersRoute from './API/routes/users'
 
 //port declaration
 const port = process.env.PORT || 5000;
@@ -18,7 +20,10 @@ const message = ()=>{
 app.use (logger('common'));
 app.use(bodyParser.json());
 
-app.use(router);
+app.use(ordersRoute);
+app.use(itemsRoute);
+app.use(usersRoute);
+
 
 // Set listener to port for API queries
 app.listen(port, message());
