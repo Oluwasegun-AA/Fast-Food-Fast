@@ -82,6 +82,26 @@ export const invalidOrderId = {
     "userAddress": "address"
 }
 
+//Model data for an order with string where an interger is required
+export const  wrongDataType_price= {
+    "orderId": "0",
+    "food": "peperony pizza",
+    "price": "A",
+    "quantity": "10",
+    "orderStatus": "uncompleted",
+    "userAddress": "Address"
+}
+
+//Model data for an order with string where an interger is required
+export const  wrongDataType_quantity= {
+    "orderId": "0",
+    "food": "peperony pizza",
+    "price": "10",
+    "quantity": "A",
+    "orderStatus": "uncompleted",
+    "userAddress": "Address"
+}
+
 //Instance of the database content
 export const databaseOrders = [
     {
