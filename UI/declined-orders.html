@@ -27,23 +27,25 @@
         <div id="headerContent">
 
             <aside>
-                <img src="img/logo.jpg" id="headerLogo" />
+                <a href="index.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
                 <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
             <div class="navigation">
                 <a id="signOut" class="" href="index.html">Sign Out</a>
                 <a id="home" class="" href="add-items.html">Add Items</a>
-                <a id="contact"  href="admin.html">Review Orders</a>
+                <a id="contact" href="admin.html">Review Orders</a>
 
                 <div class="dropdown">
-                    <a class="dropbtn">Data Base</a>
+                    <a class="dropbtn">Orders</a>
                     <div class="dropdown-content">
-                            <a href="admin.html">Review Orders</a>
-                            <a href="accepted-orders.html">Accepted Orders</a>
-                            <a class="active" href="declined-orders.html">Declined Orders</a>
-                            <a href="user-review.html">User's Review</a>
-                    </div> 
+                        <a href="admin.html">Review Orders</a>
+                        <a href="accepted-orders.html">Accepted Orders</a>
+                        <a class="active" href="declined-orders.html">Declined Orders</a>
+                        <a href="user-review.html">User's Review</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,14 +58,14 @@
 
     </header>
 
-    <section id="sectionMenu">
+    <section id="section3">
     </section>
 
     <div id="informationFields">
-        <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">DECLINED ORDERS</fieldset>
-            <fieldset id="information">declined orders appears here</fieldset>
-        </fieldset>
+        <div id="fieldsetA">
+            <div id="fieldsetB">DECLINED ORDERS</div>
+            <div id="information">Declined orders appears here</div>
+        </div>
     </div>
 
 
@@ -129,7 +131,8 @@
                     <label><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="password" required>
                     <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
 
                     <label>
                         <input type="checkbox" id="showPassword" name="remember"> Show Password

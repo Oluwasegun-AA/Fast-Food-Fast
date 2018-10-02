@@ -14,6 +14,7 @@
     <link rel="icon" href="img/logo.jpg" sizes="16x16" />
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/admin.css" />
     <!-- font -->
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 </head>
@@ -27,7 +28,9 @@
         <div id="headerContent">
 
             <aside>
-                <img src="img/logo.jpg" id="headerLogo" />
+                <a href="admin.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
                 <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
@@ -37,7 +40,7 @@
                 <a id="contact" class="active" href="admin.html">Review Orders</a>
 
                 <div class="dropdown">
-                    <a class="dropbtn">Data Base</a>
+                    <a class="dropbtn">Orders</a>
                     <div class="dropdown-content">
                         <a class="active" href="admin.html">Review Orders</a>
                         <a href="accepted-orders.html">Accepted Orders</a>
@@ -56,28 +59,51 @@
 
     </header>
 
-    <section id="sectionMenu">
+    <section id="section3">
     </section>
 
     <div id="informationFields">
-        <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">REVIEW ORDERS</fieldset>
-            <fieldset id="information">
+        <div id="fieldsetA">
+            <div id="fieldsetB">REVIEW ORDERS</div>
+            <div id="information">
                 <div id="cartInformation">
                     <div>
                         <div id="cartElement">
                             <div id="item" class="f">
-                                <label id="description">description</label>
+                                <label id="description">Nigerian Chips</label>
                                 <label id="description">Price: #25 </label>
                                 <img src="img/f.jpg" id="itemLogo" />
                             </div>
                             <div id="cartAttributes">
                                 <div id="quantity">
                                     <label>Quantity </label>
-                                    <br/>
+                                    <br />
                                     <article id="itemQuantity">2</article>
                                 </div>
-                                <div id="cost"><label>Total:</label><br/> #50
+                                <div id="cost"><label>Total:</label><br /> #50
+                                </div>
+                            </div>
+                        </div>
+                        <div id="acceptDecline">
+                            <button type="button" id="acceptBtn">Accept</button>
+                            <button type="button" id="declineBtn">Decline</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div id="cartElement">
+                            <div id="item" class="f">
+                                <label id="description">Indian chips</label>
+                                <label id="description">Price: #20 </label>
+                                <img src="img/f.jpg" id="itemLogo" />
+                            </div>
+                            <div id="cartAttributes">
+                                <div id="quantity">
+                                    <label>Quantity </label>
+                                    <br />
+                                    <article id="itemQuantity">1</article>
+                                </div>
+                                <div id="cost"><label>Total:</label><br /> #20
 
                                 </div>
                             </div>
@@ -91,42 +117,18 @@
                     <div>
                         <div id="cartElement">
                             <div id="item" class="f">
-                                <label id="description">description</label>
-                                <label id="description">Price: #20 </label>
-                                <img src="img/f.jpg" id="itemLogo" />
-                            </div>
-                            <div id="cartAttributes">
-                                <div id="quantity">
-                                    <label>Quantity </label>
-                                    <br/>
-                                    <article id="itemQuantity">1</article>
-                                </div>
-                                <div id="cost"><label>Total:</label><br/> #20
-
-                                </div>
-                            </div>
-                        </div>
-                        <div id="acceptDecline">
-                                <button type="button" id="acceptBtn">Accept</button>
-                                <button type="button" id="declineBtn">Decline</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div id="cartElement">
-                            <div id="item" class="f">
-                                <label id="description">description</label>
+                                <label id="description">Chinese chips</label>
                                 <label id="description">Price: #10 </label>
                                 <img src="img/f.jpg" id="itemLogo" />
                             </div>
                             <div id="cartAttributes">
                                 <div id="quantity">
                                     <label>Quantity </label>
-                                    <br/>
+                                    <br />
                                     <article id="itemQuantity">2</article>
                                 </div>
                                 <div id="cost">
-                                    <label>Total:</label><br/> #20
+                                    <label>Total:</label><br /> #20
 
                                 </div>
                             </div>
@@ -138,8 +140,8 @@
                     </div>
 
                 </div>
-            </fieldset>
-        </fieldset>
+            </div>
+        </div>
     </div>
 
 
@@ -205,7 +207,8 @@
                     <label><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="password" required>
                     <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
 
                     <label>
                         <input type="checkbox" id="showPassword" name="remember"> Show Password

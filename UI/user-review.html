@@ -27,7 +27,9 @@
         <div id="headerContent">
 
             <aside>
-                <img src="img/logo.jpg" id="headerLogo" />
+                <a href="index.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
                 <h1 id="fast"><em>Fast!!!</em></h1>
             </aside>
 
@@ -37,12 +39,12 @@
                 <a id="contact" href="admin.html">Review Orders</a>
 
                 <div class="dropdown">
-                    <a class="dropbtn">Data Base</a>
+                    <a class="dropbtn">Orders</a>
                     <div class="dropdown-content">
-                            <a href="admin.html">Review Orders</a>
-                            <a href="accepted-orders.html">Accepted Orders</a>
-                            <a href="declined-orders.html">Declined Orders</a>
-                            <a class="active" href="user-review.html">User's Review</a>
+                        <a href="admin.html">Review Orders</a>
+                        <a href="accepted-orders.html">Accepted Orders</a>
+                        <a href="declined-orders.html">Declined Orders</a>
+                        <a class="active" href="user-review.html">User's Review</a>
                     </div>
                 </div>
             </div>
@@ -56,14 +58,14 @@
 
     </header>
 
-    <section id="sectionMenu">
+    <section id="section3">
     </section>
 
     <div id="informationFields">
-        <fieldset id="fieldsetA">
-            <fieldset id="fieldsetB">USER REVIEW</fieldset>
-            <fieldset id="information">Users Queries Appears here </fieldset>
-        </fieldset>
+        <div id="fieldsetA">
+            <div id="fieldsetB">USER REVIEW</div>
+            <div id="information">Users Queries Appears here </div>
+        </div>
     </div>
 
 
@@ -129,7 +131,8 @@
                     <label><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="password" required>
                     <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
 
                     <label>
                         <input type="checkbox" id="showPassword" name="remember"> Show Password
@@ -161,5 +164,4 @@
     <!-- JavaScript -->
     <script type="text/JavaScript" src="js/menu.js"></script>
 </body>
-
 </html>
