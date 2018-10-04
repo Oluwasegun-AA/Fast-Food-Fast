@@ -1,6 +1,5 @@
 //Import statments
-import storage from '../data/database';
-import model from '../model/order-model';
+import model from '../model/foodItems-model';
 import pool from '../db/index';
 
 export default class Controller {
@@ -29,24 +28,24 @@ export default class Controller {
     }
 
     /**
-         * Gets a particular order in the database and send as response
+         * Gets a particular item in the database and send as response
          * @param {*} req - incomming Request data
          * @param {*} res - response to the validity of the data
          */
     async getFoodItem(req, res) {
-        const id = parseInt(req.params.orderId, 10);
-        const command = 'SELECT * FROM food_items WHERE id = $1';
+        const id = parseInt(req.params.itemId, 10);
+        const command = 'SELECT * FROM food_items WHERE id=$1';
         try {
-            const { rows } = await db.query(command, id);
+            const { rows } = await pool.query(command, id);
             if (!rows[0]) {
                 return res.status(404).send({
                     success: 'false',
-                    status: 'Order Not Found in the Database'
+                    status: 'Item Not Found in the Database'
                 });
             } else return res.status(200).send({
                 success: 'true',
-                status: 'Order retrieved successfully',
-                order: rows[0]
+                status: 'Item retrieved successfully',
+                Item: rows[0]
             });
         } catch (error) {
             return res.status(400).send({
@@ -55,25 +54,24 @@ export default class Controller {
                 message : error
             })
         }
-
     }
 
 /**
-    * Add an Order to existing food_items in the database
+    * Add an Item to existing food_items in the database
     *  @param {*} req - incomming json data
     *  @param {*} res - response to the sucess of the event
 */
 async addFoodItem(req, res) {
-    let newOrder = model.populate(req);
+    let newItem = model.populate(req);
     const command = `INSERT INTO
-    food_items(item_id, quantity, total_price, order_status,customer_id, customer_address)
-      VALUES($1, $2, $3, $4, $5,$6)
+    food_items(item_name,item_image,item_price,item_tag)
+      VALUES($1, $2, $3, $4)
       returning *`;
     try {
-        const { rows } = await pool.query(command, newOrder);
+        const { rows } = await pool.query(command, newItem);
         return res.status(201).send({
-            order_sent: rows[0],
-            status: 'Order Sent Successfully'
+            item_sent: rows[0],
+            status: 'Item Sent Successfully'
         });
     } catch (error) {
         return res.status(400).send({
@@ -85,29 +83,29 @@ async addFoodItem(req, res) {
 }
 
 /**
- * Update an order in the database
+ * Update an Item in the database
  *  @param {*} req - incomming json data
  * @param {*} res - response to the success of the event 
  */
 async updateFoodItem(req, res){
-    let order = model.populate(req);
-    order.reqId = req.params,orderId;
+    let item = model.populate(req);
+    item.reqId = req.params,itemId;
     const findQuery = 'SELECT * FROM food_items WHERE id=$1';
     const updateQuery =`UPDATE food_items
-      SET item_id=$1, quantity=$2, total_price=$3, order_status=$4,customer_id=$5, customer_address=$6
-      WHERE id=$7 returning *`;
+      SET item_name=$1,item_image=$2,item_price=$3,item_tag=$4
+      WHERE id=$5 returning *`;
     try {
-      const { rows } = await db.query(findQuery, [req.params.id]);
+      const { rows } = await db.query(findQuery, [req.params.itemid]);
       if(!rows[0]) {
         return res.status(410).send({
             success: 'false',
             status: 'Requested resourse is no longer available'
         });
       }
-      const response = await db.query(updateQuery, order);
+      const response = await db.query(updateQuery, item);
       return res.status(200).send({
-        orderId: id,
-        old_Order: oldOrder,
+        itemId: id,
+        old_item: rows[0],
         update: response.rows[0],
         status: "Update successful"
     });
@@ -122,7 +120,7 @@ async updateFoodItem(req, res){
 
 
 /**
-* Delete an order in the database
+* Delete an Item in the database
 *  @param {*} req - incomming request data
 * @param {*} res - response to the validity of the data
 */
@@ -133,12 +131,12 @@ async updateFoodItem(req, res) {
       if(!rows[0]) {
         return res.status(404).send({
             success: 'false',
-            status: 'Order Not Found in the Database'
+            status: 'Item Not Found in the Database'
         });
       }
       return res.status(204).send({
         success: 'true',
-        status: 'Order deleted successfuly'
+        status: 'Item deleted successfuly'
     });
     } catch(error) {
       return res.status(400).send({

@@ -1,7 +1,7 @@
 //Import statements
 import express from 'express';
 import Controller from '../controllers/foodItems'
-import Validate from '../middleware/foodItemsValidation'
+import Validate from '../../middleware/foodItemsValidation'
 const router = express.Router();
 
 //create an instance of the request validation middlewares
@@ -19,7 +19,7 @@ router.post('/api/v1/foodItems',validate, controller.addFoodItem);
 router.post('/api/v1/foodItems/:itemId', postvalidation,validate);
 router.put('/api/v1/foodItems', validateFoodItemId);
 router.put('/api/v1/foodItems/:itemId', validateFoodItemId, validate, controller.updateFoodItem);
-router.delete('/api/v1/foodItems/:itemId', validateFoodItemId, controller.deleteFoodItem);
-router.delete('/api/v1/foodItems',  validateFoodItemId);
+//router.delete('/api/v1/foodItems/:itemId', validateFoodItemId, controller.deleteFoodItem);
+//router.delete('/api/v1/foodItems',  validateFoodItemId);
 
 export default router;
