@@ -72,7 +72,7 @@ export const voidUserAddress = {
     "orderStatus": "uncompleted",
 }
 
-//Model data for an order void of req.body.orderId
+//Model data for an order void of req.body.orderId.
 export const invalidOrderId = {
     "orderId": "300",
     "food": 'pizza',
@@ -92,7 +92,7 @@ export const  wrongDataType_price= {
     "userAddress": "Address"
 }
 
-//Model data for an order with string where an interger is required
+//Model data for an order with string where an interger is required.
 export const  wrongDataType_quantity= {
     "orderId": "0",
     "food": "peperony pizza",
@@ -102,7 +102,7 @@ export const  wrongDataType_quantity= {
     "userAddress": "Address"
 }
 
-//Instance of the database content
+//Instance of the database content.
 export const databaseOrders = [
     {
         "orderId": "0",
