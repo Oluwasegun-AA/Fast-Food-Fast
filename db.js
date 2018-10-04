@@ -1,32 +1,4 @@
-
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-});
-
-pool.on('connect', () => {
-    console.log('connected to the fast_food_db');
-});
-
-/**
- * Open Pool connection
- * @param {*} queryText - The PostgreSQl command to create table
- * @param {*} table - the created/deleted table 
- */
-function pullQuery(queryText, table) {
-    pool.query(queryText, (err, res) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(res);
-            pool.end();
-        }
-    });
-}
+import database from './API/usingdb/db/index'
 
 /**
  * Create Tables
@@ -65,23 +37,32 @@ async function createTables() {
         FOREIGN KEY (customer_id) REFERENCES user_accounts (user_id),
         created_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NULL
-      )`;
+      );`;
+    let user_data = `INSERT INTO user_accounts (user_name,user_role,user_email,user_password)
+      VALUES ('testName', 'User', 'testEmail@address.com', 'p@ssword123'),
+      ('tester', 'Admin', 'tester@owner.com', 'p@$$word123');`
+
+    let order_data = `INSERT INTO orders (item_id, quantity, total_price, order_status,customer_id, customer_address)
+      VALUES ('1', '2', '2000', 'New', '1', 'Andela EPIC Tower, Lagos' ),('2', '1','1000','Processing','2', 'Andela EPIC Tower, Ibadan' )`
+
+    let item_data = `INSERT INTO food_items (item_name,item_image,item_price,item_tag)
+       VALUES ('Doughnut', 'imageSrc', '2000', 'snacks'),
+        ('Amala', 'imageSrc', '5000', 'Local dish');`
+
     const input = enum_account + enum_role + userAccounts + foodItems + orders;
-    await pullQuery(input);
-}
-/**
- * Drop Tables
- */
-const dropTables = () => {
-    const drop = 'delete';
-    const queryText = 'DROP TABLE IF EXISTS user_accounts, food_items, orders; DROP TYPE IF EXISTS user_role, status';
-    pullQuery(queryText);
+    const create = user_data + item_data + order_data;
+    await database.query(input);
+    await database.query(create);
 }
 
-pool.on('remove', () => {
-    console.log('client removed');
-    process.exit(0);
-});
+/**
+ * Drop Table
+ */
+const dropTables = () => {
+    const queryText = 'DROP TABLE IF EXISTS user_accounts, food_items, orders; DROP TYPE IF EXISTS user_role, status';
+    database.query(queryText);
+}
+
 
 module.exports = {
     createTables,
