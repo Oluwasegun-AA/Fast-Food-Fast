@@ -10,7 +10,7 @@ function validation(req, res, next) {
     if (!(req.body.itemName)) {error.Name_Error = 'Food Name is Required';}
     if (!(req.body.itemPrice)) {error.Price_Error ='Item Price is Required';}
     if (!(req.body.itemTag)) {error.Tag_Error = 'Item Tag is Required';}
-    if (!(req.body.itemImage)) {error.Tag_Error = 'Item Tag is Required';}
+    if (!(req.body.itemImage)) {error.Tag_Error = 'Item Tagz is Required';}
     if ((Object.keys(error).length) > 0){ return res.status(400).send({status: 'Bad Request', success:"false",  Error_Log: error});}
     next();
 }
