@@ -1,6 +1,5 @@
 //Import statments
-import storage from '../data/database';
-import model from '../model/foodItems-model';
+import model from '../model/order-model';
 import pool from '../db/index';
 
 
