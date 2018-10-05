@@ -29,7 +29,6 @@ function uploadPicture(input) {
         imageArr[lengthI] = data;
         lengthI++;
     };
-
     readFile.readAsDataURL(file);
 }
 
