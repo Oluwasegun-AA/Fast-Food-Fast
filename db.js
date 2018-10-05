@@ -1,4 +1,4 @@
-import database from './API/db/Index'
+import database from './API/db'
 
 /**
  * Create Tables
