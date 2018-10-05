@@ -1,6 +1,6 @@
 //Import statments
 import model from '../model/order-model';
-import database from '../db';
+import database from '../db/Index';
 
 
 export default class Controller {
