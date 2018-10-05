@@ -1,1 +1,1 @@
-web: npm start2gita
+web: npm start2

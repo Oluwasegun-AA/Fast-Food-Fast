@@ -13,7 +13,8 @@
     "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
     "clear": "rimraf dist coverage",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/API/test/*.js --exit",
-    "create": "babel-node ./db.js"
+    "create": "babel-node ./db.js",
+    "heroku-postbuild": "babel-node ./db.js"
   },
   "repository": {
     "type": "git",
