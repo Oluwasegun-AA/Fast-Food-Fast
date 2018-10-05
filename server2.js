@@ -3,9 +3,9 @@ import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import ordersRoute from './API/routes/orders';
-import itemsRoute from './API/routes/foodItems'
-import usersRoute from './API/routes/users'
+import ordersRoute from './API/usingdb/routes/orders';
+import itemsRoute from './API/usingdb/routes/foodItems'
+import usersRoute from './API/usingdb/routes/users'
 dotenv.config();
 //port declaration
 const port = process.env.PORT || process.env.SV_PORT;

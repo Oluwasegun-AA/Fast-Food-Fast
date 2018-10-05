@@ -1,5 +1,5 @@
 /**
-* Validate post and Put request contains all required parameters.
+* Validate post and Put request contains all required parameters
 * @param {*} req - incomming API Request
 * @param {*} res - response to the validity of the data
 */
