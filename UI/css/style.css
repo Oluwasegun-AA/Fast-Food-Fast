@@ -1160,6 +1160,14 @@ text-align: center;
   margin-left: -67px;
   }
 
+#back{
+  text-align: center;
+}
+#login_return{
+  display: none;
+  text-align: center;
+}
+
 #cartAttributes{
   margin: 4px;
   text-align: center;
