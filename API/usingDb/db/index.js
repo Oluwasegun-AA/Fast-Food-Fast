@@ -7,15 +7,6 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL
 });
 
-// pool.on('connect', () => {
-//     console.log('connected to the fast_food_db');
-// });
-
-// pool.on('remove', () => {
-//   console.log('client removed');
-//   process.exit(0);
-// });
-
 
 export default {
 /**
