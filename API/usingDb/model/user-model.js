@@ -5,12 +5,12 @@
 */
 export default {
     populate(req, id) {
-        let newOrder = {
-        user_name:req.body.user_name,
-        user_role:req.body.user_role,
-        user_email:req.body.user_email,
-        user_password:req.body.user_password,
-        };
+        let newOrder = [
+            req.body.user_name,
+            req.body.user_role,
+            req.body.user_email,
+            req.body.user_password
+        ];
         return newOrder;
     }
 }
