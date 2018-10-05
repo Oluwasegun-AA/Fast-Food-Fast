@@ -1,6 +1,6 @@
 //Import statments
 import model from '../model/foodItems-model';
-import pool from '../db/index';
+import database from '../db/index';
 
 export default class Controller {
     /**
@@ -11,7 +11,7 @@ export default class Controller {
     async getFoodItems(req, res) {
         const command = 'SELECT * FROM food_items';
         try {
-            const { rows, rowCount } = await pool.query(command);
+            const { rows, rowCount } = await database.query(command);
             return res.status(200).send({
                 success: 'true',
                 status: 'Food Items retrieved successfully',
@@ -33,10 +33,9 @@ export default class Controller {
          * @param {*} res - response to the validity of the data
          */
     async getFoodItem(req, res) {
-        const id = parseInt(req.params.itemId, 10);
-        const command = 'SELECT * FROM food_items WHERE id=$1';
+        const command = 'SELECT * FROM food_items WHERE item_id=$1';
         try {
-            const { rows } = await pool.query(command, id);
+            const { rows } = await database.query(command, [req.params.itemId]);
             if (!rows[0]) {
                 return res.status(404).send({
                     success: 'false',
@@ -68,7 +67,7 @@ async addFoodItem(req, res) {
       VALUES($1, $2, $3, $4)
       returning *`;
     try {
-        const { rows } = await pool.query(command, newItem);
+        const { rows } = await database.query(command, newItem);
         return res.status(201).send({
             item_sent: rows[0],
             status: 'Item Sent Successfully'
@@ -89,22 +88,23 @@ async addFoodItem(req, res) {
  */
 async updateFoodItem(req, res){
     let item = model.populate(req);
-    item.reqId = req.params,itemId;
-    const findQuery = 'SELECT * FROM food_items WHERE id=$1';
-    const updateQuery =`UPDATE food_items
-      SET item_name=$1,item_image=$2,item_price=$3,item_tag=$4
-      WHERE id=$5 returning *`;
+        let date = new Date();
+        item.push(date);
+        item.push(req.params.itemId);
+    const findQuery = `SELECT * FROM food_items WHERE item_id=$1`;
+    const updateQuery =`UPDATE food_items SET item_name=$1,item_image=$2,item_price=$3,item_tag=$4,modified_date=$5 WHERE item_id=$6 returning *`;
     try {
-      const { rows } = await db.query(findQuery, [req.params.itemid]);
+        console.log('here');
+      const { rows } = await database.query(findQuery, [req.params.itemId]);
       if(!rows[0]) {
         return res.status(410).send({
             success: 'false',
             status: 'Requested resourse is no longer available'
         });
       }
-      const response = await db.query(updateQuery, item);
+      const response = await database.query(updateQuery, item);
       return res.status(200).send({
-        itemId: id,
+        itemId: req.params.itemId,
         old_item: rows[0],
         update: response.rows[0],
         status: "Update successful"
@@ -124,17 +124,17 @@ async updateFoodItem(req, res){
 *  @param {*} req - incomming request data
 * @param {*} res - response to the validity of the data
 */
-async updateFoodItem(req, res) {
-    const deleteQuery = 'DELETE FROM food_items WHERE id=$1 returning *';
+async deleteFoodItem(req, res) {
+    const deleteQuery = 'DELETE FROM food_items WHERE item_id=$1 returning *';
     try {
-      const { rows } = await db.query(deleteQuery, [req.params.id]);
+      const { rows } = await database.query(deleteQuery, [req.params.itemId]);
       if(!rows[0]) {
         return res.status(404).send({
             success: 'false',
             status: 'Item Not Found in the Database'
         });
       }
-      return res.status(204).send({
+      return res.status(200).send({
         success: 'true',
         status: 'Item deleted successfuly'
     });

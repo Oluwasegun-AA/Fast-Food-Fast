@@ -4,13 +4,13 @@
  * @param {*} id  - orderId associated with the data
 */
 export default {
-    populate(req, id) {
-        let newItem = {
-            item_name: req.body.item_name,
-            item_image: req.body.item_image,
-            item_price: req.body.item_price,
-            item_tag: req.body.item_tag
-        };
+    populate(req) {
+        let newItem = [
+            req.body.item_name,
+            req.body.item_image,
+            req.body.item_price,
+            req.body.item_tag
+        ];
         return newItem;
     }
 }
@@ -52,7 +52,7 @@ export const voidItem_tag = {
 }
 
 //Model data for an order with string where an interger is required
-export const wrongDataType= {
+export const wrongDataType = {
     "item_name": "doughnut",
     "item_image": "imageSrc",
     "item_price": "A",
