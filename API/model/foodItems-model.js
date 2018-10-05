@@ -4,76 +4,59 @@
  * @param {*} id  - orderId associated with the data
 */
 export default {
-    populate(req, id) {
-        let newItem = {
-            itemId: id,
-            itemImage: req.body.itemImage,
-            itemName: req.body.itemName,
-            itemPrice: req.body.itemPrice,
-            itemTag: req.body.itemTag
-        };
+    populate(req) {
+        let newItem = [
+            req.body.item_name,
+            req.body.item_image,
+            req.body.item_price,
+            req.body.item_tag
+        ];
         return newItem;
     }
 }
 
 //Model data for a complete Item
 export const fullItem = {
-    "itemId": "0",
-    "itemImage": "imageSrc",
-    "itemName": "doughnut",
-    "itemPrice": "20",
-    "itemTag": "snacks"
+    "item_name": "doughnut",
+    "item_image": "imageSrc",
+    "item_price": "20",
+    "item_tag": "snacks"
 }
 
-//Model data for an order void of req.body.itemImage
-export const voidImage = {
-    "itemId": "0",
-    "itemName": "doughnut",
-    "itemPrice": "20",
-    "itemTag": "snacks"
+//Model data for an order void of req.body.item_image
+export const voidItem_image = {
+    "item_name": "doughnut",
+    "item_price": "20",
+    "item_tag": "snacks"
 }
 
-//Model data for an order void of req.body.itemName
-export const voidName = {
-    "itemId": "0",
-    "itemImage": "imageSrc",
-    "itemPrice": "20",
-    "itemTag": "snacks"
+//Model data for an order void of req.body.item_name
+export const voidItem_name = {
+    "item_image": "imageSrc",
+    "item_price": "20",
+    "item_tag": "snacks"
 }
 
-//Model data for an order void of req.body.itemPrice
+//Model data for an order void of req.body.item_price
 export const voidPrice = {
-    "itemId": "0",
-    "itemImage": "imageSrc",
-    "itemName": "doughnut",
-    "itemTag": "snacks"
+    "item_name": "doughnut",
+    "item_image": "imageSrc",
+    "item_tag": "snacks"
 }
 
-//Model data for an order void of req.body.itemTag
-export const voidTag = {
-    "itemId": "0",
-    "itemImage": "imageSrc",
-    "itemName": "doughnut",
-    "itemPrice": "20",
-}
-
-
-//Model data for an order void of req.body.itemId
-export const invalidItemId = {
-    "itemId": "300",
-    "itemImage": "imageSrc",
-    "itemName": "doughnut",
-    "itemPrice": "20",
-    "itemTag": "snacks"
+//Model data for an order void of req.body.item_tag
+export const voidItem_tag = {
+    "item_name": "doughnut",
+    "item_image": "imageSrc",
+    "item_price": "20"
 }
 
 //Model data for an order with string where an interger is required
-export const  wrongDataType_price= {
-    "itemId": "0",
-    "itemImage": "imageSrc",
-    "itemName": "doughnut",
-    "itemPrice": "A",
-    "itemTag": "snacks"
+export const wrongDataType = {
+    "item_name": "doughnut",
+    "item_image": "imageSrc",
+    "item_price": "A",
+    "item_tag": "snacks"
 }
 
 //Instance of the database content

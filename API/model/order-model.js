@@ -4,105 +4,94 @@
  * @param {*} id  - orderId associated with the data
 */
 export default {
-    populate(req, id) {
-        let newOrder = {
-            orderId: id,
-            food: req.body.food,
-            price: req.body.price,
-            quantity: req.body.quantity,
-            orderStatus: req.body.orderStatus,
-            userAddress: req.body.userAddress
-        };
+    populate(req) {
+        let newOrder = [
+            req.body.item_id,
+            req.body.quantity,
+            req.body.total_price,
+            req.body.order_status,
+            req.body.customer_id,
+            req.body.customer_address
+        ];
         return newOrder;
     }
 }
 
 //Model data for a complete Order
 export const fullOrder = {
-    "orderId": "1",
-    "food": 'fufu',
+    "item_id": "1",
     "quantity": "10",
-    "price": "10",
-    "orderStatus": "uncompleted",
-    "userAddress": "address"
+    "total_price": "100",
+    "order_status": "New",
+    "customer_id": "1",
+    "customer_address": "House 10, test street, Lagos"
 }
 
-//Model data for an order void of req.body.food
-export const voidFood = {
-    "orderId": "1",
+//Model data for an order void of req.body.item_id
+export const voidItem_id = {
     "quantity": "10",
-    "price": "10",
-    "orderStatus": "uncompleted",
-    "userAddress": "address"
-}
-
-//Model data for an order void of req.body.price
-export const voidPrice = {
-    "orderId": "1",
-    "food": 'fufu',
-    "quantity": "10",
-    "orderStatus": "uncompleted",
-    "userAddress": "address"
+    "total_price": "100",
+    "order_status": "New",
+    "customer_id": "1",
+    "customer_address": "House 10, test street, Lagos"
 }
 
 //Model data for an order void of req.body.quantity
 export const voidQuantity = {
-    "orderId": "1",
-    "food": 'fufu',
-    "price": "10",
-    "orderStatus": "uncompleted",
-    "userAddress": "address"
+    "item_id": "1",
+    "total_price": "100",
+    "order_status": "New",
+    "customer_id": "1",
+    "customer_address": "House 10, test street, Lagos"
 }
 
-//Model data for an order void of req.body.orderStatus
-export const voidOrderStatus = {
-    "orderId": "1",
-    "food": 'fufu',
+//Model data for an order void of req.body.total_price
+export const voidTotal_price = {
+    "item_id": "1",
     "quantity": "10",
-    "price": "10",
-    "userAddress": "address"
+    "order_status": "New",
+    "customer_id": "1",
+    "customer_address": "House 10, test street, Lagos"
 }
 
-//Model data for an order void of req.body.userAddress
-export const voidUserAddress = {
-    "orderId": "1",
-    "food": 'fufu',
+//Model data for an order void of req.body.order_status
+export const voidOrder_status = {
+    "item_id": "1",
     "quantity": "10",
-    "price": "10",
-    "orderStatus": "uncompleted",
+    "total_price": "100",
+    "customer_id": "1",
+    "customer_address": "House 10, test street, Lagos"
 }
 
-//Model data for an order void of req.body.orderId.
-export const invalidOrderId = {
-    "orderId": "300",
-    "food": 'pizza',
+//Model data for an order void of req.body.customer_Address
+export const voidCustomer_address = {
+    "item_id": "1",
     "quantity": "10",
-    "price": "9500",
-    "orderStatus": "completed",
-    "userAddress": "address"
+    "total_price": "100",
+    "order_status": "New",
+    "customer_id": "1"
+}
+
+//Model data for an order void of req.body.customer_id
+export const invalidCustomer_id = {
+    "item_id": "1",
+    "quantity": "10",
+    "total_price": "100",
+    "order_status": "New",
+    "customer_address": "House 10, test street, Lagos"
 }
 
 //Model data for an order with string where an interger is required
-export const  wrongDataType_price= {
-    "orderId": "0",
-    "food": "peperony pizza",
-    "price": "A",
-    "quantity": "10",
-    "orderStatus": "uncompleted",
-    "userAddress": "Address"
-}
-
-//Model data for an order with string where an interger is required.
-export const  wrongDataType_quantity= {
-    "orderId": "0",
-    "food": "peperony pizza",
-    "price": "10",
+export const wrongDataType = {
+    "item_id": "A",
     "quantity": "A",
-    "orderStatus": "uncompleted",
-    "userAddress": "Address"
+    "total_price": "A",
+    "order_status": "New",
+    "customer_id": "A",
+    "customer_address": "House 10, test street, Lagos"
 }
 
-//Instance of the database content.
+//Instance of the database content
 export const databaseOrders = [
     {
         "orderId": "0",

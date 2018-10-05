@@ -5,52 +5,51 @@
 */
 export default {
     populate(req, id) {
-        let newOrder = {
-            userId: id,
-            userName: req.body.userName,
-            userEmail: req.body.userEmail,
-            userPassword: req.body.userPassword,
-        };
+        let newOrder = [
+            req.body.user_name,
+            req.body.user_role,
+            req.body.user_email,
+            req.body.user_password
+        ];
         return newOrder;
     }
 }
 
 //Model data for a complete user data
 export const fullUser = {
-    "userID": "0",
-    "userName": "pat",
-    "userEmail": "pat@gmail.com",
-    "userPassword": "123pat"
+    "user_name": "Random Pat",
+    "user_role": "User",
+    "user_email": "pat@random.com",
+    "user_password": "123pat"
 }
 
-//Model data for an order void of req.body.userName
-export const voidName = {
-    "userID": "0",
-    "userEmail": "pat@gmail.com",
-    "userPassword": "123pat"
+//Model data for an order void of req.body.user_name
+export const voidUser_name = {
+    "user_role": "User",
+    "user_email": "pat@random.com",
+    "user_password": "123pat"
 }
 
-//Model data for an order void of req.body.userEmail
-export const voidEmail = {
-    "userID": "0",
-    "userName": "pat",
-    "userPassword": "123pat"
+//Model data for an order void of req.body.user_email
+export const voiduser_email = {
+    "user_name": "Random Pat",
+    "user_role": "User",
+    "user_password": "123pat"
 }
 
-//Model data for an order void of req.body.userPassword
-export const voidPassword = {
-    "userID": "0",
-    "userName": "pat",
-    "userEmail": "pat@gmail.com",
+//Model data for an order void of req.body.user_password
+export const voidUser_password = {
+    "user_name": "Random Pat",
+    "user_role": "User",
+    "user_email": "pat@random.com",
 }
 
 
-//Model data for an order void of req.body.userId
-export const invalidOrderId = {
-    "userID": "300",
-    "userName": "pat",
-    "userEmail": "pat@gmail.com",
-    "userPassword": "123pat"
+//Model data for an order void of req.body.user_role
+export const voidUser_role = {
+    "user_name": "Random Pat",
+    "user_email": "pat@random.com",
+    "user_password": "123pat"
 }
 
 //Instance of the database content
