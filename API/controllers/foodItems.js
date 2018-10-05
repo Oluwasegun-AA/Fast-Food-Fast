@@ -1,6 +1,6 @@
 //Import statments
 import model from '../model/foodItems-model';
-import database from '../db/index';
+import database from '../db';
 
 export default class Controller {
     /**
