@@ -5,9 +5,9 @@
 */
 function validation(req, res, next) {
     let error = {};
-   if (!(req.body.userName)) {error.UserName_Error = 'userName is Required';}
-    if (!(req.body.userEmail)) {error.Email_Error ='Email is Required';}
-    if (!(req.body.userPassword)) {error.Password_Error = 'Password is Required';}
+   if (!(req.body.user_name)) {error.UserName_Error = 'userName is Required';}
+    if (!(req.body.user_email)) {error.Email_Error ='Email is Required';}
+    if (!(req.body.user_password)) {error.Password_Error = 'Password is Required';}
     if ((Object.keys(error).length) > 0){ return res.status(400).send({status: 'Bad Request', success:"false",  Error_Log: error});}
     next();
 }

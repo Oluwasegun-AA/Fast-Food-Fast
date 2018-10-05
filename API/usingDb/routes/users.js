@@ -1,7 +1,7 @@
 //Import statements
 import express from 'express';
 import Controller from '../controllers/users'
-import Validate from '../middleware/usersValidation'
+import Validate from '../../usingDb/middleware/usersValidation'
 const router = express.Router();
 
 //create an instance of the request validation middlewares

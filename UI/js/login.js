@@ -20,6 +20,8 @@ let capital = document.getElementById("capital");
 let number = document.getElementById("number");
 let length = document.getElementById("length");
 let username = document.getElementById('username');
+let login_return = document.getElementById('login_return');
+let signUpButton = document.getElementById('signUpButton');
 
 
 //eventListener Opens the Login View when the login button is clicked
@@ -34,6 +36,19 @@ login.addEventListener("click", function () {
     emailLabel.style.display = 'none';
     loginSection.style.display = 'block';
 });
+
+login_return.addEventListener('click', function(){
+    confirmPassword.style.display = 'none';
+    comparePassword.style.display = 'none';
+    email.style.display = 'none';
+    notMember.style.display = 'block';
+    submitBtn.style.display = 'none';
+    loginBtn.style.display = 'block';
+    confirmPasswordLabel.style.display = 'none';
+    emailLabel.style.display = 'none';
+    loginSection.style.display = 'block';
+    login_return.style.display= 'none';
+})
 
 //eventListener closes the login/register view when the close " X " icon is clicked
 close.addEventListener("click", function () {
@@ -131,6 +146,7 @@ confirmPassword.onkeyup = function () {
 }
 
 signUp.onclick = function () {
+    login_return.style.display= 'block';
     confirmPassword.style.display = 'block';
     comparePassword.style.display = 'block';
     email.style.display = 'block';

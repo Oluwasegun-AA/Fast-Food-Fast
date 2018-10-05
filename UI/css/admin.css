@@ -161,12 +161,7 @@
     margin-left: 20px;
     margin-bottom: -80px;
   }
-  #acceptDecline,
-  #markCompleted{
-  margin-top: -80px;
-  text-align: center;
-  }
-  
+ 
   #cartAttributes{
     margin: 4px;
     text-align: center;

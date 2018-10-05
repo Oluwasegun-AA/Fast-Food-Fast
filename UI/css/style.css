@@ -899,12 +899,8 @@ p.blink {
     margin-left: -20px;
   }
 
-
-
   /* Styling for the Menu Section of the Webpage*/
- 
-
-  #addToCartBtn {
+   #addToCartBtn {
     width: auto;
     padding: 6px;
     background-color: rgb(13, 148, 141);
@@ -1152,10 +1148,24 @@ border-radius: 10px;
   margin-left: 20px;
   margin-bottom: -80px;
 }
-#acceptDecline,
+
 #markCompleted{
 margin-top: -80px;
 text-align: center;
+}
+
+#acceptDecline{
+  margin-top: -80px;
+  text-align: center;
+  margin-left: -67px;
+  }
+
+#back{
+  text-align: center;
+}
+#login_return{
+  display: none;
+  text-align: center;
 }
 
 #cartAttributes{
