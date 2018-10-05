@@ -1,6 +1,6 @@
 //Import statments
 import model from '../model/order-model';
-import pool from '../db/index';
+import database from '../db/index';
 
 
 export default class Controller {
@@ -12,7 +12,7 @@ export default class Controller {
     async getOrders(req, res) {
         const command = 'SELECT * FROM orders';
         try {
-            const { rows, rowCount } = await pool.query(command);
+            const { rows, rowCount } = await database.query(command);
             return res.status(200).send({
                 success: 'true',
                 status: 'Orders retrieved successfully',
@@ -34,10 +34,9 @@ export default class Controller {
          * @param {*} res - response to the validity of the data
          */
     async getOrder(req, res) {
-        const id = parseInt(req.params.orderId, 10);
-        const command = 'SELECT * FROM orders WHERE id = $1';
+        const command = 'SELECT * FROM orders WHERE order_id=$1';
         try {
-            const { rows } = await db.query(command, id);
+            const { rows } = await database.query(command, [req.params.orderId]);
             if (!rows[0]) {
                 return res.status(404).send({
                     success: 'false',
@@ -55,7 +54,6 @@ export default class Controller {
                 message : error
             })
         }
-
     }
 
 /**
@@ -70,7 +68,7 @@ async addOrder(req, res) {
       VALUES($1, $2, $3, $4, $5,$6)
       returning *`;
     try {
-        const { rows } = await pool.query(command, newOrder);
+        const { rows } = await database.query(command, newOrder);
         return res.status(201).send({
             order_sent: rows[0],
             status: 'Order Sent Successfully'
@@ -91,23 +89,25 @@ async addOrder(req, res) {
  */
 async updateOrder(req, res){
     let order = model.populate(req);
-    order.reqId = req.params,orderId;
-    const findQuery = 'SELECT * FROM orders WHERE id=$1';
-    const updateQuery =`UPDATE orders
-      SET item_id=$1, quantity=$2, total_price=$3, order_status=$4,customer_id=$5, customer_address=$6
-      WHERE id=$7 returning *`;
+    let date = new Date();
+    order.push(date);
+    order.push(req.params.orderId);
+    const findQuery = 'SELECT * FROM orders WHERE order_id=$1';
+    const updateQuery =`UPDATE orders SET item_id=$1,quantity=$2,total_price=$3,order_status=$4,customer_id=$5,customer_address=$6,modified_date=$7 WHERE order_id=$8 returning *`;
     try {
-      const { rows } = await db.query(findQuery, [req.params.id]);
+      const { rows } = await database.query(findQuery, [req.params.orderId]);
       if(!rows[0]) {
         return res.status(410).send({
             success: 'false',
-            status: 'Requested resourse is no longer available'
+            status: 'Order Not Found in the Database'
         });
       }
-      const response = await db.query(updateQuery, order);
+      console.log("again")
+      const response = await database.query(updateQuery, order);
+      console.log("entered again")
       return res.status(200).send({
-        orderId: id,
-        old_Order: oldOrder,
+        orderId: req.params.orderId,
+        old_Order: rows[0],
         update: response.rows[0],
         status: "Update successful"
     });
@@ -127,16 +127,16 @@ async updateOrder(req, res){
 * @param {*} res - response to the validity of the data
 */
 async deleteOrder(req, res) {
-    const deleteQuery = 'DELETE FROM orders WHERE id=$1 returning *';
+    const deleteQuery = 'DELETE FROM orders WHERE order_id=$1 returning *';
     try {
-      const { rows } = await db.query(deleteQuery, [req.params.id]);
+      const { rows } = await database.query(deleteQuery, [req.params.orderId]);
       if(!rows[0]) {
         return res.status(404).send({
             success: 'false',
             status: 'Order Not Found in the Database'
         });
       }
-      return res.status(204).send({
+      return res.status(200).send({
         success: 'true',
         status: 'Order deleted successfuly'
     });

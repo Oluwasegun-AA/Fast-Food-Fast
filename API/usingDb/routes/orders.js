@@ -1,7 +1,7 @@
 //Import statements
 import express from 'express';
 import Controller from '../controllers/orders'
-import Validate from '../../middleware/ordersValidation'
+import Validate from '../../usingDb/middleware/ordersValidation'
 const router = express.Router();
 
 //create an instance of the request validation middlewares
@@ -19,7 +19,7 @@ router.post('/api/v1/orders',validate, controller.addOrder);
 router.post('/api/v1/orders/:orderId', postvalidation,validate);
 router.put('/api/v1/orders', validateOrderId);
 router.put('/api/v1/orders/:orderId', validateOrderId, validate, controller.updateOrder);
-//router.delete('/api/v1/orders/:orderId', validateOrderId, controller.deleteOrder);
-//router.delete('/api/v1/orders',  validateOrderId);
+router.delete('/api/v1/orders/:orderId', validateOrderId, controller.deleteOrder);
+router.delete('/api/v1/orders',  validateOrderId);
 
 export default router;

@@ -5,14 +5,14 @@
 */
 export default {
     populate(req) {
-        let newOrder = {
-            item_id: req.body.item_id,
-            quantity: req.body.quantity,
-            total_price: req.body.total_price,
-            order_status: req.body.order_status,
-            customer_id: req.body.customer_id,
-            customer_address: req.body.customer_address
-        };
+        let newOrder = [
+            req.body.item_id,
+            req.body.quantity,
+            req.body.total_price,
+            req.body.order_status,
+            req.body.customer_id,
+            req.body.customer_address
+        ];
         return newOrder;
     }
 }
@@ -82,7 +82,7 @@ export const invalidCustomer_id = {
 }
 
 //Model data for an order with string where an interger is required
-export const  wrongDataType= {
+export const wrongDataType = {
     "item_id": "A",
     "quantity": "A",
     "total_price": "A",
