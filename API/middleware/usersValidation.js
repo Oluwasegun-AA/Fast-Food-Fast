@@ -3,13 +3,13 @@
 * @param {*} req - incomming API Request
 * @param {*} res - response to the validity of the data
 */
-function validation(req, res, next) {
+function userValidation(req, res, next) {
     let error = {};
-   if (!(req.body.user_name)) {error.UserName_Error = 'User_name is Required';}
-   if (!(req.body.user_role)) {error.UserName_Error = 'User_role is Required';}
-  if (!(req.body.user_email)) {error.Email_Error ='User_email is Required';}
-    if (!(req.body.user_password)) {error.Password_Error = 'Password is Required';}
-    if ((Object.keys(error).length) > 0){ return res.status(400).send({status: 'Bad Request', success:"false",  Error_Log: error});}
+    if (!(req.body.user_name)) { error.UserName_Error = 'User_name is Required'; }
+    if (!(req.body.user_role)) { error.UserRole_Error = 'User_role is Required'; }
+    if (!(req.body.user_email)) { error.Email_Error = 'User_email is Required'; }
+    if (!(req.body.user_password)) { error.Password_Error = 'Password is Required'; }
+    if ((Object.keys(error).length) > 0) { return res.status(400).send({ status: 'Bad Request', success: "false", Error_Log: error }); }
     next();
 }
 
@@ -18,7 +18,7 @@ function validation(req, res, next) {
 * @param {*} req - incomming API request
 * @param {*} res - response to the request Validity
 */
-function idValidation(req, res, next) {
+function userIdValidation(req, res, next) {
     let error = {};
     let numbers = /[0-9]|[0-9][0-9]/g;
     const id = req.params.userId;
@@ -28,13 +28,13 @@ function idValidation(req, res, next) {
     next();
 }
 
-function postIdValidation(req, res, next) {
+function userPostIdValidation(req, res, next) {
     return res.status(400).send({ status: "unsuccessful", Error: "Bad Request, User ID is not Required" });
 }
 
 //export statement
 export default {
-    Validation: validation,
-    userIdValidation: idValidation,
-    PostIdValidation: postIdValidation
+    Validation: userValidation,
+    userIdValidation: userIdValidation,
+    PostIdValidation: userPostIdValidation
 };

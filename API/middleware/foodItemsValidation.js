@@ -3,15 +3,15 @@
 * @param {*} req - incomming API Request
 * @param {*} res - response to the validity of the data
 */
-function validation(req, res, next) {
-    let error = {};
-    let numbers = /[0-9]|[0-9][0-9]/g;
-    if ((req.body.item_price) != undefined){if (!((req.body.item_price).match(numbers))) {return res.status(400).send({status: 'unsuccessful', Error_Log: 'Bad Request, Price is not Valid'});}}
-    if (!(req.body.item_name)) {error.Name_Error = 'Item Name is Required';}
-    if (!(req.body.item_price)) {error.Price_Error ='Item Price is Required';}
-    if (!(req.body.item_tag)) {error.Tag_Error = 'Item Tag is Required';}
-    if (!(req.body.item_image)) {error.Tag_Error = 'Item Image is Required';}
-    if ((Object.keys(error).length) > 0){ return res.status(400).send({status: 'Bad Request', success:"false",  Error_Log: error});}
+function menuValidation(req, res, next) {
+    let err = {};
+    let num = /[0-9]|[0-9][0-9]/g;
+    if ((req.body.item_price) != undefined) { if (!((req.body.item_price).match(num))) {err.Price_Error = 'Price is not Valid' } }
+    if (!(req.body.item_name)) { err.Name_Error = 'Item Name is Required'; }
+    if (!(req.body.item_price)) { err.Price_Error = 'Item Price is Required'; }
+    if (!(req.body.item_tag)) { err.Tag_Error = 'Item Tag is Required'; }
+    if (!(req.body.item_image)) { err.Tag_Error = 'Item Image is Required'; }
+    if ((Object.keys(err).length) > 0) { return res.status(400).send({ status: 'Bad Request', success: "false", Error_Log: err }); }
     next();
 }
 
@@ -20,23 +20,23 @@ function validation(req, res, next) {
 * @param {*} req - incomming API request
 * @param {*} res - response to the request Validity
 */
-function idValidation(req, res, next) {
-    let error = {};
-    let numbers = /[0-9]|[0-9][0-9]/g;
+function menuIdValidation(req, res, next) {
+    let err = {};
+    let num = /[0-9]|[0-9][0-9]/g;
     const id = req.params.itemId;
-    if (id === undefined || id === null || id === "") { error.Id_Error = 'Bad Request, food Item ID is Required'; }
-    else { if (!(id.match(numbers))) { error.status = 'unsuccessful'; error.Id_Error = 'Bad Request, food Item ID is not Valid'; } }
-    if ((Object.keys(error).length) > 0) { return res.status(400).send({ status: "unsuccessful", Error_Log: error }); }
+    if (id === undefined || id === null || id === "") { err.Id_Error = 'Bad Request, food Item ID is Required'; }
+    else { if (!(id.match(num))) { err.status = 'unsuccessful'; err.Id_Error = 'Bad Request, food Item ID is not Valid'; } }
+    if ((Object.keys(err).length) > 0) { return res.status(400).send({ status: "unsuccessful", Error_Log: err }); }
     next();
 }
 
-function postIdValidation(req, res, next) {
+function menuPostIdValidation(req, res, next) {
     return res.status(400).send({ status: "unsuccessful", Error: "Bad Request, food Item ID is not Required" });
 }
 
 //export statement
 export default {
-    Validation: validation,
-    foodItemIdValidation: idValidation,
-    PostIdValidation: postIdValidation
+    Validation: menuValidation,
+    foodItemIdValidation: menuIdValidation,
+    PostIdValidation: menuPostIdValidation
 };
