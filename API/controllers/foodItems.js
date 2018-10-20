@@ -1,5 +1,5 @@
 //Import statments
-import model from '../model/foodItems-model';
+import model from '../seed/populate';
 import database from '../db/Index';
 
 export default class Controller {
@@ -10,7 +10,6 @@ export default class Controller {
     */
     async getFoodItems(req, res) {
         const command = 'SELECT * FROM food_items';
-        try {
             const { rows, rowCount } = await database.query(command);
             return res.status(200).send({
                 success: 'true',
@@ -18,13 +17,6 @@ export default class Controller {
                 Food_Items: rows,
                 total_Food_Items: rowCount
             });
-        } catch (error) {
-            return res.status(400).send({
-                success: 'false',
-                status: 'Bad Request',
-                message : error
-            });
-        }
     }
 
     /**
@@ -34,7 +26,6 @@ export default class Controller {
          */
     async getFoodItem(req, res) {
         const command = 'SELECT * FROM food_items WHERE item_id=$1';
-        try {
             const { rows } = await database.query(command, [req.params.itemId]);
             if (!rows[0]) {
                 return res.status(404).send({
@@ -46,13 +37,6 @@ export default class Controller {
                 status: 'Item retrieved successfully',
                 Item: rows[0]
             });
-        } catch (error) {
-            return res.status(400).send({
-                success: 'false',
-                status: 'Bad Request',
-                message : error
-            })
-        }
     }
 
 /**
@@ -66,19 +50,11 @@ async addFoodItem(req, res) {
     food_items(item_name,item_image,item_price,item_tag)
       VALUES($1, $2, $3, $4)
       returning *`;
-    try {
         const { rows } = await database.query(command, newItem);
         return res.status(201).send({
             item_sent: rows[0],
             status: 'Item Sent Successfully'
         });
-    } catch (error) {
-        return res.status(400).send({
-            success: 'false',
-            status: 'Bad Request',
-            message : error
-        });
-    }
 }
 
 /**
@@ -93,8 +69,6 @@ async updateFoodItem(req, res){
         item.push(req.params.itemId);
     const findQuery = `SELECT * FROM food_items WHERE item_id=$1`;
     const updateQuery =`UPDATE food_items SET item_name=$1,item_image=$2,item_price=$3,item_tag=$4,modified_date=$5 WHERE item_id=$6 returning *`;
-    try {
-        console.log('here');
       const { rows } = await database.query(findQuery, [req.params.itemId]);
       if(!rows[0]) {
         return res.status(410).send({
@@ -109,13 +83,6 @@ async updateFoodItem(req, res){
         update: response.rows[0],
         status: "Update successful"
     });
-    } catch(err) {
-      return res.status(400).send({
-        success: 'false',
-        status: 'Bad Request',
-        message : err
-    });
-    }
 }
 
 
@@ -126,7 +93,6 @@ async updateFoodItem(req, res){
 */
 async deleteFoodItem(req, res) {
     const deleteQuery = 'DELETE FROM food_items WHERE item_id=$1 returning *';
-    try {
       const { rows } = await database.query(deleteQuery, [req.params.itemId]);
       if(!rows[0]) {
         return res.status(404).send({
@@ -138,12 +104,5 @@ async deleteFoodItem(req, res) {
         success: 'true',
         status: 'Item deleted successfuly'
     });
-    } catch(error) {
-      return res.status(400).send({
-        success: 'false',
-        status: 'Bad Request',
-        message : error
-    });
-    }
   }
 }

@@ -1,5 +1,5 @@
 //Import statments
-import model from '../model/order-model';
+import model from '../seed/populate';
 import database from '../db/Index';
 
 
@@ -11,21 +11,13 @@ export default class Controller {
     */
     async getOrders(req, res) {
         const command = 'SELECT * FROM orders';
-        try {
             const { rows, rowCount } = await database.query(command);
             return res.status(200).send({
                 success: 'true',
-                status: 'Orders retrieved successfully',
+                status: 'Orders Retrieved Successfully',
                 orders: rows,
                 total_orders: rowCount
             });
-        } catch (error) {
-            return res.status(400).send({
-                success: 'false',
-                status: 'Bad Request',
-                message : error
-            });
-        }
     }
 
     /**
@@ -35,7 +27,6 @@ export default class Controller {
          */
     async getOrder(req, res) {
         const command = 'SELECT * FROM orders WHERE order_id=$1';
-        try {
             const { rows } = await database.query(command, [req.params.orderId]);
             if (!rows[0]) {
                 return res.status(404).send({
@@ -44,16 +35,24 @@ export default class Controller {
                 });
             } else return res.status(200).send({
                 success: 'true',
-                status: 'Order retrieved successfully',
+                status: 'Order Retrieved Successfully',
                 order: rows[0]
             });
-        } catch (error) {
-            return res.status(400).send({
-                success: 'false',
-                status: 'Bad Request',
-                message : error
-            })
-        }
+    }
+
+    async userOrderHistory(req, res){
+        const command = 'SELECT * FROM orders WHERE customer_id=$1';
+            const { rows } = await database.query(command, [req.params.userId]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    success: 'false',
+                    status: 'Orders Not Found in the Database'
+                });
+            } else return res.status(200).json({
+                success: 'true',
+                status: 'Orders Retrieved Successfully',
+                order: rows
+            });
     }
 
 /**
@@ -67,19 +66,11 @@ async addOrder(req, res) {
     orders(item_id, quantity, total_price, order_status,customer_id, customer_address)
       VALUES($1, $2, $3, $4, $5,$6)
       returning *`;
-    try {
         const { rows } = await database.query(command, newOrder);
         return res.status(201).send({
             order_sent: rows[0],
             status: 'Order Sent Successfully'
         });
-    } catch (error) {
-        return res.status(400).send({
-            success: 'false',
-            status: 'Bad Request',
-            message : error
-        });
-    }
 }
 
 /**
@@ -94,7 +85,6 @@ async updateOrder(req, res){
     order.push(req.params.orderId);
     const findQuery = 'SELECT * FROM orders WHERE order_id=$1';
     const updateQuery =`UPDATE orders SET item_id=$1,quantity=$2,total_price=$3,order_status=$4,customer_id=$5,customer_address=$6,modified_date=$7 WHERE order_id=$8 returning *`;
-    try {
       const { rows } = await database.query(findQuery, [req.params.orderId]);
       if(!rows[0]) {
         return res.status(410).send({
@@ -102,22 +92,13 @@ async updateOrder(req, res){
             status: 'Order Not Found in the Database'
         });
       }
-      console.log("again")
       const response = await database.query(updateQuery, order);
-      console.log("entered again")
       return res.status(200).send({
         orderId: req.params.orderId,
         old_Order: rows[0],
         update: response.rows[0],
         status: "Update successful"
     });
-    } catch(err) {
-      return res.status(400).send({
-        success: 'false',
-        status: 'Bad Request',
-        message : err
-    });
-    }
 }
 
 
@@ -128,7 +109,6 @@ async updateOrder(req, res){
 */
 async deleteOrder(req, res) {
     const deleteQuery = 'DELETE FROM orders WHERE order_id=$1 returning *';
-    try {
       const { rows } = await database.query(deleteQuery, [req.params.orderId]);
       if(!rows[0]) {
         return res.status(404).send({
@@ -138,14 +118,7 @@ async deleteOrder(req, res) {
       }
       return res.status(200).send({
         success: 'true',
-        status: 'Order deleted successfuly'
+        status: 'Order Deleted Successfuly'
     });
-    } catch(error) {
-      return res.status(400).send({
-        success: 'false',
-        status: 'Bad Request',
-        message : error
-    });
-    }
   }
 }
