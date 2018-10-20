@@ -10,7 +10,8 @@
     "start": "npm run build && node ./dist/server.js",
     "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
     "clear": "rimraf dist coverage",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/test/*.js --exit",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/test/*.js --exit",
+    "coverage": "npm run create && npm run cover",
     "create": "babel-node ./API/db/db.js",
     "heroku-postbuild": "npm run create"
   },
