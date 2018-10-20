@@ -20,15 +20,14 @@ const message = ()=>{
 //instanciate imported middlewares
 app.use (logger('common'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(ordersRoute);
-app.use(itemsRoute);
-app.use(usersRoute);
-
+app.use('/api/v1',ordersRoute);
+app.use('/api/v1',itemsRoute);
+app.use('/api/v1',usersRoute);
 
 // Set listener to port for API queries
 app.listen(port, message());
-
 
 //export app for testing purpose
   export default app;
