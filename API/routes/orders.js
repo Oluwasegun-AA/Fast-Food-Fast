@@ -2,6 +2,8 @@
 import express from 'express';
 import Controller from '../controllers/orders'
 import Validate from '../middleware/ordersValidation'
+import userCheck from '../middleware/usersValidation';
+import { verifyAdmin, verifyUserToken } from '../middleware/verifyToken';
 const router = express.Router();
 
 //create an instance of the request validation middlewares
@@ -13,13 +15,14 @@ let postvalidation = Validate.PostIdValidation
 const controller = new Controller(); 
 
 // Routes
-router.get('/api/v1/orders', controller.getOrders);
-router.get('/api/v1/orders/:orderId', validateOrderId, controller.getOrder);
-router.post('/api/v1/orders',validate, controller.addOrder);
-router.post('/api/v1/orders/:orderId', postvalidation,validate);
-router.put('/api/v1/orders', validateOrderId);
-router.put('/api/v1/orders/:orderId', validateOrderId, validate, controller.updateOrder);
-router.delete('/api/v1/orders/:orderId', validateOrderId, controller.deleteOrder);
-router.delete('/api/v1/orders',  validateOrderId);
+router.get('/orders',verifyUserToken, verifyAdmin, controller.getOrders);
+router.get('/orders/:orderId', verifyUserToken, verifyAdmin,validateOrderId, controller.getOrder);
+router.get('/users/:userId/orders', userCheck.userIdValidation , controller.userOrderHistory);
+router.post('/orders',validate, controller.addOrder);
+router.post('/orders/:orderId', postvalidation,validate);
+router.put('/orders/', validateOrderId);
+router.put('/orders/:orderId',verifyUserToken, verifyAdmin, validateOrderId, validate, controller.updateOrder);
+router.delete('/orders/:orderId', validateOrderId, controller.deleteOrder);
+router.delete('/orders',  validateOrderId);
 
 export default router;
