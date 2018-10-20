@@ -1,4 +1,5 @@
-import database from './API/usingdb/db/index'
+import database from './Index'
+import bcrypt from 'bcryptjs';
 
 /**
  * Create Tables
@@ -27,7 +28,7 @@ async function createTables() {
       );`;
     const orders = `CREATE TABLE IF NOT EXISTS orders(
         order_id SERIAL PRIMARY KEY,
-        item_id integer NOT NULL UNIQUE,
+        item_id integer NOT NULL,
         quantity integer NOT NULL,
         total_price integer NOT NULL,
         order_status status DEFAULT 'New',
@@ -37,8 +38,9 @@ async function createTables() {
         modified_date varchar(255) DEFAULT NULL
       );`;
     let user_data = `INSERT INTO user_accounts (user_name,user_role,user_email,user_password)
-      VALUES ('testName', 'User', 'testEmail@address.com', 'p@ssword123'),
-      ('tester', 'Admin', 'tester@owner.com', 'p@$$word123');`
+      VALUES ('testName', 'User', 'testEmail@address.com', '${bcrypt.hashSync('P@ssword', 10)}'),
+      ('tester', 'Admin', 'tester@owner.com', '${bcrypt.hashSync('P@$$word123', 10)}'),
+      ('backEndTester', 'User', 'backendtester1@address.com', '${bcrypt.hashSync('backendtester123', 10)}');`
 
     let order_data = `INSERT INTO orders (item_id, quantity, total_price, order_status,customer_id, customer_address)
       VALUES ('1', '2', '2000', 'New', '1', 'Andela EPIC Tower, Lagos' ),('2', '1','1000','Processing','2', 'Andela EPIC Tower, Ibadan' )`

@@ -1,31 +1,7 @@
 //Import statments
-import storage from '../data/database';
-import model from '../model/order-model';
+import model from '../seed/populate';
+import database from '../db/Index';
 
-/**
- * Adds an Order to the database
- * @param {*} req - incomming json data
- * @param {*} res - response to the validity of the data
- * @param {*} id  - orderId associated with the data
- */
-let pushOrder = (req, res, id) => {
-    let newOrder = model.populate(req, id);
-    storage.database.push(newOrder);
-    return newOrder;
-}
-
-/**
- * Updates an Order in the database
- * @param {*} req   - incomming json data
- * @param {*} res   - response to the validity of the data
- * @param {*} index - the index of the order being Updated
- * @param {*} id    - orderId associated with the data
- */
-let putOrder = (req, index, id) => {
-    let newOrder = model.populate(req, id);
-    storage.database[index] = newOrder;
-    return newOrder;
-}
 
 export default class Controller {
     /**
@@ -33,12 +9,15 @@ export default class Controller {
         * @param {*} req - incomming request data
         * @param {*} res - response to the validity of the data 
     */
-    getOrders(req, res) {
-        res.status(200).send({
-            success: 'true',
-            status: 'Orders retrieved successfully',
-            orders: storage.database
-        });
+    async getOrders(req, res) {
+        const command = 'SELECT * FROM orders';
+            const { rows, rowCount } = await database.query(command);
+            return res.status(200).send({
+                success: 'true',
+                status: 'Orders Retrieved Successfully',
+                orders: rows,
+                total_orders: rowCount
+            });
     }
 
     /**
@@ -46,99 +25,100 @@ export default class Controller {
          * @param {*} req - incomming Request data
          * @param {*} res - response to the validity of the data
          */
-    getOrder(req, res) {
-        const id = parseInt(req.params.orderId, 10);
-        let orderIndex;
-        storage.database.map((order, index) => {
-            if (order.orderId == id) {
-                orderIndex = index;
-                let value = storage.database[index];
-                res.status(200).send({
-                    success: 'true',
-                    status: 'Order retrieved successfully',
-                    order: value
+    async getOrder(req, res) {
+        const command = 'SELECT * FROM orders WHERE order_id=$1';
+            const { rows } = await database.query(command, [req.params.orderId]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    success: 'false',
+                    status: 'Order Not Found in the Database'
                 });
-            };
-        });
-        if (orderIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                status: 'Order Not Found in the Database'
-            })
-        }
+            } else return res.status(200).send({
+                success: 'true',
+                status: 'Order Retrieved Successfully',
+                order: rows[0]
+            });
     }
 
-    /**
-        * Add an Order to existing orders in the database
-        *  @param {*} req - incomming json data
-        *  @param {*} res - response to the sucess of the event
-    */
-    addOrder(req, res) {
-        let id = storage.database.length;
-        let sentOrder = pushOrder(req, res, id);
-        res.status(201).send({
-            orderId: id,
-            order_sent: sentOrder,
+    async userOrderHistory(req, res){
+        const command = 'SELECT * FROM orders WHERE customer_id=$1';
+            const { rows } = await database.query(command, [req.params.userId]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    success: 'false',
+                    status: 'Orders Not Found in the Database'
+                });
+            } else return res.status(200).json({
+                success: 'true',
+                status: 'Orders Retrieved Successfully',
+                order: rows
+            });
+    }
+
+/**
+    * Add an Order to existing orders in the database
+    *  @param {*} req - incomming json data
+    *  @param {*} res - response to the sucess of the event
+*/
+async addOrder(req, res) {
+    let newOrder = model.populate(req);
+    const command = `INSERT INTO
+    orders(item_id, quantity, total_price, order_status,customer_id, customer_address)
+      VALUES($1, $2, $3, $4, $5,$6)
+      returning *`;
+        const { rows } = await database.query(command, newOrder);
+        return res.status(201).send({
+            order_sent: rows[0],
             status: 'Order Sent Successfully'
         });
-    }
+}
 
-    /**
-     * Update an order in the database
-     *  @param {*} req - incomming json data
-     * @param {*} res - response to the success of the event 
-     */
-    updateOrder(req, res) {
-
-        let map = 0;
-        const id = parseInt(req.params.orderId, 10);
-        let oldOrder = storage.database[id];
-        storage.database.map((order, index) => {
-            map++;
-            if (order.orderId == id) {
-                map--;
-                let state = putOrder(req, index, id);
-                res.status(200).send({
-                    orderId: id,
-                    old_Order: oldOrder,
-                    update: state,
-                    status: "Update successful"
-                });
-            } else {
-                if (map == storage.database.length) {
-                    return res.status(410).send({
-                        success: 'false',
-                        status: 'Requested resourse is no longer available'
-                    });
-                } else return;
-            }
+/**
+ * Update an order in the database
+ *  @param {*} req - incomming json data
+ * @param {*} res - response to the success of the event 
+ */
+async updateOrder(req, res){
+    let order = model.populate(req);
+    let date = new Date();
+    order.push(date);
+    order.push(req.params.orderId);
+    const findQuery = 'SELECT * FROM orders WHERE order_id=$1';
+    const updateQuery =`UPDATE orders SET item_id=$1,quantity=$2,total_price=$3,order_status=$4,customer_id=$5,customer_address=$6,modified_date=$7 WHERE order_id=$8 returning *`;
+      const { rows } = await database.query(findQuery, [req.params.orderId]);
+      if(!rows[0]) {
+        return res.status(410).send({
+            success: 'false',
+            status: 'Order Not Found in the Database'
         });
-    }
+      }
+      const response = await database.query(updateQuery, order);
+      return res.status(200).send({
+        orderId: req.params.orderId,
+        old_Order: rows[0],
+        update: response.rows[0],
+        status: "Update successful"
+    });
+}
 
 
-    /**
-    * Delete an order in the database
-    *  @param {*} req - incomming request data
-    * @param {*} res - response to the validity of the data
-    */
-    deleteOrder(req, res) {
-        const id = parseInt(req.params.orderId, 10)
-        let orderIndex;
-        storage.database.map((order, index) => {
-            if (order.orderId == id) {
-                orderIndex = index
-                storage.database.splice(index, 1)
-                res.status(200).send({
-                    success: 'true',
-                    status: 'Order deleted successfuly'
-                });
-            }
+/**
+* Delete an order in the database
+*  @param {*} req - incomming request data
+* @param {*} res - response to the validity of the data
+*/
+async deleteOrder(req, res) {
+    const deleteQuery = 'DELETE FROM orders WHERE order_id=$1 returning *';
+      const { rows } = await database.query(deleteQuery, [req.params.orderId]);
+      if(!rows[0]) {
+        return res.status(404).send({
+            success: 'false',
+            status: 'Order Not Found in the Database'
         });
-        if (orderIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                status: 'Order Not Found in the Database'
-            });
-        }
-    }
+      }
+      return res.status(200).send({
+        success: 'true',
+        status: 'Order Deleted Successfuly'
+    });
+  }
 }

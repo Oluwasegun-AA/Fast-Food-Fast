@@ -2,18 +2,22 @@
 * Validate post and Put request contains all required parameters
 * @param {*} req - incomming API Request
 * @param {*} res - response to the validity of the data
+* @param {*} next 
 */
-function validation(req, res, next) {
-    let error = {};
-    let numbers = /[0-9]|[0-9][0-9]/g;
-    if ((req.body.price) != undefined){if (!((req.body.price).match(numbers))) {  return res.status(400).send({status: 'unsuccessful', Error_Log: 'Bad Request, Price is not Valid'});}}
-    if ((req.body.quantity) != undefined){if (!((req.body.quantity).match(numbers))) {  return res.status(400).send({status: 'unsuccessful', Error_Log: 'Bad Request, Quantity is not Valid'});}}
-    if (!(req.body.food)) {error.Food_Error = 'Food Name is Required';}
-    if (!(req.body.price)) {error.Price_Error ='Price is Required';}
-    if (!(req.body.quantity)) {error.Quantity_Error = 'Quantity is Required';}
-    if (!(req.body.orderStatus)) {error.Order_status_Error = 'Order Status is Required';}
-    if (!(req.body.userAddress)){error.Address_Error = 'User Address is Required';}
-    if ((Object.keys(error).length) > 0){ return res.status(400).send({status: 'Bad Request', success:"false",  Error_Log: error});}
+function orderValidation(req, res, next) {
+    let wrong = {};
+    let digits = /[0-9]|[0-9][0-9]/g;
+    if ((req.body.total_price) != undefined) { if (!((req.body.total_price).match(digits))) {wrong.Price_Error = 'Total Price is not Valid';}} 
+    if (!(req.body.total_price)) { wrong.Price_Error = 'Total Price is Required'; }
+    if ((req.body.quantity) != undefined) { if (!((req.body.quantity).match(digits))) {wrong.Quantity_Error = 'Quantity is not Valid';}} 
+    if (!(req.body.quantity)) { wrong.Quantity_Error = 'Quantity is Required'; }
+    if ((req.body.customer_id) != undefined) { if (!((req.body.customer_id).match(digits))) {wrong.CustomerId_Error = 'Customer Id is not Valid';}}
+    if (!(req.body.customer_id)) { wrong.CustomerId_Error = 'Customer ID is Required'; }
+    if (!(req.body.order_status)) { wrong.Status_Error = 'Order Status is Required'; }
+    if (!(req.body.customer_address)) { wrong.Price_Error = 'Customer Address is Required'; }
+    if ((req.body.item_id) != undefined) { if (!((req.body.item_id).match(digits))) { wrong.ItemId_Error = 'Item Id is not Valid';}}
+    if (!(req.body.item_id)) { wrong.ItemId_Error = 'Item ID is Required'; }
+    if ((Object.keys(wrong).length) > 0) { return res.status(400).send({ status: 'Bad Request', success: 'false', Error_Log: wrong }); }
     next();
 }
 
@@ -21,24 +25,25 @@ function validation(req, res, next) {
 * Validate post and Put request contains a valid interger ID
 * @param {*} req - incomming API request
 * @param {*} res - response to the request Validity
+* @param {*} next 
 */
-function idValidation(req, res, next) {
-    let error = {};
-    let numbers = /[0-9]|[0-9][0-9]/g;
+function orderIdValidation(req, res, next) {
+    let wrong = {};
+    let digits = /[0-9]|[0-9][0-9]/g;
     const id = req.params.orderId;
-    if (id === undefined || id === null || id === "") { error.orderId_Error = 'Bad Request, Order ID is Required'; }
-    else { if (!(id.match(numbers))) { error.status = 'unsuccessful'; error.orderId_Error = 'Bad Request, Order ID is not Valid'; } }
-    if ((Object.keys(error).length) > 0) { return res.status(400).send({ status: "unsuccessful", Error_Log: error }); }
+    if (id === undefined || id === null || id === "") { wrong.orderId_Error = 'Bad Request, Order ID is Required'; }
+    else { if (!(id.match(digits))) { wrong.status = 'unsuccessful'; wrong.orderId_Error = 'Bad Request, Order ID is not Valid'; } }
+    if ((Object.keys(wrong).length) > 0) { return res.status(400).send({ status: "unsuccessful", Error_Log: wrong }); }
     next();
 }
 
-function postIdValidation(req, res, next) {
+function orderPostIdValidation(req, res, next) {
     return res.status(400).send({ status: "unsuccessful", Error: "Bad Request, Order ID is not Required" });
 }
 
 //export statement
 export default {
-    Validation: validation,
-    orderIdValidation: idValidation,
-    PostIdValidation: postIdValidation
+    Validation: orderValidation,
+    orderIdValidation: orderIdValidation,
+    PostIdValidation: orderPostIdValidation
 };

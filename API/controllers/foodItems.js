@@ -1,144 +1,108 @@
 //Import statments
-import storage from '../data/database';
-import model from '../model/foodItems-model';
-
-/**
- * Adds a foodItem to the database
- * @param {*} req - incomming json request with data
- * @param {*} res - response to the validity of the data
- * @param {*} id  - itemId associated with the data
- */
-let pushFoodItem = (req, res, id) => {
-    let newFoodItem = model.populate(req, id);
-    storage.foodItemsData.push(newFoodItem);
-    return newFoodItem;
-}
-
-/**
- * Updates a foodItem in the database
- * @param {*} req   - incomming json request with data
- * @param {*} res   - response to the validity of the data
- * @param {*} index - the index of the foodItem being Updated
- * @param {*} id    - itemId associated with the data
- */
-let putFoodItem = (req, index, id) => {
-    let newFoodItem = model.populate(req, id);
-    storage.foodItemsData[index] = newFoodItem;
-    return newFoodItem;
-}
-
+import model from '../seed/populate';
+import database from '../db/Index';
 
 export default class Controller {
     /**
-        * Gets All foodItems in the database and sends as response
+        * Gets All food_items in the database and sends as response
         * @param {*} req - incomming request data
-        * @param {*} res - response to the validity of the data
+        * @param {*} res - response to the validity of the data 
     */
-    getFoodItems(req, res) {
-        res.status(200).send({
-            success: 'true',
-            Status: 'Food Items retrieved successfully',
-            food_Items: storage.foodItemsData
-        });
+    async getFoodItems(req, res) {
+        const command = 'SELECT * FROM food_items';
+            const { rows, rowCount } = await database.query(command);
+            return res.status(200).send({
+                success: 'true',
+                status: 'Food Items retrieved successfully',
+                Food_Items: rows,
+                total_Food_Items: rowCount
+            });
     }
 
     /**
-         * Gets a particular foodItem in the database and send as response
+         * Gets a particular item in the database and send as response
          * @param {*} req - incomming Request data
          * @param {*} res - response to the validity of the data
-    */
-    getFoodItem(req, res) {
-        const id = parseInt(req.params.itemId, 10);
-        let foodItemIndex;
-        storage.foodItemsData.map((foodItem, index) => {
-            if (foodItem.itemId == id) {
-                foodItemIndex = index;
-                let value = storage.foodItemsData[index];
-                res.status(200).send({
-                    success: 'true',
-                    status: 'Food Item retrieved successfully',
-                    food_Item: value
+         */
+    async getFoodItem(req, res) {
+        const command = 'SELECT * FROM food_items WHERE item_id=$1';
+            const { rows } = await database.query(command, [req.params.itemId]);
+            if (!rows[0]) {
+                return res.status(404).send({
+                    success: 'false',
+                    status: 'Item Not Found in the Database'
                 });
-            };
-        });
-        if (foodItemIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                status: 'Food Item Not Found in the Database'
-            })
-        }
-    }
-
-    /**
-        * Add a foodItem to existing foodItems in the foodData
-        *  @param {*} req - incomming json request with data
-        *  @param {*} res - response to the sucess of the event
-    */
-    addFoodItem(req, res) {
-        let id = storage.foodItemsData.length;
-        let sentFoodItem = pushFoodItem(req, res, id);
-        res.status(201).send({
-            itemId: id,
-            food_item_sent: sentFoodItem,
-            status: 'Food Item Sent Successfully'
-        });
-    }
-
-    /**
-     * Update a foodItem in the foodItemsData
-     *  @param {*} req - incomming json request with data
-     * @param {*} res - response to the success of the event 
-     */
-    updateFoodItem(req, res) {
-        let map = 0;
-        const id = parseInt(req.params.itemId, 10);
-        let oldFoodItem = storage.foodItemsData[id];
-        storage.foodItemsData.map((foodItem, index) => {
-            map++;
-            if (foodItem.itemId == id) {
-                map--;
-                let state = putFoodItem(req, index, id);
-                res.status(200).send({
-                    itemId: id,
-                    old_foodItem: oldFoodItem,
-                    update: state,
-                    Status: "Update successful"
-                });
-            } else {
-                if (map == storage.foodItemsData.length) {
-                    return res.status(410).send({
-                        success: 'false',
-                        Status: 'Requested Food Item is no longer available'
-                    });
-                } else return;
-            }
-        });
-    }
-
-
-    /**
-    * Delete a foodItem in the foodItemsData
-    *  @param {*} req - incomming request data
-    * @param {*} res - response to the validity of the data
-    */
-    deleteFoodItem(req, res) {
-        const id = parseInt(req.params.itemId, 10)
-        let foodItemIndex;
-        storage.foodItemsData.map((foodItem, index) => {
-            if (foodItem.itemId == id) {
-                foodItemIndex = index
-                storage.foodItemsData.splice(index, 1)
-                res.status(200).send({
-                    success: 'true',
-                    Status: 'Food Item deleted successfuly'
-                });
-            }
-        });
-        if (foodItemIndex == undefined) {
-            return res.status(404).send({
-                success: 'false',
-                Status: 'Food Item Not Found in the Database'
+            } else return res.status(200).send({
+                success: 'true',
+                status: 'Item retrieved successfully',
+                Item: rows[0]
             });
-        }
     }
+
+/**
+    * Add an Item to existing food_items in the database
+    *  @param {*} req - incomming json data
+    *  @param {*} res - response to the sucess of the event
+*/
+async addFoodItem(req, res) {
+    let newItem = model.populate(req);
+    const command = `INSERT INTO
+    food_items(item_name,item_image,item_price,item_tag)
+      VALUES($1, $2, $3, $4)
+      returning *`;
+        const { rows } = await database.query(command, newItem);
+        return res.status(201).send({
+            item_sent: rows[0],
+            status: 'Item Sent Successfully'
+        });
+}
+
+/**
+ * Update an Item in the database
+ *  @param {*} req - incomming json data
+ * @param {*} res - response to the success of the event 
+ */
+async updateFoodItem(req, res){
+    let item = model.populate(req);
+        let date = new Date();
+        item.push(date);
+        item.push(req.params.itemId);
+    const findQuery = `SELECT * FROM food_items WHERE item_id=$1`;
+    const updateQuery =`UPDATE food_items SET item_name=$1,item_image=$2,item_price=$3,item_tag=$4,modified_date=$5 WHERE item_id=$6 returning *`;
+      const { rows } = await database.query(findQuery, [req.params.itemId]);
+      if(!rows[0]) {
+        return res.status(410).send({
+            success: 'false',
+            status: 'Requested resourse is no longer available'
+        });
+      }
+      const response = await database.query(updateQuery, item);
+      return res.status(200).send({
+        itemId: req.params.itemId,
+        old_item: rows[0],
+        update: response.rows[0],
+        status: "Update successful"
+    });
+}
+
+
+/**
+* Delete an Item in the database
+*  @param {*} req - incomming request data
+* @param {*} res - response to the validity of the data
+*/
+async deleteFoodItem(req, res) {
+    const deleteQuery = 'DELETE FROM food_items WHERE item_id=$1 returning *';
+      const { rows } = await database.query(deleteQuery, [req.params.itemId]);
+      if(!rows[0]) {
+        return res.status(404).send({
+            success: 'false',
+            status: 'Item Not Found in the Database'
+        });
+      }
+      return res.status(200).send({
+        success: 'true',
+        status: 'Item deleted successfuly'
+    });
+  }
 }
