@@ -6,7 +6,7 @@
     "node": "10.9.0"
   },
   "scripts": {
-    "test": " npm run build && mocha dist/test/*.js --exit",
+    "test": " npm run create && npm run build && mocha dist/test/*.js --exit",
     "start": "npm run build && node ./dist/server.js",
     "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
     "clear": "rimraf dist coverage",
