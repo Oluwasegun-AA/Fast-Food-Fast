@@ -6,6 +6,7 @@ import * as test from '../test/model/user-model';
 describe('Validate GET Route', () => {
     it('should be valid route /api/v1/users returns 200 (users retrieved successfully)', (end) => {
         request(app).get('/api/v1/users')
+            .set('x-access-token', test.admin_token.validAdmin)
             .expect("Content-type", /json/)
             .expect(function (res) {
                 res.body.success = 'true';
@@ -14,8 +15,29 @@ describe('Validate GET Route', () => {
             })
             .expect(200, end)
     });
+    it('should be invalid route, for route not declared', (end) => {
+        request(app).get('/api/v1/usesl')
+            .set('x-access-token', test.admin_token.validAdmin)
+            .expect("Content-type", /json/)
+            .expect(function (res) {
+                res.body.error = '404';
+                res.body.status = 'success';
+            })
+            .expect(404, end)
+    });
+    it('should show a welcome message at home route', (end) => {
+        request(app).get('/api/v1')
+            .set('x-access-token', test.admin_token.validAdmin)
+            .expect("Content-type", /json/)
+            .expect(function (res) {
+                res.body.status = "connection successful";
+                res.body.message = 'Welcome to Fast Food Fast!';
+            })
+            .expect(404, end)
+    });
     it('should be valid route /api/v1/users/1 returns 200 (users retrieved successfully)', (end) => {
         request(app).get('/api/v1/users/1')
+            .set('x-access-token', test.admin_token.validAdmin)
             .expect("Content-type", /json/)
             .expect(function (res) {
                 res.body.success = 'true';
@@ -26,6 +48,7 @@ describe('Validate GET Route', () => {
     });
     it('should return error 404(User not found in the database) if database does not have data at that location', (end) => {
         request(app).get('/api/v1/users/2000000')
+            .set('x-access-token', test.admin_token.validAdmin)
             .expect('Content-Type', /json/)
             .expect(function (res) {
                 res.body.success = "false";
@@ -36,6 +59,7 @@ describe('Validate GET Route', () => {
     describe("When non interger UserId is sent", () => {
         it('should return statusCode of 400(Bad Request)', (end) => {
             request(app).get('/api/v1/users/A')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.status = "unsuccessful";
@@ -155,7 +179,8 @@ describe('Validate PUT Route', () => {
     describe("when Correct PUT Query is supplied", () => {
         it('should be valid route /api/v1/users/1 editted successfully returning status code 200(Update Successful)', (end) => {
             request(app).put('/api/v1/users/1')
-                .type('JSON').send(test.fullUser2)
+                .set('x-access-token', test.admin_token.validAdmin2)
+                .type('JSON').send(test.fullUser)
                 .expect(function (res) {
                     res.body.Status = "Update successful";
                 })
@@ -165,6 +190,7 @@ describe('Validate PUT Route', () => {
     describe("When non interger UserId is sent", () => {
         it('should return statusCode of 400(Bad Request)', (end) => {
             request(app).put('/api/v1/users/A')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .type('JSON').send(test.fullUser)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
@@ -175,9 +201,9 @@ describe('Validate PUT Route', () => {
     });
 
     it("should return 404(Bad Request, when UserId is undefined)", (end) => {
-        request(app).put('/api/v1/users/')
+        request(app).put('/api/v1/users')
             .type('JSON')
-            .send(test.fullUser)
+            .send(test.fullUser3)
             .expect(function (res) {
                 res.body.status = 'unsuccessful';
                 res.body.status.toLowerCase();
@@ -188,6 +214,7 @@ describe('Validate PUT Route', () => {
 describe("Resolve Conflicts", () => {
     it("should return 410(Previous User not found, when memory has no data to modify)", (end) => {
         request(app).put('/api/v1/users/300')
+            .set('x-access-token', test.admin_token.validAdmin)
             .type('JSON')
             .send(test.fullUser)
             .expect('Content-Type', /json/)
@@ -204,6 +231,7 @@ describe("Validate Delete Route", () => {
     describe("When UserId is correctly supplied", () => {
         it('should return StatusCode 200(User successfully deleted)', (end) => {
             request(app).delete('/api/v1/users/1')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.success = "true";
@@ -215,6 +243,7 @@ describe("Validate Delete Route", () => {
     describe("When item can not be found in the database", () => {
         it('should return statusCode of 404(User not found)', (end) => {
             request(app).delete('/api/v1/users/300')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.success = "false";
@@ -226,6 +255,7 @@ describe("Validate Delete Route", () => {
     describe("When non interger UserId is sent", () => {
         it('should return statusCode of 400(Bad Request)', (end) => {
             request(app).delete('/api/v1/users/A')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.status = "unsuccessful";
@@ -236,6 +266,7 @@ describe("Validate Delete Route", () => {
     describe("When User Id is not sent", () => {
         it('should return statusCode of 400(Bad Request)', (end) => {
             request(app).delete('/api/v1/users')
+                .set('x-access-token', test.admin_token.validAdmin)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
                     res.body.status = "unsuccessful";
