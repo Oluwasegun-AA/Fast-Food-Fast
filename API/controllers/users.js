@@ -15,7 +15,7 @@ async function createToken(data) {
         user_email: data.user_email,
         user_name: data.user_name
     }, process.env.User_Secret, {
-            expiresIn: 4000000000000 // expires in 1 hour
+            expiresIn: 60 * 60 // expires in 1 hour
         });
     return token;
 }
