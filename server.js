@@ -27,16 +27,18 @@ app.use(logger('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/api/v1/api-docs', swagger.serve,swagger.setup(apiDocs));
+app.use('/api/v1/api-docs', swagger.serve, swagger.setup(apiDocs));
 app.use('/api/v1', ordersRoute);
 app.use('/api/v1', itemsRoute);
 app.use('/api/v1', usersRoute);
-app.use('/api/v1', (req, res) => {
+
+app.get('/api/v1', (req, res) => {
   return res.status(404).send({
     status: "connection successful",
     message: 'Welcome to Fast Food Fast!'
-  })
+  });
 });
+
 app.use('*', (req, res) => {
   return res.status(404).send({
     status: "success",
