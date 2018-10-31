@@ -1,0 +1,1241 @@
+#slide {
+  max-height: 100%;
+  align-self: center;
+  max-width: 100%;
+  text-align: center;
+}
+
+#textWrapper {
+  width:100%;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.61);
+  padding-top: 300px;
+  text-align: center;
+}
+.wrapperContent{
+  background-color: rgba(222, 184, 135, 0.671);
+  border-radius: 10px;
+  text-align: center;
+}
+
+#wrapperText {
+  font-family: "Sofia";
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+}
+
+
+/*Styling for the Image Banners Encapsulating the Image Slide*/
+#section1 {
+  height: 650px;
+  width: 100%;
+  background-image: url("../img/pizza1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+#section3 {
+  height: 170px;
+  width: 100%;
+  background-image: url("../img/pizza1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*stying for the header*/
+p{
+  font-size: 25px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#fast,
+#blink,
+.blink {
+  font-family: "Sofia";
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 2s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#navBar {
+  height: 34px;
+  align-content: center;
+  padding: 0px;
+  margin: 0px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+}
+
+#blink_caption {
+  color: black;
+  font-size: 24px;
+  float: left;
+}
+#text {
+  opacity: 0.6;
+  font-family: "Sofia";
+  font-size: 18px;
+}
+
+#headerContent {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#headerLogo {
+  height: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: white;
+  border-radius: 40%;
+  float: left;
+}
+
+sectionMenu{
+  margin-top: 250px;
+}
+
+/*Styling for the Navigation Section*/
+.navigation > a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  background-color: #333;
+  font-size: 14px;
+  height: 18px;
+}
+
+#contact,
+#menu,
+#signOut,
+#home,
+#cart,
+#signOut,
+#login {
+  border-left-style: solid;
+  border-left-color: bisque;
+  border-right-style: solid;
+  border-right-color: bisque;
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+.navigation a:hover {
+  background: #ddd;
+  color: black;
+  cursor: pointer;
+}
+
+.navigation a.active {
+  background-color: #ddd;
+  color: black;
+}
+
+/*Styling for the Footer section*/
+footer {
+  background-color: bisque;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#footerContent {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+#terms {
+  float: left;
+  color: black;
+  font-size: 12px;
+  text-align: center;
+}
+
+#socialIcons {
+  float: right;
+  font-size: 0px;
+}
+
+#socialIcons a img {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 7px;
+}
+#bottom {
+  margin: 0px;
+  padding: 0px;
+  bottom: 0;
+  width: 100%;
+}
+#license {
+  background-color: burlywood;
+  width: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  text-align: center;
+  align-content: center;
+  bottom: 0;
+}
+
+/*Styling for the body background*/
+body {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  background-color: #c79c9c;
+}
+
+/*Styling for Buttons and fieldsets*/
+
+.signUp-btn {
+  flex: unset;
+  margin-bottom: 300px;
+}
+
+.newsletterLabel{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 50%;
+  margin-top: -10px;
+}
+.newsLetterInput{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 50%;
+}
+.newsletterLabel > div{
+  padding: 8px;
+}
+
+.newsLetterBody{
+  display: flex;
+  flex-direction: row;
+text-align: center;
+}
+
+.newsLetterBtn{
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 80px;
+}
+
+#newsLetterPreference {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+#newsletterTag {
+  font-family: sofia;
+  font-size: 18px;
+  text-shadow: #000;
+  margin-left: 10px;
+}
+
+#newsLetterEmail{
+  width: 200px;
+  height: 20px;
+  text-align: left;
+  border-radius: 5px;
+}
+/*Styling for the Password Validation Message which pops out when writting password*/
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  opacity: 0.7;
+}
+
+#message h3 {
+  text-align: left;
+  font-size: 18px;
+}
+
+/* Styling to add a green text color and a tick when the requirements are met */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -15px;
+  content: "✔";
+}
+
+.password {
+  content: "✔";
+  color: green;
+}
+
+/* Styling to add a green text color and an "✖"  when the requirements are not met */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -15px;
+  content: "✖";
+}
+
+#comparePassword {
+  padding-top: 5px;
+}
+
+/* Styling for the username and password input fields */
+#username,
+#password,
+#confirmPassword,
+#email {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Styles for the cancel button */
+.cancle_btn,
+#signUpButton,
+#orderNow{
+  width: auto;
+  padding: 10px 18px;
+  background-color: rgba(49, 15, 15, 0.466);
+  border-radius: 10px;
+}
+#loginBtn,
+#submitBtn{
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Center the image and position the close button */
+.img_login {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+/*Styling the Fast Food Fast Logo in the login view*/
+.logo {
+  width: 40%;
+  border-radius: 35%;
+}
+
+.loginParticulars {
+  padding: 16px;
+  text-align: left;
+}
+
+span.notMember {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+/* Styling the login container background */
+.main_container {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.801);
+  padding-top: 10px;
+}
+
+/* Stying the login container*/
+.login {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 25%;
+  border-radius: 25px;
+}
+
+/* Styling for the Close Button (x) */
+#close {
+  position: absolute;
+  right: 25px;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/*Styling for the Close button hover Effect*/
+#close:hover,
+#close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Stying for the Login section Zoom Animation */
+.zoom {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.container {
+  text-align: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+
+#underDevelopment {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  padding: 100px;
+}
+
+/* Styling for the Menu Sectionof the Webpage*/
+#menuItems {
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  max-width: 80%;
+  max-height: 90%;
+  background: rgba(32, 22, 22, 0.7);
+  border-radius: 10px;
+  padding-top: 20px;
+}
+
+#item {
+  width: 150px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 46px;
+  margin-Right: 46px;
+  margin-bottom: -50px;
+}
+#cartElement> #item{
+  margin-left: 0px;
+  margin-Right: 0px;
+}
+
+#description {
+  background-color: rgb(226, 226, 206);
+  flex: unset;
+  color: black;
+  font-family: sofia;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#addToCartBtn{
+  width: auto;
+  padding: 6px;
+  background-color: rgb(13, 148, 141);
+  border-radius: 10px;
+}
+
+#itemLogo {
+  height: 115px;
+  padding: 2px;
+  background: white;
+  border-radius: 5px;
+}
+
+#cart {
+  height: 18px;
+  display: flex;
+  color: #ffffff;
+}
+
+#cart img {
+  float: left;
+  height: 20px;
+  padding-left: 5px;
+}
+
+#fast {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  margin-top: 40px;
+  margin-left: -20px;
+  border-radius: 10px;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+  color: white;
+}
+
+/*Stying for the Drop Down Button in the Cart Section*/
+.dropbtn {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 8px;
+  background-color: #333;
+  font-size: 13px;
+  border-radius: 10px;
+  height: 18px;
+}
+
+.dropdown {
+  width: max-content;
+  background-color: rgb(92, 80, 80);
+  position: fixed;
+  margin-left: 290px;
+  border-radius: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: White;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Styling for the Mail Subscription Section of the Home Page*/
+#newsLetter {
+  background-color: rgb(148, 84, 84);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: auto;
+  margin-top:-30px;
+}
+
+h3{
+  font-family: sofia;
+  font-size: 22px;
+  text-shadow: #000;
+}
+
+#questionTag,
+#questionTitle {
+  width: 300px;
+  height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#questionBody{
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+p.blink {
+  color: red;
+}
+
+/*Styling for Screen Size Responsiveness*/
+@media (min-width: 400px) and (max-width: 530px) {
+  
+  .navigation > a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    background-color: #333;
+    font-size: 8px;
+    height: 7px;
+  }
+
+  #navBar {
+    height: 15px;
+    align-content: center;
+    padding: 0px;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+  }
+
+  #cart {
+    height: 7px;
+    display: flex;
+    color: #ffffff;
+  }
+
+  #cart img {
+    float: left;
+    height: 10px;
+    padding-left: 2px;
+  }
+
+  .dropdown {
+    width: max-content;
+    background-color: rgb(92, 80, 80);
+    position: fixed;
+    margin-left: 67px;
+    border-radius: 10px;
+  }
+  .dropdown-content a {
+    color: White;
+    padding: 4px;
+    text-decoration: none;
+    display: block;
+    font-size: 6px;
+    border-radius: 10px;
+  }
+  .dropbtn {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px;
+    background-color: #333;
+    font-size: 6px;
+    border-radius: 10px;
+    height: 18px;
+  }
+
+  #headerLogo {
+    height: 30px;
+    padding-bottom: 5px;
+    background: white;
+    border-radius: 40%;
+    float: left;
+  }
+
+  #text {
+    display: none;
+    opacity: 0.6;
+    font-family: "Sofia";
+    font-size: 18px;
+  }
+
+  #socialIcons {
+    text-align: center;
+    font-size: 0px;
+  }
+
+  #terms {
+    display: none;
+    float: left;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  #fast {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+  }
+
+  #blink_caption {
+    display: none;
+  }
+
+  #wrapperText {
+    font-family: "Sofia";
+    font-size: 15px;
+    color: #ffffff;
+  }
+}
+
+@media (min-width: 532px) and (max-width: 653px) {
+  #wrapperText {
+    font-family: "Sofia";
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  #blink_caption {
+    display: none;
+  }
+  #text {
+    display: none;
+    opacity: 0.6;
+    font-family: "Sofia";
+    font-size: 18px;
+  }
+
+  .dropdown {
+    width: max-content;
+    background-color: rgb(92, 80, 80);
+    position: fixed;
+    margin-left: 67px;
+    border-radius: 10px;
+  }
+
+
+  #socialIcons {
+    text-align: center;
+    font-size: 0px;
+  }
+
+  #terms {
+    display: none;
+    float: left;
+    color: black;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  #fast {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 655px) and (max-width: 750px) {
+  .dropdown {
+    width: max-content;
+    background-color: rgb(92, 80, 80);
+    position: fixed;
+    margin-left: 187px;
+    border-radius: 10px;
+  }
+
+  #blin {
+    display: none;
+  }
+
+  #item {
+    width: 100px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #wrapperText {
+    font-family: "Sofia";
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  #fast,
+  #blink,
+  .blink,
+  #text {
+    font-family: "Sofia";
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    animation-name: blinker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @-moz-keyframes blinker {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes blinker {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes blinker {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #fast {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 758px) and (max-width: 1500px) {
+  /* Styling for the Image Slideshow*/
+  #slide {
+    max-height: 100%;
+    align-self: center;
+    max-width: 100%;
+    text-align: center;
+    margin-left: -20px;
+  }
+
+  /* Styling for the Menu Section of the Webpage*/
+   #addToCartBtn {
+    width: auto;
+    padding: 6px;
+    background-color: rgb(13, 148, 141);
+    border-radius: 10px;
+  }
+
+  #cart {
+    height: 18px;
+    display: flex;
+    color: #ffffff;
+  }
+
+  #cart img {
+    float: left;
+    height: 20px;
+    padding-left: 5px;
+  }
+
+  #fast {
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+    margin-left: -20px;
+    border-radius: 10px;
+  }
+
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+    color: white;
+  }
+
+  /*Stying for the Drop Down Button in the Cart Section*/
+  .dropbtn {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 8px;
+    background-color: #333;
+    font-size: 13px;
+    border-radius: 10px;
+    height: 18px;
+  }
+
+  .dropdown {
+    width: max-content;
+    background-color: rgb(92, 80, 80);
+    position: fixed;
+    margin-left: 290px;
+    border-radius: 10px;
+  }
+
+  .dropdown-content {
+    display: none;
+    background-color: #333;
+    border-radius: 10px;
+  }
+
+  .dropdown-content a {
+    color: White;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #ddd;
+    color: black;
+  }
+
+
+}
+
+
+
+#fieldsetA{
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  background-color: rgba(51, 51, 51, 0);
+  text-align: center;
+  margin-bottom: 140px;
+}
+
+#fieldsetB{
+  text-align: center;
+  margin: auto;
+  width: 95%;
+  height: max-content;
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(53, 32, 32, 0.7);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  padding: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#informationFields{
+  margin-top: 20px;
+  margin-bottom: 170px;
+  height: max-content;
+  text-align: center
+}
+
+#information{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  height: max-content;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+#information > div{
+  padding: 10px;
+}
+
+#showImage{
+  max-width:100%;
+  padding: 10px;
+  text-align: center;
+}
+
+#uploadImage{
+padding:10px;
+background:#111111;
+border-radius: 10px;
+}
+
+#preview{
+  display: none;
+  height: 90%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#upload{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 10px;
+}
+
+#addItemFields{
+  display: flex;
+  text-align: center;
+}
+
+#uploadDescription{
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding:10px;
+  background:#2d2d2d;
+  border-radius: 5px;
+}
+.details{
+  margin: 10px;
+}
+
+#itemTag, #itemName, #itemPrice {
+  width: 40%;
+  height: 22px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#submitItem{
+  background-color:  wheat;
+  color: Black;
+  font-size: 15px;
+  border-radius: 10px;
+  width: 40%
+}
+.bold{
+  font-weight: bold;
+}
+#supportSection{
+  margin: 5px;
+}
+
+#submit {
+  color: bisque;
+  font-size: 15px;
+  border-radius: 10px;
+  width: 8%;
+  margin-bottom: 110px;
+}
+.center{
+  text-align: center;
+}
+
+#previewContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+#editDelete{
+  display: flex;
+}
+#deleteBtn, 
+#editBtn{
+  width: 50%;
+  text-align: center;
+  background-color:#111111;
+  color:  wheat;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+#itemQuantity{
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+#cost{
+  width: 100%;
+  height: 25%;
+  background-color: #888;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 10px;
+  padding-top:10px;
+}
+#cartElement{
+  display: flex;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: -80px;
+}
+
+#markCompleted{
+margin-top: -80px;
+text-align: center;
+}
+
+#acceptDecline{
+  margin-top: -80px;
+  text-align: center;
+  margin-left: -67px;
+  }
+
+#back{
+  text-align: center;
+}
+#login_return{
+  display: none;
+  text-align: center;
+}
+
+#cartAttributes{
+  margin: 4px;
+  text-align: center;
+  margin-top: 45px;
+}
+#cartInformation{
+  color: #e9e9e9;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+}
+#totalPrice{
+  text-align: center;
+  font-size: 20px;
+}
+#placeorder{
+  width: auto;
+  padding: 5px;
+  cursor: pointer;
+  background-color: bisque;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #000;
+}
+
+#acceptBtn,
+#declineBtn,
+#editBtn,
+#deleteBtn{
+  padding: 10px;
+  cursor: pointer;
+  width: 80px;
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  border-radius: 10%;
+}
+
+#completedText{
+  display: block;
+  opacity: 0.8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  padding: 3px;
+  width: 90%;
+  text-align: center;
+  background-color: #806464;
+  border-radius: 10px;
+}
+#completedText:hover{
+  font-size: 19px;
+}
+.button{
+  text-align: center;
+  background-color: wheat;
+  color: #111111;
+  margin: 2px;
+  width: 100px;
+  border-radius: 10%;
+}
+.botton:hover{
+  background-color: rgb(34, 33, 31);
+  color: wheat; 
+}
+#supportFields{
+  text-align: center;
+}
