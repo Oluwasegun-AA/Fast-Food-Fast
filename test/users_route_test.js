@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../server';
+import app from '../server/server';
 import * as test from '../test/model/user-model';
 
 // Tests for the GET Route

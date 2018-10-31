@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Andela Developer Challenge, Fast Food Fast">
+    <meta name="keywords" content="HTML,CSS,JavaScript,Fast Food Fast,Andela,Developer Challenge">
+    <meta name="author" content="Adepoju Oluwasegun">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Fast-Food-Fast | Add-Items</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.jpg" sizes="16x16" />
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- font -->
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+</head>
+
+<!-- Body Section -->
+
+<body>
+
+    <!-- header with Navigation bar -->
+    <header id="navBar">
+        <div id="headerContent">
+
+            <aside>
+                <a href="index.html">
+                    <img src="img/logo.jpg" id="headerLogo" />
+                </a>
+                <h1 id="fast"><em>Fast!!!</em></h1>
+            </aside>
+
+            <div class="navigation">
+                <a id="signOut" class="" href="index.html">Sign Out</a>
+                <a id="home" class="active" href="add-items.html">Add Items</a>
+                <a id="contact" href="admin.html">Review Orders</a>
+
+                <div class="dropdown">
+                    <a class="dropbtn">Orders</a>
+                    <div class="dropdown-content">
+                        <a href="admin.html">Review Orders</a>
+                        <a href="accepted-orders.html">Accepted Orders</a>
+                        <a href="declined-orders.html">Declined Orders</a>
+                        <a href="user-review.html">User's Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blinking text on Navigation bar -->
+        <div id="blink_caption">
+            <label id="text">Incredible Taste</label>
+            <label id="blin" class="blink">Always!!</label>
+        </div>
+
+    </header>
+
+    <section id="section3">
+    </section>
+
+    <div id="informationFields">
+        <div id="fieldsetA">
+            <div id="fieldsetB">ADD ITEMS
+            </div>
+            <div id="information">
+                <div id="addItemFields">
+                    <div id="upload">
+                        <label>Upload Item Image</label>
+                        <input type='file' id="uploadImage" />
+                        <img id="showImage" src="" alt="Item Image Preview" />
+                    </div>
+                    <div id="uploadDescription">
+                        <div class="details">
+                            <label>Add a tag : &nbsp</label>
+                            <input type="text" id="itemTag" placeholder="" required>
+                        </div>
+                        <div class="details">
+                            <label>Item Name: </label>
+                            <input type="text" id="itemName" placeholder="" required>
+                        </div>
+                        <div class="details">
+                            <label>Item Price : &nbsp</label>
+                            <input type="number" min="1" max="19999999" id="itemPrice" placeholder=""
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <button id="submitItem" class="" type="submit">Submit</button>
+                <div id="preview">
+                    <hr>
+                    <legend>ITEMS PREVIEW</legend>
+                    <hr>
+                    <div id="previewContent">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Section -->
+    <div id="bottom">
+        <footer id="footer">
+            <div id="footerContent">
+                <div id="termsWithIcons">
+
+                    <!-- Terms and Conditions -->
+                    <div id="terms">
+                        <h4>TREMS AND CONDITIONS</h4>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div id="socialIcons">
+                        <a id="facebook" href="https://facebook.com" target="_blank">
+                            <img id="facebook-img" src="img/facebook.ico" title="" alt="Facebook">
+                        </a>
+                        <a id="google_plus" href="https://plus.google.com" target="_blank">
+                            <img id="twitter-img" src="img/twitter.ico" title="" alt="twitter">
+                        </a>
+                        <a id="twitter" href="https://twitter.com" target="_blank">
+                            <img id="google_plus_img" src="img/google_plus.ico" title="" alt="google Plus">
+                        </a>
+                        <a id="youtube" href="https://youtube.com" target="_blank">
+                            <img id="youtube-img" src="img/youtube.ico" title="" alt="Facebook">
+                        </a>
+                        <a id="github" href="https://github.com" target="_blank">
+                            <img id="github-img" src="img/github.ico" title="" alt="github">
+                        </a>
+                        <a id="instagram" href="https://instagram.com" target="_blank">
+                            <img id="instagram-img" src="img/instagram.ico" title="" alt="instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- Licencse -->
+
+        <div>
+            <article id="license">© 2018 Fast Food Fast. All Rights Reserved</article>
+        </div>
+    </div>
+
+    <!-- User Login/SignUp Section -->
+    <div id="userValidation">
+
+        <div id="loginSection" class="main_container">
+
+            <form class="login zoom" id="LoginForm">
+                <div class="img_login">
+                    <span id="close">&times;</span>
+                    <img src="img/logo.jpg" alt="logo" class="logo">
+                </div>
+
+                <div class="loginParticulars">
+                    <label><b>Username</b></label>
+                    <input type="text" id="username" placeholder="Enter Username" name="username" required>
+                    <label id="emailLabel"><b>Email Address</b></label>
+                    <input type="text" id="email" placeholder="Enter Email Address" name="Email" required>
+                    <label><b>Password</b></label>
+                    <input type="password" id="password" placeholder="Enter Password" name="password" required>
+                    <label id="confirmPasswordLabel"><b>Confirm Password</b></label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
+
+                    <label>
+                        <input type="checkbox" id="showPassword" name="remember"> Show Password
+                    </label>
+                    <article id="comparePassword"></article>
+
+                    <button id="loginBtn" type="submit">Login</button>
+                    <button id="submitBtn" type="submit">Submit</button>
+                    <div class="container">
+                        <div id="message" class="container">
+                            <span class="notMember">Password must contain :</span>
+                            <h3 id="letter" class="invalid">A <b>Lowercase</b> letter</h3>
+                            <h3 id="capital" class="invalid">A <b>Capital (uppercase)</b> letter</h3>
+                            <h3 id="number" class="invalid">A <b>Number</b></h3>
+                            <h3 id="length" class="invalid">At least
+                                <b>8 characters</b>
+                            </h3>
+                        </div>
+                        <label id="notMember">
+                            <span>Not a member?</span>
+                            <button type="button" id="signUpButton" class="cancle_btn">Sign up</button>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="text/JavaScript" src="js/add-items.js"></script>
+</body>
+
+</html>

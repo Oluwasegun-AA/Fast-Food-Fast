@@ -1,0 +1,26 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Client Section",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf public/dist",
+    "build": "npm run clear && babel src -d public/dist",
+    "build:prod": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "watch": "webpack --mode development -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "7.0.0",
+    "unfetch": "4.0.1",
+    "@babel/core": "7.1.2",
+    "@babel/preset-env": "7.1.0",
+    "babel-cli": "6.26.0",
+    "babel-loader": "8.0.4",
+    "webpack": "4.23.1",
+    "webpack-cli": "3.1.2"
+  }
+}

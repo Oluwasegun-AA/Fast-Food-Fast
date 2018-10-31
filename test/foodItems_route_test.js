@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from '../server';
-import * as test from '../test/model/foodItems-model';
-import * as user from '../test/model/user-model';
+import app from '../server/server';
+import * as test from './model/foodItems-model';
+import * as user from './model/user-model';
 
 // Tests for the GET Route
 describe('Validate GET Route', () => {

@@ -7,12 +7,13 @@
   },
   "scripts": {
     "test": " npm run create && npm run build && mocha dist/test/*.js --exit",
-    "start": "npm run build && node ./dist/server.js",
-    "build": "npm run clear && babel ./ --out -d dist --ignore node_modules,UI",
-    "clear": "rimraf dist coverage",
+    "start": "npm run build &&  npm run buildClient && node ./dist/server/server.js",
+    "build": "npm run clear && babel ./ --out -d dist --ignore client,node_modules,UI",
+    "buildClient": "cd client && npm run build:dev",
+    "clear": "rimraf dist coverage ./client/public/dist",
     "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/test/*.js --exit",
     "coverage": "npm run create && npm run cover",
-    "create": "babel-node ./API/db/db.js",
+    "create": "babel-node ./server/API/db/db.js",
     "heroku-postbuild": "npm run create"
   },
   "repository": {
@@ -28,6 +29,9 @@
   "author": "Adepoju Oluwasegun <oluwasegunadepoju@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/polyfill": "7.0.0",
+    "@babel/preset-env": "7.1.0",
     "@types/swagger-ui-express": "3.0.0",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
@@ -39,7 +43,6 @@
     "express-validator": "5.3.0",
     "jsonwebtoken": "8.3.0",
     "morgan": "1.9.0",
-    "path": "0.12.7",
     "pg": "7.5.0",
     "rimraf": "2.6.2",
     "swagger-ui-express": "4.0.1",

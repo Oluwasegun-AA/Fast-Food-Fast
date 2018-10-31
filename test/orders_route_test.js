@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../server';
+import app from '../server/server';
 import * as test from '../test/model/order-model';
 import * as user from '../test/model/user-model';
 

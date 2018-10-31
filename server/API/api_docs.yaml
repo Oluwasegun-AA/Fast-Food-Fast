@@ -1,0 +1,735 @@
+swagger: "2.0"
+info:
+  description: "Fast Food Fast is a food delivery service app for restaurants. It was built to bring the food store close as close as a click to where ever we may be. the product was built from scratch `using Html` , `Css` , `JavaScript` and `Node.js`"
+  version: "1.0.0"
+  title: "Fast Food App Documentation"
+  termsOfService: "https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md"
+  contact:
+    email: "oluwasegunadepoju@gmail.com"
+  license:
+    name: "Licence: MIT"
+    url: "https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md"
+host: "fast-food-fast1.herokuapp.com"
+basePath: "/api/v1"
+tags:
+- name: "Menu"
+  description: "Fetch, Create, Update and Delete Menu"
+  externalDocs:
+    description: "Visit Git Repository"
+    url: "https://github.com/shegsteham/Fast-Food-Fast"
+- name: "Order"
+  description: "Fetch, Create, Update and Delete Order"
+  externalDocs:
+      description: "Visit Git Repository"
+      url: "https://github.com/shegsteham/Fast-Food-Fast"
+- name: "User"
+  description: "Signup, Login, Fetch, Update and Delete User "
+  externalDocs:
+      description: "Visit Git Repository"
+      url: "https://github.com/shegsteham/Fast-Food-Fast"
+schemes:
+- "https"
+- "http"
+
+paths:
+  /menu:
+    get:
+      tags:
+      - "Menu"
+      summary: "Find all available menu items"
+      description: ""
+      operationId: "getAllMenu"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: 'Food Items retrieved successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+          
+    post:
+      tags:
+      - "Menu"
+      summary: "Add a new menu to the database"
+      description: ""
+      operationId: "addMenu"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of new menu to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Menu"
+      responses:
+        200:
+          description: "Food Item Sent Successfully"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+          
+  /menu/{itemId}:
+    get:
+      tags:
+      - "Menu"
+      summary: "Find a particular menu item"
+      description: ""
+      operationId: "getParticularMenu"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "itemId"
+        in: "path"
+        description: "ID of the Menu Item to be retrieved"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'Food Item retrieved successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'Item Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+
+    put:
+      tags:
+      - "Menu"
+      summary: "Update an existing menu in the database"
+      description: ""
+      operationId: "updateMenu"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "itemId"
+        in: "path"
+        description: "ID of the Menu Item to be Edited"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "menu object that needs to be added to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/Menu"
+      responses:
+        200:
+          description: "Update successful"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        410:
+          description: "Requested resourse is no longer available"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+    delete:
+      tags:
+      - "Menu"
+      summary: "Delete an existing menu in the database"
+      description: ""
+      operationId: "deleteMenu"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "itemId"
+        in: "path"
+        description: "ID of the Menu Item to be deleted"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'Item deleted successfuly'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: "Item Not Found in the Database"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+ 
+ 
+  /orders:
+    get:
+      tags:
+      - "Order"
+      summary: "Find all available Order"
+      description: ""
+      operationId: "getAllOrder"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: 'Orders Retrieved Successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+      security:
+      - api_key: []
+          
+    post:
+      tags:
+      - "Order"
+      summary: "Add a new Order to the database"
+      description: ""
+      operationId: "addOrder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of new Order to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        200:
+          description: 'Order Sent Successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+
+  /orders/{orderId}:
+    get:
+      tags:
+      - "Order"
+      summary: "Find a particular Order"
+      description: ""
+      operationId: "getParticularOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "orderId"
+        in: "path"
+        description: "ID of the Order to be retrieved"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'Order Retrieved Successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'Order Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+    put:
+      tags:
+      - "Order"
+      summary: "Update an existing Order in the database"
+      description: ""
+      operationId: "updateOrder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "orderId"
+        in: "path"
+        description: "ID of the Order to be Edited"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "Order object that needs to be added to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        200:
+          description: "Update successful"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        410:
+          description: 'Order Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+    delete:
+      tags:
+      - "Order"
+      summary: "Delete an existing Order in the database"
+      description: ""
+      operationId: "deleteOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "orderId"
+        in: "path"
+        description: "ID of the Order to be deleted"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'Order deleted successfuly'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Order"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'Order Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+          
+          
+          
+          
+          
+          
+
+  /auth/login:
+    post:
+      tags:
+      - "User"
+      summary: "Login a user"
+      description: ""
+      operationId: "loginUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of user loging in"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Login Successful"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'User Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+  
+  /auth/signup:
+    post:
+      tags:
+      - "User"
+      summary: "signup a new user"
+      description: ""
+      operationId: "signupUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of new User to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: 'User Sent Successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+          
+  /users:
+    get:
+      tags:
+      - "User"
+      summary: "Find all available User Data"
+      description: ""
+      operationId: "getAllUsers"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: 'Users Data retrieved successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+          
+    post:
+      tags:
+      - "User"
+      summary: "Add a new User to the database"
+      description: ""
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of new User to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: 'User Sent Successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+          
+  /users/{userId}:
+    get:
+      tags:
+      - "User"
+      summary: "Find a particular User"
+      description: ""
+      operationId: "getParticularUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of the User to be retrieved"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'User retrieved successfully'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'User Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+    put:
+      tags:
+      - "User"
+      summary: "Update an existing User Data in the database"
+      description: ""
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of the User Data to be Edited"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Update successful"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        410:
+          description: "Requested resourse is no longer available"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+    delete:
+      tags:
+      - "User"
+      summary: "Delete an existing user data in the database"
+      description: ""
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of the user data to be deleted"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: 'User deleted successfuly'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Bad Request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+        404:
+          description: 'User Not Found in the Database'
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApiResponseErr"
+      security:
+      - api_key: []
+
+
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-access-token"
+    in: "header"
+    
+definitions:
+  Order:
+    type: "object"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        example: "1"
+      quantity:
+        type: "integer"
+        format: "int64"
+        example: "2"
+      total_price:
+        type: "integer"
+        format: "int32"
+        example: "3000"
+      customer_address:
+        type: "string"
+        format: "date-time"
+        example: "Andela EPIC Tower Lagos"
+      order_status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "New"
+        - "Processing"
+        - "Cancelled"
+        - "Complete"
+      customer_id:
+        type: "integer"
+        format: "int32"
+    xml:
+      name: "Order"
+      
+  User:
+    type: "object"
+    properties:
+      user_name:
+        type: "string"
+        example: "SwaggerUser"
+      user_email:
+        type: "string"
+        example: "email@example.com"
+      user_password:
+        type: "string"
+        example: 'swagger123swagger'
+      user_role:
+        type: "string"
+        description: "user_role"
+        enum:
+        - "User"
+        - "Admin"
+    xml:
+      name: "User"
+
+      
+  Menu:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      item_name:
+        type: "string"
+        example: "pizza"
+      item_image:
+        type: "string"
+        example: "photoUrl"
+      item_price:
+        type: "integer"
+        example: "2000"
+      item_tag:
+        type: "string"
+        example: "snacks"
+    xml:
+      name: "Menu"
+      
+  ApiResponse:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      message:
+        type: "string"
+      data:
+        type: "object"
+        
+  ApiResponseErr:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+        example: "false"
+      message:
+        type: "string"
+        
+externalDocs:
+  description: "Visit Git Repository"
+  url: "https://github.com/shegsteham/Fast-Food-Fast"
