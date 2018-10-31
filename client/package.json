@@ -4,10 +4,10 @@
   "description": "Client Section",
   "main": "index.js",
   "scripts": {
-    "clear": "rimraf public/dist",
-    "build": "npm run clear && babel src -d public/dist",
-    "build:prod": "webpack --mode production",
-    "build:dev": "webpack --mode development",
+    "clear": "rimraf public/dist1",
+    "build": "npm run clear && babel src -d public/dist1",
+    "build:prod": "npm run clear &&webpack --mode production",
+    "build:dev": "npm run clear && webpack --mode development",
     "watch": "webpack --mode development -w"
   },
   "keywords": [],
