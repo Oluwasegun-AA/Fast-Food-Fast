@@ -8,7 +8,7 @@ module.exports = {
         polyfills: './polyfills.js'
     },
     output: {
-        path: path.resolve(__dirname, './public/dist/'),
+        path: path.resolve(__dirname, './public/dist1/'),
         filename: '[name].js'
     },
     module: {
