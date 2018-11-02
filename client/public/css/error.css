@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+    height: 100%; 
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 40px auto 40px;
+}
+.top{
+    grid-column: 1/-1;
+}
+.bottom{
+    grid-column: 1/-1;
+}
+.middle,
+.middle>p{
+    color:rgb(78, 72, 72);
+}
+
+html,body{
+    height: 100%;
+    margin: 0px;
+}
+.container>div{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.err404{
+    height:200px;
+    width: 450px;
+}
