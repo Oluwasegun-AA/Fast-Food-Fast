@@ -36,34 +36,30 @@ export default class Controller {
         });
     };
 
-    async login(req, res) {
-        if (req.body.hashedPassword) {
+    async login(req, res) { if (req.body.hashedPassword) {
             const command = 'SELECT * FROM user_accounts WHERE user_name=$1';
             const { rows } = await database.query(command, [req.body.user_name]);
             if (((req.body.hashedPassword) === (rows[0].user_password)) && ((req.body.user_name) === (rows[0].user_name))) {
                 req.body.user_password = req.body.hashedPassword;
                 const token = await createToken(req.body);
-                return res.status(200).send({ auth: "true", token: token, message: "Login Successful" });
+                return res.status(200).send({ auth: "true", token: token, message: "Login Successful", user: rows[0]});
             } else {
                 return res.status(404).send({ auth: "false", token: null, message: "user not found" })
-            }
-        } else {
+            } } else {
             const command = 'SELECT * FROM user_accounts WHERE user_name=$1';
             const { rows } = await database.query(command, [req.body.user_name]);
             if (!rows[0]) {
                 return res.status(404).send({
                     success: 'false',
                     status: 'User Not Found in the Database'
-                });
-            }
+                });}
             const passwordIsValid = await bcrypt.compareSync(req.body.user_password, rows[0].user_password);
             console.log(passwordIsValid);
             if (!passwordIsValid) return res.status(401).send({ auth: "false", token: null });
             req.body.user_id = rows[0].user_id;
             const token = await createToken(rows[0]);
             res.status(200).send({ auth: "true", token: token, message: "Login Successful", user: rows[0] });
-        }
-    }
+        }}
 
     /**
         * Gets All user_accounts in the database and sends as response
