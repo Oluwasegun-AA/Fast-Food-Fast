@@ -26,8 +26,9 @@ let login_return = document.getElementById('login_return');
 let signUpButton = document.getElementById('signUpButton');
 let section1 = document.getElementById('section1');
 let textWrapper = document.getElementById('textWrapper');
+let baseUrl = 'https://fast-food-fast1.herokuapp.com/api/v1'
 
-let controller = new Controller('https://fast-food-fast1.herokuapp.com/api/v1');
+let controller = new Controller(baseUrl);
 
 // resizes the dimensions if the Screen to fit the screen
 function autoResizeDiv()
@@ -40,7 +41,10 @@ autoResizeDiv();
 
 // checks if user has a valid token
 window.onload = async()=>{
-    auth('./front-page');   
+    let token = localStorage.getItem('token');
+    if (token !== null){
+    auth('/front-page.html');   
+    } else userLogin();
 }
 
 // submits a registration data
@@ -96,7 +100,10 @@ loginBtn.addEventListener('click', async (e) => {
         if(data.auth === "true"){
             localStorage.setItem('token', data.token);
         }
-       window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html')
+        if (data.user.user_role === "User"){
+            window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html');
+        } else window.location.replace(`https://fast-food-fast1.herokuapp.com/admin.html`);
+       window.location.replace()
 }catch(err){
     if(err){
         alert("Network Error, Please check your network connection and try again");
