@@ -8,6 +8,13 @@ import itemsRoute from './API/routes/foodItems';
 import usersRoute from './API/routes/users';
 import swagger from 'swagger-ui-express';
 import YAML from 'yamljs';
+import errorHandler from 'express-error-handler';
+
+let handler = errorHandler({
+  static:{
+    '404': '../fast-food-fast/client/public/error.html'
+  }
+})
 
 let apiDocs = YAML.load('./server/API/api_docs.yaml');
 
@@ -46,13 +53,15 @@ app.get('/api/v1', (req, res) => {
   });
 });
 
-app.use('*', (req, res) => {
-  return res.status(404).send({
-    status: "success",
-    error: "404",
-    message: ` Route ${req.originalUrl} does not exist. You may navigate to the home route at api/v1`
-  })
-});
+app.use(errorHandler.httpError(404));
+app.use('*',  handler
+// (req, res) => {
+  // return res.status(404).send({
+  //   status: "success",
+  //   error: "404",
+  //   message: ` Route ${req.originalUrl} does not exist. You may navigate to the home route at api/v1`
+  // })
+);
 
 // Set listener to port for API queries
 app.listen(port, message());
