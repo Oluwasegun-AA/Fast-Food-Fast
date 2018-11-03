@@ -1,4 +1,5 @@
 import Controller from './controller';
+import auth from './auth';
 let close = document.getElementById("close");
 let login = document.getElementById('login');
 let signUp = document.getElementById('signUpButton');
@@ -27,6 +28,8 @@ let section1 = document.getElementById('section1');
 let textWrapper = document.getElementById('textWrapper');
 
 let controller = new Controller('https://fast-food-fast1.herokuapp.com/api/v1');
+
+// resizes the dimensions if the Screen to fit the screen
 function autoResizeDiv()
 {
    section1.style.height = window.innerHeight +'px';
@@ -35,6 +38,12 @@ function autoResizeDiv()
 window.onresize = autoResizeDiv;
 autoResizeDiv();
 
+// checks if user has a valid token
+window.onload = async()=>{
+    auth('./front-page');   
+}
+
+// submits a registration data
 submitBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     try{
@@ -65,7 +74,7 @@ submitBtn.addEventListener('click', async (e) => {
 }
 })
 
-
+// submits a login data for validation
 loginBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     try{
@@ -84,7 +93,10 @@ loginBtn.addEventListener('click', async (e) => {
     }
         let data = await controller.post('/auth/login', method)
         console.log(data);
-        window.open('https://fast-food-fast1.herokuapp.com/front-page.html')
+        if(data.auth === "true"){
+            localStorage.setItem('token', data.token);
+        }
+       window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html')
 }catch(err){
     if(err){
         alert("Network Error, Please check your network connection and try again");
