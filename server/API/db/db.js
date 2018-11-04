@@ -32,7 +32,7 @@ async function createTables() {
         quantity integer NOT NULL,
         total_price integer NOT NULL,
         order_status status DEFAULT 'New',
-        customer_address varchar(max) NOT NULL,
+        customer_address varchar NOT NULL,
         customer_id integer NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
         modified_date varchar(255) DEFAULT NULL
