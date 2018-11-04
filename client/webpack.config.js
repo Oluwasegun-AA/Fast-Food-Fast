@@ -5,7 +5,9 @@ module.exports = {
     entry: {
         login: './login.js',
         menu: './menu.js',
-        polyfills: './polyfills.js'
+        polyfills: './polyfills.js',
+        index: './index.js',
+        addItems : './addItems.js'
     },
     output: {
         path: path.resolve(__dirname, './public/dist1/'),

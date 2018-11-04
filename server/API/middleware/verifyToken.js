@@ -7,7 +7,7 @@ export async function verifyUserToken(req, res, next) {
   if (!token)
     return res.status(403).send({ auth: "false", message: "No token provided" });
   await jwt.verify(token, process.env.User_Secret, function(err, decoded) {
-    if (err){return res.status(500).send({ auth: "false", message: "Failed to authenticate token" });}
+    if (err){return res.status(401).send({ auth: "false", message: "Failed to authenticate token" });}
     // update body with the Id 
     req.body.user_id = decoded.user_id;
     req.body.user_role = decoded.user_role;

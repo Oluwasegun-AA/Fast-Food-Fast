@@ -32,7 +32,7 @@ async function createTables() {
         quantity integer NOT NULL,
         total_price integer NOT NULL,
         order_status status DEFAULT 'New',
-        customer_address varchar(255) NOT NULL,
+        customer_address varchar(max) NOT NULL,
         customer_id integer NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
         modified_date varchar(255) DEFAULT NULL
@@ -46,8 +46,8 @@ async function createTables() {
       VALUES ('1', '2', '2000', 'New', '1', 'Andela EPIC Tower, Lagos' ),('2', '1','1000','Processing','2', 'Andela EPIC Tower, Ibadan' )`
 
     let item_data = `INSERT INTO food_items (item_name,item_image,item_price,item_tag)
-       VALUES ('Doughnut', 'imageSrc', '2000', 'snacks'),
-        ('Amala', 'imageSrc', '5000', 'Local dish');`
+       VALUES ('Doughnut', 'https://via.placeholder.com/150', '2000', 'snacks'),
+        ('Amala', 'https://via.placeholder.com/150', '5000', 'Local dish');`
 
     const input = dropTables + enum_account + enum_role + userAccounts + foodItems + orders;
     const create = user_data + item_data + order_data;

@@ -1,6 +1,5 @@
 import Controller from './controller';
 import auth from './auth';
-let close = document.getElementById("close");
 let login = document.getElementById('login');
 let signUp = document.getElementById('signUpButton');
 let loginSection = document.getElementById('loginSection');
@@ -31,84 +30,80 @@ let baseUrl = 'https://fast-food-fast1.herokuapp.com/api/v1'
 let controller = new Controller(baseUrl);
 
 // resizes the dimensions if the Screen to fit the screen
-function autoResizeDiv()
-{
-   section1.style.height = window.innerHeight +'px';
-   textWrapper.style.height = (window.innerHeight - 250) +'px';
+function autoResizeDiv() {
+    if ((section1 == null) || (textWrapper == null)) {
+        return;
+    } else {
+        section1.style.height = window.innerHeight + 'px';
+        textWrapper.style.height = (window.innerHeight - 250) + 'px';
+    }
 }
 window.onresize = autoResizeDiv;
 autoResizeDiv();
 
-// checks if user has a valid token
-window.onload = async()=>{
-    let token = localStorage.getItem('token');
-    if (token !== null){
-    auth('/front-page.html');   
-    } else userLogin();
-}
 
 // submits a registration data
 submitBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    try{
-    const body = JSON.stringify({
-        user_name: username.value,
-        user_role: 'User',
-        user_email: email.value,
-        user_password: password.value
-    });
-    let method = {
-        method: 'POST',
-        headers: {
-            'Accept': 'text/plain, application/json, */*',
-            'Content-type': 'application/json'
-        },
-        body: body
+    try {
+        const body = JSON.stringify({
+            user_name: username.value,
+            user_role: 'User',
+            user_email: email.value,
+            user_password: password.value
+        });
+        let method = {
+            method: 'POST',
+            headers: {
+                'Accept': 'text/plain, application/json, */*',
+                'Content-type': 'application/json'
+            },
+            body: body
+        }
+        if (comparePassword.innerHTML === 'Password matching') {
+            let data = await controller.post('/auth/signup', method)
+            console.log(data);
+            userLogin();
+            alert("Signup Successful, Please Login");
+        } else alert("Error! Signup Failed, Password does not match");
+    } catch (err) {
+        if (err) {
+            alert("Network Error, Please check your network connection and try again");
+        }
     }
-    if (comparePassword.innerHTML === 'Password matching') {
-        let data = await controller.post('/auth/signup', method)
-        console.log(data);
-        userLogin();
-        alert("Signup Successful, Please Login");
-    } else alert("Error! Signup Failed, Password does not match");
-}catch(err){
-    if(err){
-        alert("Network Error, Please check your network connection and try again");
-    }
-}
 })
 
 // submits a login data for validation
 loginBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    try{
-    const body = JSON.stringify({
-        user_name: username.value,
-        user_role: 'User',
-        user_password: password.value
-    });
-    let method = {
-        method: 'POST',
-        headers: {
-            'Accept': 'text/plain, application/json, */*',
-            'Content-type': 'application/json'
-        },
-        body: body
-    }
+    try {
+        const body = JSON.stringify({
+            user_name: username.value,
+            user_role: 'User',
+            user_password: password.value
+        });
+        let method = {
+            method: 'POST',
+            headers: {
+                'Accept': 'text/plain, application/json, */*',
+                'Content-type': 'application/json'
+            },
+            body: body
+        }
         let data = await controller.post('/auth/login', method)
         console.log(data);
-        if(data.auth === "true"){
+        if (data.auth === "true") {
             localStorage.setItem('token', data.token);
         }
-        if (data.user.user_role === "User"){
+        if (data.user.user_role === "User") {
             window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html');
         } else window.location.replace(`https://fast-food-fast1.herokuapp.com/admin.html`);
-       window.location.replace()
-}catch(err){
-    if(err){
-        alert("Network Error, Please check your network connection and try again");
+        window.location.replace()
+    } catch (err) {
+        if (err) {
+            alert("Network Error, Please check your network connection and try again");
+        }
     }
-}
 })
 
 
@@ -119,20 +114,10 @@ signUp.addEventListener('click', userSignup);
 
 login_return.addEventListener('click', userLogin)
 
-//eventListener closes the login/register view when the close " X " icon is clicked
-close.addEventListener("click", function () {
-    loginSection.style.display = 'none';
-});
 
 //event listener to toggle password visibility
 showPassword.addEventListener('click', viewPassword);
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function () {
-    if (event.target == loginSection) {
-        loginSection.style.display = "none";
-    }
-}
 
 //When the user clicks on the password field, show the message box
 password.onfocus = () => {
@@ -226,7 +211,7 @@ function userSignup() {
     emailLabel.style.display = 'block';
 }
 
-function userLogin() {
+export function userLogin() {
     confirmPassword.style.display = 'none';
     comparePassword.style.display = 'none';
     email.style.display = 'none';
