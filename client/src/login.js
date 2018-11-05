@@ -98,7 +98,6 @@ loginBtn.addEventListener('click', async (e) => {
         if (data.user.user_role === "User") {
             window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html');
         } else window.location.replace(`https://fast-food-fast1.herokuapp.com/admin.html`);
-        window.location.replace()
     } catch (err) {
         if (err) {
             alert("Network Error, Please check your network connection and try again");
