@@ -12,7 +12,7 @@ import errorHandler from 'express-error-handler';
 
 let handler = errorHandler({
   static:{
-    '404': '../fast-food-fast/client/public/error.html'
+    '404': '../fast-food-fast1/client/public/error.html'
   }
 })
 
