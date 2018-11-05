@@ -40,13 +40,6 @@ click.forEach(btn => btn.addEventListener('click', async function () {
       console.log(data);
 }));
 
-let model = `<div id="item" class="a">
-<label id="description">Buger</label>
-<label id="description">#1500 </label>
-<img src="img/a.jpg" id="itemLogo" />
-<button type="button" id="addToCartBtn" class="a">Add to Cart</button>
-</div>`
-
 
 async function getMenu(){
       try {
@@ -59,13 +52,19 @@ async function getMenu(){
           }
           let data = await controller.get('/menu', method)
           console.log(data);
-      //     if (data.auth === "true") {
-      //         localStorage.setItem('token', data.token);
-      //     }
-      //     if (data.user.user_role === "User") {
-      //         window.location.replace('https://fast-food-fast1.herokuapp.com/front-page.html');
-      //     } else window.location.replace(`https://fast-food-fast1.herokuapp.com/admin.html`);
-      //     window.location.replace()
+       if (data.success === "true") {
+      data.Food_Items.forEach((post)=>{
+            let model = `<div id="item">
+            <label id="description" class="${post.item_name}">${post.item_name}</label>
+            <label id="description" class="${post.item_name}Id">#1500 </label>
+            <img src="${post.item_image}" class="${post.item_name}Img" id="itemLogo" />
+            <button type="button" id="addToCartBtn" class="${post.item_name}Btn">Add to Cart</button>
+            </div>`
+            console.log(model);
+            itemsList.innerHTML += model;
+      })
+}
+
       } catch (err) {
             console.log('run but error');
       //     if (err) {
