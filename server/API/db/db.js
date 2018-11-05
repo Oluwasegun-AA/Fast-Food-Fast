@@ -20,7 +20,7 @@ async function createTables() {
     const foodItems = `CREATE TABLE IF NOT EXISTS food_items(
         item_id SERIAL PRIMARY KEY,
         item_name varchar(255) NOT NULL UNIQUE,
-        item_image varchar(255) NOT NULL,
+        item_image varchar NOT NULL,
         item_price integer NOT NULL,
         item_tag varchar(255) NOT NULL,
         created_date TIMESTAMP DEFAULT NOW(),
