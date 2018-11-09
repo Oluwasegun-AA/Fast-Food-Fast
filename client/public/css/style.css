@@ -165,11 +165,11 @@ sectionMenu{
 #signOut,
 #login {
   border-left-style: solid;
-  border-left-color: bisque;
+
   border-right-style: solid;
   border-right-color: bisque;
   border-width: 1px;
-  border-radius: 10px;
+  
 }
 
 .navigation a:hover {
