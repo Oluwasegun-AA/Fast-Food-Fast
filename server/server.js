@@ -48,13 +48,13 @@ app.use('/api/v1', usersRoute);
 
 app.get('/api/v1', (req, res) => {
   return res.status(404).send({
-    status: "connection successful",
+    status: 'connection successful',
     message: 'Welcome to Fast Food Fast!'
   });
 });
 
 app.use(errorHandler.httpError(404));
-app.use('*',  handler
+app.use('*', handler
 // (req, res) => {
   // return res.status(404).send({
   //   status: "success",
