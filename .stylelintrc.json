@@ -1,0 +1,13 @@
+{
+  "rules": 
+    {
+      "color-no-invalid-hex": true,
+      "font-family-no-duplicate-names": true,
+      "property-no-unknown": true,
+      "no-duplicate-at-import-rules": true,
+      "no-duplicate-selectors": true,
+      "no-empty-source": true,
+      "no-extra-semicolons": true,
+      "no-invalid-double-slash-comments": true
+    }
+}

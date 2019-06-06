@@ -66,8 +66,8 @@ export default class Controller {
 
   /**
    * Update an Item in the database
-   *  @param {*} req - incomming json data
-   * @param {*} res - response to the success of the event 
+   * @param {*} req - incomming json data
+   * @param {*} res - response to the success of the event
    */
   async updateFoodItem(req, res) {
     let item = model.populate(req);

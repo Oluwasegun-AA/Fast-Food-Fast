@@ -13,12 +13,19 @@ export default {
  * @param {*} text - query text 
  * @param {*} params - values required by text
  */
-  query(text, params){
-    return new Promise((resolve, reject) => {
-      pool.query(text, params)
-      .then((res) => {
-        resolve(res);
-      })
-    })
-  }
+
+ // Using async await
+async query (text, params){
+  return await pool.query(text, params);
+}
+
+// old method using promises
+  // query(text, params){
+  //   return new Promise((resolve, reject) => {
+  //     pool.query(text, params)
+  //     .then((res) => {
+  //       resolve(res);
+  //     })
+  //   })
+  // }
 }

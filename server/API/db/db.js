@@ -49,10 +49,8 @@ async function createTables() {
        VALUES ('Doughnut', 'https://via.placeholder.com/150', '2000', 'snacks'),
         ('Amala', 'https://via.placeholder.com/150', '5000', 'Local dish');`
 
-    const input = dropTables + enum_account + enum_role + userAccounts + foodItems + orders;
-    const create = user_data + item_data + order_data;
-    await database.query(input);
-    await database.query(create);
+    const initializeTables = dropTables + enum_account + enum_role + userAccounts + foodItems + orders + user_data + item_data + order_data;
+    await database.query(initializeTables);
 }
 
 module.exports = {

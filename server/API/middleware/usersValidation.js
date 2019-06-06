@@ -5,10 +5,8 @@
 */
 function userValidation(req, res, next) {
     let error = {};
-    console.log('here');
     console.log(req.originalUrl);
     if (req.originalUrl === '/api/v1/auth/login'){
-        console.log("here too");
         if (!(req.body.user_name)) { error.UserName_Error = 'User_name is Required'; }
         if (!(req.body.user_password)) { error.Password_Error = 'Password is Required'; }
         if ((Object.keys(error).length) > 0) { return res.status(400).send({ status: 'Bad Request', success: "false", Error_Log: error }); }
