@@ -32,9 +32,9 @@
 ## Demo
 ![demogif](https://user-images.githubusercontent.com/25525765/46247609-baa42400-c405-11e8-923f-3df54b87ca0e.gif)
 
-Visit [User Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/)
+Visit [User Dashboard](https://oluwasegun-aa.github.io/Fast-Food-Fast/UI/)
 
-Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.html)
+Visit [Admin Dashboard](https://oluwasegun-aa.github.io/Fast-Food-Fast/UI/admin.html)
 
 ## Built with
 - `HTML 5`
