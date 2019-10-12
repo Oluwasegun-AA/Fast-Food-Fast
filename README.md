@@ -82,4 +82,4 @@ Once the server starts-up, you can query the api at `http://localhost:5000/api/v
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 - **[MIT license](https://oluwasegun-aa.github.io/Fast-Food-Fast/UI/LICENSE.md)**
-- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>
+- Copyright 2018 © <a href="https://oluwasegun-aa.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>
